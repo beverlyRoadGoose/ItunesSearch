@@ -12,7 +12,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 **Adding the library to your project**
 
 1. Add the JitPack repository to your build file
-      ```
+      ```Gradle
       allprojects {
         repositories {
             ...
@@ -22,7 +22,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
       ```
       
 2. Add the dependency
-      ```
+      ```Gradle
         dependencies {
             compile 'com.github.EtherealT:ItunesSearch:-SNAPSHOT'
         }
