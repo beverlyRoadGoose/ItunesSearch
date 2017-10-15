@@ -13,14 +13,18 @@ public enum PodcastSearchReturnType {
     PODCAST("podcast"),
     PODCAST_AUTHOR("podcastAuthor");
 
-    private String parameterKey;
+    private String parameterValue;
 
-    PodcastSearchReturnType(String parameterKey){
-        this.parameterKey = parameterKey;
+    PodcastSearchReturnType(String parameterValue){
+        this.parameterValue = parameterValue;
     }
 
-    public String getParameterKey() {
-        return parameterKey;
+    /**
+     *
+     * @return the value to be passed in the api request
+     */
+    public String getParameterValue() {
+        return parameterValue;
     }
 
 }

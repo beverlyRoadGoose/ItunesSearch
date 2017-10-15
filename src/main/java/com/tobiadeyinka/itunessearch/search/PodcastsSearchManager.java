@@ -1,4 +1,4 @@
-package com.tobiadeyinka.itunessearch.podcasts;
+package com.tobiadeyinka.itunessearch.search;
 
 /**
  * All searches related to podcast's are done here.

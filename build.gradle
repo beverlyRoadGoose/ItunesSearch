@@ -21,6 +21,7 @@ jar {
 }
 
 dependencies {
+    compile group: 'org.json', name: 'json', version: '20170516'
     compile group: 'com.neovisionaries', name: 'nv-i18n', version: '1.22'
 
     testCompile group: 'org.testng', name: 'testng', version: '6.11'
