@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="com.tobiadeyinka.itunessearch" verbose="1" preserve-order="true">
+
+    <test name="Podcast Tests" preserve-order="true">
+        <classes>
+            <class name="com.tobiadeyinka.itunessearch.podcasts.entities.PodcastTests" />
+        </classes>
+    </test>
+
+</suite>
