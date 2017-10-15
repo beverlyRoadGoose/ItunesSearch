@@ -19,6 +19,7 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 
+import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastAttribute;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,13 +43,26 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithDefaultParameter()
-            throws NetworkCommunicationException, InvalidParameterException, MissingRequiredParameterException,
-            SearchURLConstructionFailure {
+    public void searchForPodcastWithDefaultParameters() throws NetworkCommunicationException, InvalidParameterException,
+            MissingRequiredParameterException, SearchURLConstructionFailure {
 
         String searchTerm = "radiolab";
         JSONObject response = new PodcastsSearch()
                 .with(searchTerm)
+                .execute();
+
+        JSONArray matchingPodcastsArray = response.getJSONArray("results");
+        assertThat(matchingPodcastsArray.length()).isGreaterThan(0);
+    }
+
+    @Test
+    public void searchForPodcastUsingTitleAttribute() throws NetworkCommunicationException, InvalidParameterException,
+            MissingRequiredParameterException, SearchURLConstructionFailure {
+
+        String searchTerm = "radiolab";
+        JSONObject response = new PodcastsSearch()
+                .with(searchTerm)
+                .inAttribute(PodcastAttribute.TITLE)
                 .execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");

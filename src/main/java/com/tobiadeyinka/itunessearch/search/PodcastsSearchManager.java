@@ -48,15 +48,15 @@ class PodcastsSearchManager {
 
     private String constructUrlString(PodcastsSearch podcastsSearch) {
         String urlString = "https://itunes.apple.com/search?";
-        urlString += "term=" + podcastsSearch.searchTerm;
-        urlString += "&country=" + podcastsSearch.countryCode.getAlpha2();
-        urlString += "&media=" + podcastsSearch.media.getParameterValue();
-        urlString += "&entity=" + podcastsSearch.returnType.getParameterValue();
-        urlString += "&attribute=" + podcastsSearch.attribute.getParameterValue();
-        urlString += "&limit=" + podcastsSearch.limit;
-        urlString += "&lang=" + podcastsSearch.returnLanguage.getCodeName();
-        urlString += "&version=" + podcastsSearch.apiVersion;
-        urlString += "&explicit=" + (podcastsSearch.allowExplicit ? "Yes" : "No");
+        urlString += "term=" + podcastsSearch.getSearchTerm();
+        urlString += "&country=" + podcastsSearch.getCountryCode().getAlpha2();
+        urlString += "&media=" + podcastsSearch.getMedia().getParameterValue();
+        urlString += "&entity=" + podcastsSearch.getReturnType().getParameterValue();
+        urlString += "&attribute=" + podcastsSearch.getAttribute().getParameterValue();
+        urlString += "&limit=" + podcastsSearch.getLimit();
+        urlString += "&lang=" + podcastsSearch.getReturnLanguage().getCodeName();
+        urlString += "&version=" + podcastsSearch.getApiVersion();
+        urlString += "&explicit=" + (podcastsSearch.explicitAllowed() ? "Yes" : "No");
 
         return urlString;
     }

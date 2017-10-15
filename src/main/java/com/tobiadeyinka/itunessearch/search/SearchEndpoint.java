@@ -17,14 +17,23 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
+import com.neovisionaries.i18n.CountryCode;
+
+import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
+import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
+
 /**
- * API endpoint for all media types.
+ * Declares required methods for all search endpoints
  *
- * See <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
- *     Searching the iTunes Store</a> for more details about the parameters.
- *
- * Created by Tobi Adeyinka on 2017. 10. 15..
+ * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public class MediaSearch {
+interface SearchEndpoint<T> {
+
+    T withLimit(int limit);
+    T with(String searchTerm);
+    T inCountry(CountryCode countryCode);
+    T allowExplicit(boolean allowExplicit);
+    T withApiVersion(ItunesApiVersion apiVersion);
+    T withReturnLanguage(ReturnLanguage returnLanguage);
 
 }
