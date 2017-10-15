@@ -29,6 +29,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
       ```
       
 **Making calls to the API**
+
 Using Podcast's search as an example, to search for "Radiolab" and leaving all other parameters set to default, it's as simple as:
 ```java
 new PodcastsSearch()
