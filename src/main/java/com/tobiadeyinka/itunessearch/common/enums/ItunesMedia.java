@@ -18,26 +18,35 @@
 package com.tobiadeyinka.itunessearch.common.enums;
 
 /**
- * Enumeration of supported return value languages.
+ * enumeration of all iTunes media types
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public enum ReturnLanguage {
-    ENGLISH("en_us"),
-    JAPANESE("ja_jp");
+public enum ItunesMedia {
 
-    private String codeName;
+    ALL("all"),
+    MOVIE("movie"),
+    MUSIC("music"),
+    EBOOK("ebook"),
+    TV_SHOW("tvShow"),
+    PODCAST("podcast"),
+    SOFTWARE("software"),
+    SHORT_FILM("shortFilm"),
+    AUDIO_BOOK("audiobook"),
+    MUSIC_VIDEO("musicVideo");
 
-    ReturnLanguage(String codeName) {
-        this.codeName = codeName;
+    private String parameterValue;
+
+    ItunesMedia(String parameterValue) {
+        this.parameterValue = parameterValue;
     }
 
     /**
      *
-     * @return the language codename
+     * @return the parameter value of the media type
      */
-    public String getCodeName() {
-        return codeName;
+    public String getParameterValue() {
+        return parameterValue;
     }
 
 }

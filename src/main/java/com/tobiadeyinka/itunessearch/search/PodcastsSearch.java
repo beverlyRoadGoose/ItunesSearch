@@ -1,8 +1,26 @@
+/*
+ *  Copyright 2017 Oluwatobi Adeyinka
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
 package com.tobiadeyinka.itunessearch.search;
 
+import com.tobiadeyinka.itunessearch.exceptions.*;
+import com.tobiadeyinka.itunessearch.common.enums.ItunesMedia;
 import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastAttribute;
 import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastSearchReturnType;
-import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.json.JSONObject;
 
@@ -19,12 +37,19 @@ public class PodcastsSearch extends MediaSearch {
     /**
      * The podcast attribute the search term is compared with. Default is all attributes.
      */
-    private PodcastAttribute attribute;
+    PodcastAttribute attribute;
 
     /**
      * The type of results returned (Podcasts or PodcastArtists)
      */
-    private PodcastSearchReturnType returnType;
+    PodcastSearchReturnType returnType = PodcastSearchReturnType.PODCAST;
+
+    /**
+     * creates a media search instance and set's the media type to podcast
+     */
+    public PodcastsSearch() {
+        this.media = ItunesMedia.PODCAST;
+    }
 
     /**
      * Sets the podcast attribute the search term is compared with. Default is all attributes.
@@ -52,25 +77,39 @@ public class PodcastsSearch extends MediaSearch {
      * execute the search
      *
      * @return A {@link org.json.JSONObject} object containing the results.
+     * @throws MissingRequiredParameterException if the search term is not set.
+     * @throws InvalidParameterException if any of the set parameters are invalid.
+     * @throws SearchURLConstructionFailure if there is an error during url construction.
+     * @throws NetworkCommunicationException if any issues occur while communicating with the iTunes api.
      */
     @Override
-    public JSONObject execute() throws MissingRequiredParameterException {
-        runPreExecutionChecks();
-        PodcastsSearchManager searchManager;
+    public JSONObject execute()
+            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
+            NetworkCommunicationException {
 
-        return null;
+        runPreExecutionChecks();
+        return new PodcastsSearchManager().executePodcastSearch(this);
     }
 
     /**
      * check the validity of all required data before executing the search
+     *
+     * @throws MissingRequiredParameterException if the search term is not set.
+     * @throws InvalidParameterException if any of the set parameters are invalid.
      */
     @Override
-    protected void runPreExecutionChecks() throws MissingRequiredParameterException {
+    protected void runPreExecutionChecks() throws MissingRequiredParameterException, InvalidParameterException {
         /*
          * search term must be set.
          */
         if (searchTerm == null || searchTerm.isEmpty())
             throw new MissingRequiredParameterException("Search execution failed: missing search term parameter");
+
+        /*
+         * check the api version validity.
+         */
+        if (apiVersion < 1 || apiVersion > 2)
+            throw new InvalidParameterException("Search execution failed: invalid api version code");
     }
 
 }

@@ -1,10 +1,26 @@
+/*
+ *  Copyright 2017 Oluwatobi Adeyinka
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
 package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
-import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
-import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
+import com.tobiadeyinka.itunessearch.exceptions.*;
+import com.tobiadeyinka.itunessearch.common.enums.*;
 
 import org.json.JSONObject;
 
@@ -13,38 +29,43 @@ import org.json.JSONObject;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-class MediaSearch {
+public class MediaSearch {
 
     /**
      * The term to search for.
      */
-    protected String searchTerm;
+    String searchTerm;
+
+    /**
+     * The media type to search for. Default is all.
+     */
+    ItunesMedia media = ItunesMedia.ALL;
 
     /**
      *  <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code for the
      *  iTunes store to search. Default is US.
      */
-    protected CountryCode countryCode = CountryCode.US;
+    CountryCode countryCode = CountryCode.US;
 
     /**
      * The maximum number of item's to return. Default is 50.
      */
-    protected int limit = 50;
+    int limit = 50;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.
      */
-    protected int apiVersion = 2;
+    int apiVersion = 2;
 
     /**
      * allow/exclude explicit content in search results. Explicit content is allowed by default.
      */
-    protected boolean allowExplicit = true;
+    boolean allowExplicit = true;
 
     /**
      * The language to return the result in (only english/japanese). Default is english.
      */
-    protected ReturnLanguage returnLanguage;
+    ReturnLanguage returnLanguage = ReturnLanguage.ENGLISH;
 
     /**
      * Sets the term to search for. Required.
@@ -117,17 +138,27 @@ class MediaSearch {
      * execute the search
      *
      * @return A {@link org.json.JSONObject} object containing the results.
+     * @throws MissingRequiredParameterException if the search term is not set.
+     * @throws InvalidParameterException if any of the set parameters are invalid.
+     * @throws SearchURLConstructionFailure if there is an error during url construction.
+     * @throws NetworkCommunicationException if any issues occur while communicating with the iTunes api.
      */
-    public JSONObject execute() throws MissingRequiredParameterException {
-        SearchManager searchManager;
+    public JSONObject execute()
+            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
+            NetworkCommunicationException {
 
+        runPreExecutionChecks();
+        SearchManager searchManager;
         return null;
     }
 
     /**
      * check the validity of all required data before executing the search
+     *
+     * @throws MissingRequiredParameterException if the search term is not set.
+     * @throws InvalidParameterException if any of the set parameters are invalid.
      */
-    protected void runPreExecutionChecks() throws MissingRequiredParameterException {
+    protected void runPreExecutionChecks() throws MissingRequiredParameterException, InvalidParameterException {
 
     }
 

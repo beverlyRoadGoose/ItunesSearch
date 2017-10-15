@@ -15,29 +15,17 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.common.enums;
+package com.tobiadeyinka.itunessearch.exceptions;
 
 /**
- * Enumeration of supported return value languages.
+ * Thrown when the search url construction is unsuccessful.
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public enum ReturnLanguage {
-    ENGLISH("en_us"),
-    JAPANESE("ja_jp");
+public class SearchURLConstructionFailure extends Exception {
 
-    private String codeName;
-
-    ReturnLanguage(String codeName) {
-        this.codeName = codeName;
-    }
-
-    /**
-     *
-     * @return the language codename
-     */
-    public String getCodeName() {
-        return codeName;
+    public SearchURLConstructionFailure(String message) {
+        super(message);
     }
 
 }
