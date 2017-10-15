@@ -1,0 +1,11 @@
+/out
+/bin
+.gradle
+/.idea
+/build
+/.settings
+/.project
+/.classpath
+
+*.jar
+*.swp
