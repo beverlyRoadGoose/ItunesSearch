@@ -1,4 +1,4 @@
-package com.tobiadeyinka.itunessearch.common.entities;
+package com.tobiadeyinka.itunessearch.common.enums;
 
 /**
  * Enumeration of all genres &amp; their id's.
@@ -10,7 +10,7 @@ package com.tobiadeyinka.itunessearch.common.entities;
  */
 public enum Genre {
 
-    Podcasts(26);
+    PODCASTS(26);
 
     private long id;
 
@@ -28,7 +28,7 @@ public enum Genre {
     @Override
     public String toString() {
         switch (this) {
-            case Podcasts: return "Podcasts";
+            case PODCASTS: return "Podcasts";
             default: return null;
         }
     }

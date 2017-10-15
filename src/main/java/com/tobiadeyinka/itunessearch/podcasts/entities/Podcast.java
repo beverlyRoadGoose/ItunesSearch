@@ -1,6 +1,6 @@
 package com.tobiadeyinka.itunessearch.podcasts.entities;
 
-import com.tobiadeyinka.itunessearch.common.entities.Genre;
+import com.tobiadeyinka.itunessearch.common.enums.Genre;
 
 import java.net.URL;
 import java.util.List;
