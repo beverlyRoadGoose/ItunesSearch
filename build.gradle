@@ -3,6 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'jacoco'
+    id 'net.saliman.cobertura' version '2.3.1'
     id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
@@ -17,11 +18,12 @@ sourceCompatibility = 1.8
 
 jar {
     baseName = 'itunes-search'
-    version =  '0.0.1'
+    version =  '0.0.2'
 }
 
 dependencies {
     compile group: 'org.json', name: 'json', version: '20170516'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'com.neovisionaries', name: 'nv-i18n', version: '1.22'
 
     testCompile group: 'org.testng', name: 'testng', version: '6.11'
@@ -37,6 +39,8 @@ test {
         events "PASSED", "FAILED", "SKIPPED"
     }
 }
+
+cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 
 jacocoTestReport {
     reports {

@@ -66,6 +66,9 @@ public class PodcastsSearch extends MediaSearch {
      */
     @Override
     protected void runPreExecutionChecks() throws MissingRequiredParameterException {
+        /*
+         * search term must be set.
+         */
         if (searchTerm == null || searchTerm.isEmpty())
             throw new MissingRequiredParameterException("Search execution failed: missing search term parameter");
     }

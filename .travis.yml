@@ -19,4 +19,4 @@ before_install:
 
 before_script:
 
-script: ./gradlew test jacocoTestReport coveralls
+script: ./gradlew test cobertura coveralls

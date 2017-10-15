@@ -2,6 +2,7 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
 import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
@@ -96,8 +97,8 @@ class MediaSearch {
      * @param apiVersion the version of the iTunes api to use.
      * @return the current instance of {@link MediaSearch}
      */
-    public MediaSearch withApiVersion(int apiVersion) {
-        this.apiVersion = apiVersion;
+    public MediaSearch withApiVersion(ItunesApiVersion apiVersion) {
+        this.apiVersion = apiVersion.getVersionNumber();
         return this;
     }
 

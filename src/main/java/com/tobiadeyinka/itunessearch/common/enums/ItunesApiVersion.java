@@ -8,17 +8,17 @@ public enum ItunesApiVersion {
     ONE(1),
     TWO(2);
 
-    int apiVersion;
+    int versionNumber;
 
-    ItunesApiVersion(int apiVersion) {
-        this.apiVersion = apiVersion;
+    ItunesApiVersion(int versionNumber) {
+        this.versionNumber = versionNumber;
     }
 
     /**
      *
      * @return the api version value
      */
-    public int getApiVersion() {
-        return apiVersion;
+    public int getVersionNumber() {
+        return versionNumber;
     }
 }
