@@ -1,13 +1,12 @@
 package com.tobiadeyinka.itunessearch.common.entities;
 
-import com.tobiadeyinka.itunessearch.podcasts.entities.Podcast;
-
 /**
- * Created by Tobi Adeyinka on 2017. 10. 15..
+ * Enumeration of all genres &amp; their id's.
  *
- * Enumeration of all genres & their id's.
  * The id's mirror the official iTunes api documentation.
  * See <a href="https://affiliate.itunes.apple.com/resources/documentation/genre-mapping/">Genre IDs Appendix</a>
+ *
+ * Created by Tobi Adeyinka on 2017. 10. 15..
  */
 public enum Genre {
 
