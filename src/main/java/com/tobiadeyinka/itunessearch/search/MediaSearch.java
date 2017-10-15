@@ -34,38 +34,38 @@ public class MediaSearch {
     /**
      * The term to search for.
      */
-    String searchTerm;
+    protected String searchTerm;
 
     /**
      * The media type to search for. Default is all.
      */
-    ItunesMedia media = ItunesMedia.ALL;
+    protected ItunesMedia media = ItunesMedia.ALL;
 
     /**
      *  <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code for the
      *  iTunes store to search. Default is US.
      */
-    CountryCode countryCode = CountryCode.US;
+    protected CountryCode countryCode = CountryCode.US;
 
     /**
      * The maximum number of item's to return. Default is 50.
      */
-    int limit = 50;
+    protected int limit = 50;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.
      */
-    int apiVersion = 2;
+    protected int apiVersion = 2;
 
     /**
      * allow/exclude explicit content in search results. Explicit content is allowed by default.
      */
-    boolean allowExplicit = true;
+    protected boolean allowExplicit = true;
 
     /**
      * The language to return the result in (only english/japanese). Default is english.
      */
-    ReturnLanguage returnLanguage = ReturnLanguage.ENGLISH;
+    protected ReturnLanguage returnLanguage = ReturnLanguage.ENGLISH;
 
     /**
      * Sets the term to search for. Required.

@@ -37,12 +37,12 @@ public class PodcastsSearch extends MediaSearch {
     /**
      * The podcast attribute the search term is compared with. Default is all attributes.
      */
-    PodcastAttribute attribute;
+    protected PodcastAttribute attribute;
 
     /**
      * The type of results returned (Podcasts or PodcastArtists)
      */
-    PodcastSearchReturnType returnType = PodcastSearchReturnType.PODCAST;
+    protected PodcastSearchReturnType returnType = PodcastSearchReturnType.PODCAST;
 
     /**
      * creates a media search instance and set's the media type to podcast
