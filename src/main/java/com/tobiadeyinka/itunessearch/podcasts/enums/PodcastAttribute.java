@@ -27,12 +27,13 @@ package com.tobiadeyinka.itunessearch.podcasts.enums;
  */
 public enum PodcastAttribute {
 
+    ALL(""),
     TITLE("titleTerm"),
-    LANGUAGE("languageTerm"),
-    AUTHOR("authorTerm"),
     GENRE("genreIndex"),
+    AUTHOR("authorTerm"),
     ARTIST("artistTerm"),
     RATING("ratingIndex"),
+    LANGUAGE("languageTerm"),
     KEYWORDS("keywordsTerm"),
     DESCRIPTION("descriptionTerm");
 

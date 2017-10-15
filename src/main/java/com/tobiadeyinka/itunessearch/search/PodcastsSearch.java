@@ -48,7 +48,9 @@ public class PodcastsSearch extends MediaSearch {
      * creates a media search instance and set's the media type to podcast
      */
     public PodcastsSearch() {
+        super();
         this.media = ItunesMedia.PODCAST;
+        this.attribute = PodcastAttribute.ALL;
     }
 
     /**

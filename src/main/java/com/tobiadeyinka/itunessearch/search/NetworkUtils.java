@@ -18,6 +18,7 @@
 package com.tobiadeyinka.itunessearch.search;
 
 import com.tobiadeyinka.itunessearch.exceptions.NetworkCommunicationException;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -35,13 +36,12 @@ import java.util.Scanner;
  */
 abstract class NetworkUtils {
 
-    static JSONObject executeSearch(URL url) throws NetworkCommunicationException {
+    protected static JSONObject executeSearch(URL url) throws NetworkCommunicationException {
         try {
-            String response = query(url);
+            return new JSONObject(query(url));
         } catch (IOException e) {
             throw new NetworkCommunicationException("Error while executing search: " + e.getMessage());
         }
-        return null;
     }
 
     private static String query(URL url) throws IOException {

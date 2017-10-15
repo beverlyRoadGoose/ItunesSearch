@@ -19,7 +19,12 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import org.testng.annotations.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests for all podcast search methods.
@@ -34,6 +39,20 @@ public class PodcastsSearchTests {
             NetworkCommunicationException {
 
         new PodcastsSearch().execute();
+    }
+
+    @Test
+    public void searchForPodcastWithDefaultParameter()
+            throws NetworkCommunicationException, InvalidParameterException, MissingRequiredParameterException,
+            SearchURLConstructionFailure {
+
+        String searchTerm = "radiolab";
+        JSONObject response = new PodcastsSearch()
+                .with(searchTerm)
+                .execute();
+
+        JSONArray matchingPodcastsArray = response.getJSONArray("results");
+        assertThat(matchingPodcastsArray.length()).isGreaterThan(0);
     }
 
 }
