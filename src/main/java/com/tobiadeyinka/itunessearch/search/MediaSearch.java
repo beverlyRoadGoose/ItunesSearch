@@ -3,6 +3,7 @@ package com.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
+import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.json.JSONObject;
 
@@ -116,10 +117,17 @@ class MediaSearch {
      *
      * @return A {@link org.json.JSONObject} object containing the results.
      */
-    public JSONObject execute() {
+    public JSONObject execute() throws MissingRequiredParameterException {
         SearchManager searchManager;
 
         return null;
+    }
+
+    /**
+     * check the validity of all required data before executing the search
+     */
+    protected void runPreExecutionChecks() throws MissingRequiredParameterException {
+
     }
 
 }

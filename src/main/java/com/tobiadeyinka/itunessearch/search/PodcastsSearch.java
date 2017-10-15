@@ -2,6 +2,8 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastAttribute;
 import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastSearchReturnType;
+import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
+
 import org.json.JSONObject;
 
 /**
@@ -52,9 +54,20 @@ public class PodcastsSearch extends MediaSearch {
      * @return A {@link org.json.JSONObject} object containing the results.
      */
     @Override
-    public JSONObject execute() {
+    public JSONObject execute() throws MissingRequiredParameterException {
+        runPreExecutionChecks();
         PodcastsSearchManager searchManager;
 
         return null;
     }
+
+    /**
+     * check the validity of all required data before executing the search
+     */
+    @Override
+    protected void runPreExecutionChecks() throws MissingRequiredParameterException {
+        if (searchTerm == null || searchTerm.isEmpty())
+            throw new MissingRequiredParameterException("Search execution failed: missing search term parameter");
+    }
+
 }
