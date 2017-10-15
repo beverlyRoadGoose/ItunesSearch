@@ -1,14 +1,52 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.6.3'
+}
+
 group 'com.tobiadeyinka'
 version '0.0.1'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'itunes-search'
+    version =  '0.0.1'
+}
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
+}
+
+test {
+    useTestNG() {
+        suites "src/test/resources/test_suites/all_tests.xml"
+    }
+
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
+
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'test'
+    onlyIf { System.env.'CI' }
 }
