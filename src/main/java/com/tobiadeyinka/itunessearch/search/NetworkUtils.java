@@ -24,9 +24,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 
-import java.net.URL;
-import java.net.HttpURLConnection;
-
+import java.net.*;
 import java.util.Scanner;
 
 /**
@@ -38,8 +36,15 @@ abstract class NetworkUtils {
 
     protected static JSONObject executeSearch(URL url) throws NetworkCommunicationException {
         try {
+            /*
+             * encode url before query
+             */
+            URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(),
+                    url.getQuery(), url.getRef());
+            url = new URL(uri.toASCIIString());
+
             return new JSONObject(query(url));
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             throw new NetworkCommunicationException("Error while executing search: " + e.getMessage());
         }
     }

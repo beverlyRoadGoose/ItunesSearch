@@ -57,13 +57,14 @@ public class PodcastsSearchTests {
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
         PodcastsSearch search = new PodcastsSearch().with(searchTerm);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
 
-        logger.info("search url: " + search.getSearchUrl());
         logger.info("search response: " + response.toString());
     }
 
