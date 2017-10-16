@@ -164,7 +164,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     }
 
     /**
-     * enable/disable content in search results. Explicit content is allowed by default.
+     * allow/remove explicit content in search results. Explicit content is allowed by default.
      *
      * @param allowExplicit allow explicit content or not.
      * @return the current instance of {@link PodcastsSearch}
