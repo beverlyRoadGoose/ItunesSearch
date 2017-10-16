@@ -43,6 +43,13 @@ public class MusicSearchTests {
     private String searchTerm = "the national";
     private Logger logger = Logger.getLogger(MusicSearchTests.class.getName());
 
+    private MusicSearch search = null;
+    private JSONObject response = null;
+
+    static final String URL_LOG_TAG = "search url: ";
+    static final String RESPONSE_LOG_TAG = "search response: ";
+
+
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForMusicWithoutSearchTerm() throws ItunesSearchException {
         new MusicSearch().execute();
@@ -50,142 +57,156 @@ public class MusicSearchTests {
 
     @Test
     public void searchForMusicWithDefaultParameters() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch().with(searchTerm);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch().with(searchTerm);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicUsingArtistAttribute() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .inAttribute(MusicAttribute.ARTIST);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .inAttribute(MusicAttribute.ARTIST);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicInSpecificStore() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .inCountry(CountryCode.NG);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .inCountry(CountryCode.NG);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicWithLimit() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .withLimit(5);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .withLimit(5);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0)
-                .isLessThan(6);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0)
+                    .isLessThan(6);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicWithApiVersion1() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .withApiVersion(ItunesApiVersion.ONE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .withApiVersion(ItunesApiVersion.ONE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicWithJapaneseResponse() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .withReturnLanguage(ReturnLanguage.JAPANESE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .withReturnLanguage(ReturnLanguage.JAPANESE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicWithArtistReturnType() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .inAttribute(MusicAttribute.ARTIST)
-                .andReturn(MusicSearchReturnType.ARTIST);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .inAttribute(MusicAttribute.ARTIST)
+                    .andReturn(MusicSearchReturnType.ARTIST);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForMusicWithoutExplicitContent() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .allowExplicit(false);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .allowExplicit(false);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void comprehensiveMusicSearch() throws ItunesSearchException {
-        MusicSearch search = new MusicSearch()
-                .with(searchTerm)
-                .withLimit(5)
-                .inCountry(CountryCode.NG)
-                .inAttribute(MusicAttribute.ARTIST)
-                .withReturnLanguage(ReturnLanguage.JAPANESE)
-                .withApiVersion(ItunesApiVersion.ONE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new MusicSearch()
+                    .with(searchTerm)
+                    .withLimit(5)
+                    .inCountry(CountryCode.NG)
+                    .inAttribute(MusicAttribute.ARTIST)
+                    .withReturnLanguage(ReturnLanguage.JAPANESE)
+                    .withApiVersion(ItunesApiVersion.ONE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingMusicArray = response.getJSONArray("results");
-        assertThat(matchingMusicArray.length())
-                .isGreaterThan(0)
-                .isLessThan(6);
+            JSONArray matchingMusicArray = response.getJSONArray("results");
+            assertThat(matchingMusicArray.length())
+                    .isGreaterThan(0)
+                    .isLessThan(6);
+        } finally {
+            logUrlAndResponse();
+        }
     }
-    
+
+    private void logUrlAndResponse() {
+        logger.info(URL_LOG_TAG + search.getSearchUrl());
+        logger.info(RESPONSE_LOG_TAG + response.toString());
+    }
+
 }

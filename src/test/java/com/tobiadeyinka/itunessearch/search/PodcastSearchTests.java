@@ -43,6 +43,12 @@ public class PodcastSearchTests {
     private String searchTerm = "radiolab";
     private Logger logger = Logger.getLogger(PodcastSearchTests.class.getName());
 
+    private PodcastsSearch search = null;
+    private JSONObject response = null;
+
+    static final String URL_LOG_TAG = "search url: ";
+    static final String RESPONSE_LOG_TAG = "search response: ";
+
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForPodcastWithoutSearchTerm() throws ItunesSearchException {
         new PodcastsSearch().execute();
@@ -50,142 +56,157 @@ public class PodcastSearchTests {
 
     @Test
     public void searchForPodcastWithDefaultParameters() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch().with(searchTerm);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch().with(searchTerm);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastUsingTitleAttribute() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .inAttribute(PodcastAttribute.TITLE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .inAttribute(PodcastAttribute.TITLE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastInSpecificStore() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .inCountry(CountryCode.NG);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .inCountry(CountryCode.NG);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastWithLimit() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .withLimit(5);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .withLimit(5);
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
+            response = search.execute();
 
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0)
-                .isLessThan(6);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0)
+                    .isLessThan(6);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastWithApiVersion1() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .withApiVersion(ItunesApiVersion.ONE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .withApiVersion(ItunesApiVersion.ONE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastWithJapaneseResponse() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .withReturnLanguage(ReturnLanguage.JAPANESE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .withReturnLanguage(ReturnLanguage.JAPANESE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastWithAuthorReturnType() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .inAttribute(PodcastAttribute.TITLE)
-                .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .inAttribute(PodcastAttribute.TITLE)
+                    .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void searchForPodcastWithoutExplicitContent() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .allowExplicit(false);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .allowExplicit(false);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0);
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0);
+        } finally {
+            logUrlAndResponse();
+        }
     }
 
     @Test
     public void comprehensivePodcastSearch() throws ItunesSearchException {
-        PodcastsSearch search = new PodcastsSearch()
-                .with(searchTerm)
-                .withLimit(5)
-                .inCountry(CountryCode.NG)
-                .inAttribute(PodcastAttribute.TITLE)
-                .withReturnLanguage(ReturnLanguage.JAPANESE)
-                .withApiVersion(ItunesApiVersion.ONE);
-        logger.info("search url: " + search.getSearchUrl());
+        try {
+            search = new PodcastsSearch()
+                    .with(searchTerm)
+                    .withLimit(5)
+                    .inCountry(CountryCode.NG)
+                    .inAttribute(PodcastAttribute.TITLE)
+                    .withReturnLanguage(ReturnLanguage.JAPANESE)
+                    .withApiVersion(ItunesApiVersion.ONE);
+            response = search.execute();
 
-        JSONObject response = search.execute();
-        logger.info("search response: " + response.toString());
+            JSONArray matchingPodcastsArray = response.getJSONArray("results");
+            assertThat(matchingPodcastsArray.length())
+                    .isGreaterThan(0)
+                    .isLessThan(6);
+        } finally {
+            logUrlAndResponse();
+        }
+    }
 
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0)
-                .isLessThan(6);
+    private void logUrlAndResponse() {
+        logger.info(URL_LOG_TAG + search.getSearchUrl());
+        logger.info(RESPONSE_LOG_TAG + response.toString());
     }
 
 }

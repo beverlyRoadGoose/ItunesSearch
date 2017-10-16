@@ -37,7 +37,7 @@ public enum MovieAttribute {
     DESCRIPTION("descriptionTerm"),
     RELEASE_YEAR("releaseYearTerm"),
     FEATURE_FILM("featureFilmTerm"),
-    MOVIE_ARTIST("moviesArtisTerm");
+    MOVIE_ARTIST("movieArtistTerm");
 
     private String parameterValue;
 
