@@ -210,7 +210,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
         String urlString = constructUrlString(this);
         URL url = createUrlObject(urlString);
         searchUrl = url;
-        return new PodcastsSearchManager().executePodcastSearch(url);
+        return new SearchManager().executeSearch(url);
     }
 
     /**
@@ -335,4 +335,5 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
     public URL getSearchUrl() {
         return searchUrl;
     }
+
 }

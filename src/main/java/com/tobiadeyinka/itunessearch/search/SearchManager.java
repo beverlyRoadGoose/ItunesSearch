@@ -16,9 +16,24 @@
  */
 
 package com.tobiadeyinka.itunessearch.search;
+import com.tobiadeyinka.itunessearch.exceptions.NetworkCommunicationException;
+import com.tobiadeyinka.itunessearch.exceptions.SearchURLConstructionFailure;
+
+import org.json.JSONObject;
+
+import java.net.URL;
 
 /**
+ * All searches triggered from here.
+ *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
 class SearchManager {
+
+    public JSONObject executeSearch(URL url)
+            throws SearchURLConstructionFailure, NetworkCommunicationException {
+        return NetworkUtils.executeSearch(url);
+    }
+
+
 }
