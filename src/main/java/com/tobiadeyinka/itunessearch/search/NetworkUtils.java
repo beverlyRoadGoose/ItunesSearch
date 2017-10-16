@@ -42,9 +42,9 @@ abstract class NetworkUtils {
              */
             URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(),
                     url.getQuery(), url.getRef());
-            url = new URL(uri.toASCIIString());
+            URL encodedUrl = new URL(uri.toASCIIString());
 
-            return new JSONObject(query(url));
+            return new JSONObject(query(encodedUrl));
         } catch (IOException | URISyntaxException e) {
             throw new NetworkCommunicationException("Error while executing search: " + e.getMessage());
         }
