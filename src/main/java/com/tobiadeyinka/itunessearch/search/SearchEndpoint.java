@@ -19,8 +19,11 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.exceptions.*;
 import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
+
+import org.json.JSONObject;
 
 /**
  * Declares required methods for all search endpoints
@@ -29,13 +32,16 @@ import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
  */
 interface SearchEndpoint<T, U, V> {
 
-    T withLimit(int limit);
     T with(String searchTerm);
+    T withLimit(int limit);
     T inAttribute(U attribute);
-    T andReturn(V returnType);
     T inCountry(CountryCode countryCode);
-    T allowExplicit(boolean allowExplicit);
     T withApiVersion(ItunesApiVersion apiVersion);
     T withReturnLanguage(ReturnLanguage returnLanguage);
+    T allowExplicit(boolean allowExplicit);
+    T andReturn(V returnType);
+    JSONObject execute()
+            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
+            NetworkCommunicationException;
 
 }

@@ -91,18 +91,6 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
     private URL searchUrl;
 
     /**
-     * Sets the maximum number of item's to return. Default is 50.
-     *
-     * @param limit the maximum number of item's to return.
-     * @return the current instance of {@link MusicSearch}
-     */
-    @Override
-    public MusicSearch withLimit(int limit) {
-        this.limit = limit;
-        return this;
-    }
-
-    /**
      * Sets the term to search for. Required.
      *
      * @param searchTerm the term to search for
@@ -111,6 +99,18 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
     @Override
     public MusicSearch with(String searchTerm) {
         this.searchTerm = searchTerm;
+        return this;
+    }
+
+    /**
+     * Sets the maximum number of item's to return. Default is 50.
+     *
+     * @param limit the maximum number of item's to return.
+     * @return the current instance of {@link MusicSearch}
+     */
+    @Override
+    public MusicSearch withLimit(int limit) {
+        this.limit = limit;
         return this;
     }
 
@@ -140,18 +140,6 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
     }
 
     /**
-     * enable/disable content in search results. Explicit content is allowed by default.
-     *
-     * @param allowExplicit allow explicit content or not.
-     * @return the current instance of {@link MusicSearch}
-     */
-    @Override
-    public MusicSearch allowExplicit(boolean allowExplicit) {
-        this.allowExplicit = allowExplicit;
-        return this;
-    }
-
-    /**
      * Set the version of the iTunes api to use (1/2). Default is 2.
      *
      * @param apiVersion the version of the iTunes api to use.
@@ -175,6 +163,18 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
         return this;
     }
 
+    /**
+     * enable/disable content in search results. Explicit content is allowed by default.
+     *
+     * @param allowExplicit allow explicit content or not.
+     * @return the current instance of {@link MusicSearch}
+     */
+    @Override
+    public MusicSearch allowExplicit(boolean allowExplicit) {
+        this.allowExplicit = allowExplicit;
+        return this;
+    }
+    
     /**
      * Sets the return type of the results
      *

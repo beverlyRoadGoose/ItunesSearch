@@ -91,30 +91,6 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     private URL searchUrl;
 
     /**
-     * Sets the podcast attribute the search term is compared with. Default is all attributes.
-     *
-     * @param attribute the podcast attribute the {@link #searchTerm} is compared with.
-     * @return the current instance of {@link PodcastsSearch}
-     */
-    @Override
-    public PodcastsSearch inAttribute(PodcastAttribute attribute) {
-        this.attribute = attribute;
-        return this;
-    }
-
-    /**
-     * Sets the return type of the results (Podcasts or PodcastArtists)
-     *
-     * @param returnType the type of results you want returned
-     * @return the current instance of {@link PodcastsSearch}
-     */
-    @Override
-    public PodcastsSearch andReturn(PodcastSearchReturnType returnType) {
-        this.returnType = returnType;
-        return this;
-    }
-
-    /**
      * Sets the term to search for. Required.
      *
      * @param searchTerm the term to search for
@@ -123,6 +99,30 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     @Override
     public PodcastsSearch with(String searchTerm) {
         this.searchTerm = searchTerm;
+        return this;
+    }
+
+    /**
+     * Sets the maximum number of item's to return. Default is 50.
+     *
+     * @param limit the maximum number of item's to return.
+     * @return the current instance of {@link PodcastsSearch}
+     */
+    @Override
+    public PodcastsSearch withLimit(int limit) {
+        this.limit = limit;
+        return this;
+    }
+
+    /**
+     * Sets the podcast attribute the search term is compared with. Default is all attributes.
+     *
+     * @param attribute the podcast attribute the {@link #searchTerm} is compared with.
+     * @return the current instance of {@link PodcastsSearch}
+     */
+    @Override
+    public PodcastsSearch inAttribute(PodcastAttribute attribute) {
+        this.attribute = attribute;
         return this;
     }
 
@@ -140,14 +140,14 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     }
 
     /**
-     * Sets the maximum number of item's to return. Default is 50.
+     * Set the version of the iTunes api to use (1/2). Default is 2.
      *
-     * @param limit the maximum number of item's to return.
+     * @param apiVersion the version of the iTunes api to use.
      * @return the current instance of {@link PodcastsSearch}
      */
     @Override
-    public PodcastsSearch withLimit(int limit) {
-        this.limit = limit;
+    public PodcastsSearch withApiVersion(ItunesApiVersion apiVersion) {
+        this.apiVersion = apiVersion.getVersionNumber();
         return this;
     }
 
@@ -164,18 +164,6 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     }
 
     /**
-     * Set the version of the iTunes api to use (1/2). Default is 2.
-     *
-     * @param apiVersion the version of the iTunes api to use.
-     * @return the current instance of {@link PodcastsSearch}
-     */
-    @Override
-    public PodcastsSearch withApiVersion(ItunesApiVersion apiVersion) {
-        this.apiVersion = apiVersion.getVersionNumber();
-        return this;
-    }
-
-    /**
      * enable/disable content in search results. Explicit content is allowed by default.
      *
      * @param allowExplicit allow explicit content or not.
@@ -184,6 +172,18 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     @Override
     public PodcastsSearch allowExplicit(boolean allowExplicit) {
         this.allowExplicit = allowExplicit;
+        return this;
+    }
+
+    /**
+     * Sets the return type of the results (Podcasts or PodcastArtists)
+     *
+     * @param returnType the type of results you want returned
+     * @return the current instance of {@link PodcastsSearch}
+     */
+    @Override
+    public PodcastsSearch andReturn(PodcastSearchReturnType returnType) {
+        this.returnType = returnType;
         return this;
     }
 
