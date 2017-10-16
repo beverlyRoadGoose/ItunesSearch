@@ -37,7 +37,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
+public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAttribute, PodcastSearchReturnType> {
 
     /**
      * The term to search for.
@@ -47,7 +47,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
     /**
      * The media type to search for. Default is all.
      */
-    private ItunesMedia media = ItunesMedia.ALL;
+    private ItunesMedia media = ItunesMedia.PODCAST;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.
@@ -67,7 +67,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
     /**
      * The podcast attribute the search term is compared with. Default is all attributes.
      */
-    private PodcastAttribute attribute;
+    private PodcastAttribute attribute = PodcastAttribute.ALL;
 
     /**
      *  <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code for the
@@ -91,19 +91,12 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
     private URL searchUrl;
 
     /**
-     * creates a media search instance and set's the media type to podcast
-     */
-    public PodcastsSearch() {
-        this.media = ItunesMedia.PODCAST;
-        this.attribute = PodcastAttribute.ALL;
-    }
-
-    /**
      * Sets the podcast attribute the search term is compared with. Default is all attributes.
      *
      * @param attribute the podcast attribute the {@link #searchTerm} is compared with.
      * @return the current instance of {@link PodcastsSearch}
      */
+    @Override
     public PodcastsSearch inAttribute(PodcastAttribute attribute) {
         this.attribute = attribute;
         return this;
@@ -115,6 +108,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      * @param returnType the type of results you want returned
      * @return the current instance of {@link PodcastsSearch}
      */
+    @Override
     public PodcastsSearch andReturn(PodcastSearchReturnType returnType) {
         this.returnType = returnType;
         return this;

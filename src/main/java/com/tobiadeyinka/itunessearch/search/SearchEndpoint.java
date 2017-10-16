@@ -19,18 +19,20 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
-import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
 import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
+import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
 
 /**
  * Declares required methods for all search endpoints
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-interface SearchEndpoint<T> {
+interface SearchEndpoint<T, U, V> {
 
     T withLimit(int limit);
     T with(String searchTerm);
+    T inAttribute(U attribute);
+    T andReturn(V returnType);
     T inCountry(CountryCode countryCode);
     T allowExplicit(boolean allowExplicit);
     T withApiVersion(ItunesApiVersion apiVersion);

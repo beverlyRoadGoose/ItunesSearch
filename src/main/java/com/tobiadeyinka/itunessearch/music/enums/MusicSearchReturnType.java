@@ -15,24 +15,31 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.podcasts.enums;
+package com.tobiadeyinka.itunessearch.music.enums;
 
 /**
- * Enumeration of the possible entity return types from podcast search queries.
+ * Enumeration of the possible entity return types from music search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 15..
+ * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public enum PodcastSearchReturnType {
+public enum MusicSearchReturnType {
 
-    PODCAST("podcast"),
-    PODCAST_AUTHOR("podcastAuthor");
+    DEFAULT(""),
+    MIX("mix"),
+    SONG("song"),
+    ALBUM("album"),
+    VIDEO("musicVideo"),
+    ARTIST("musicArtist"),
+    COMPOSER("composerTerm"),
+    GENRE_INDEX("genreIndex"),
+    TRACK("musicTrack");
 
     private String parameterValue;
 
-    PodcastSearchReturnType(String parameterValue){
+    MusicSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 
@@ -43,5 +50,4 @@ public enum PodcastSearchReturnType {
     public String getParameterValue() {
         return parameterValue;
     }
-
 }
