@@ -60,12 +60,11 @@ public class PodcastsSearchTests {
         logger.info("search url: " + search.getSearchUrl());
 
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -75,14 +74,14 @@ public class PodcastsSearchTests {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .inAttribute(PodcastAttribute.TITLE);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -92,14 +91,14 @@ public class PodcastsSearchTests {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .inCountry(CountryCode.NG);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -109,15 +108,15 @@ public class PodcastsSearchTests {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withLimit(5);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0)
                 .isLessThan(6);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -127,14 +126,14 @@ public class PodcastsSearchTests {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withApiVersion(ItunesApiVersion.ONE);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -144,14 +143,14 @@ public class PodcastsSearchTests {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withReturnLanguage(ReturnLanguage.JAPANESE);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -162,14 +161,14 @@ public class PodcastsSearchTests {
                 .with(searchTerm)
                 .inAttribute(PodcastAttribute.TITLE)
                 .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -179,14 +178,14 @@ public class PodcastsSearchTests {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .allowExplicit(false);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
     @Test
@@ -200,15 +199,15 @@ public class PodcastsSearchTests {
                 .inAttribute(PodcastAttribute.TITLE)
                 .withReturnLanguage(ReturnLanguage.JAPANESE)
                 .withApiVersion(ItunesApiVersion.ONE);
+        logger.info("search url: " + search.getSearchUrl());
+
         JSONObject response = search.execute();
+        logger.info("search response: " + response.toString());
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0)
                 .isLessThan(6);
-
-        logger.info("search url: " + search.getSearchUrl());
-        logger.info("search response: " + response.toString());
     }
 
 }

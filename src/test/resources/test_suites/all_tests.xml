@@ -3,6 +3,7 @@
 
     <test name="Podcast Search Tests" preserve-order="true">
         <classes>
+            <class name="com.tobiadeyinka.itunessearch.search.MusicSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.PodcastsSearchTests" />
         </classes>
     </test>
