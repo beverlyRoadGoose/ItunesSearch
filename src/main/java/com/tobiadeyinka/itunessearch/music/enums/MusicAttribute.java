@@ -15,31 +15,27 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.podcasts.enums;
+package com.tobiadeyinka.itunessearch.music.enums;
 
 /**
- * Enumeration of podcast attributes that can be used to narrow down podcast searches.
+ * Enumeration of music attributes that can be used to narrow down music searches.
  *
- * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
- *     Searching the iTunes Store</a> for more details.
- *
- * Created by Tobi Adeyinka on 2017. 10. 15..
+ * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public enum PodcastAttribute {
+public enum MusicAttribute {
 
     ALL(""),
-    TITLE("titleTerm"),
-    GENRE("genreIndex"),
-    AUTHOR("authorTerm"),
+    MIX("mixTerm"),
+    SONG("songTerm"),
+    ALBUM("albumTerm"),
     ARTIST("artistTerm"),
-    RATING("ratingIndex"),
-    LANGUAGE("languageTerm"),
-    KEYWORDS("keywordsTerm"),
-    DESCRIPTION("descriptionTerm");
+    COMPOSER("composerTerm"),
+    GENRE_INDEX("genreIndex"),
+    RATING_INDEX("ratingIndex");
 
     private String parameterValue;
 
-    PodcastAttribute(String parameterValue){
+    MusicAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 
