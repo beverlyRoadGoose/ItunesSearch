@@ -15,36 +15,15 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.music.enums;
+package com.tobiadeyinka.itunessearch.search;
 
 /**
- * Enumeration of music attributes that can be used to narrow down music searches.
+ * Movies search API endpoint.
+ *
+ * See <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
+ *     Searching the iTunes Store</a> for more details about the parameters.
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public enum MusicAttribute {
-
-    ALL(""),
-    MIX("mixTerm"),
-    SONG("songTerm"),
-    ALBUM("albumTerm"),
-    ARTIST("artistTerm"),
-    COMPOSER("composerTerm"),
-    GENRE("genreIndex"),
-    RATING("ratingIndex");
-
-    private String parameterValue;
-
-    MusicAttribute(String parameterValue) {
-        this.parameterValue = parameterValue;
-    }
-
-    /**
-     *
-     * @return the value to be passed in the api request
-     */
-    public String getParameterValue() {
-        return parameterValue;
-    }
-
+public class MovieSearch {
 }

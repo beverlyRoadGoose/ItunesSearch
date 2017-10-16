@@ -15,27 +15,33 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.music.enums;
+package com.tobiadeyinka.itunessearch.movies.enums;
 
 /**
  * Enumeration of music attributes that can be used to narrow down music searches.
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public enum MusicAttribute {
+public enum MovieAttribute {
 
     ALL(""),
-    MIX("mixTerm"),
-    SONG("songTerm"),
-    ALBUM("albumTerm"),
-    ARTIST("artistTerm"),
-    COMPOSER("composerTerm"),
+    MOVIE("movieTerm"),
+    ACTOR("actorTerm"),
     GENRE("genreIndex"),
-    RATING("ratingIndex");
+    ARTIST("artistTerm"),
+    PRODUCER("producerTerm"),
+    DIRECTOR("directorTerm"),
+    RATING_TERM("ratingTerm"),
+    SHORT_FILM("shortFilmTerm"),
+    RATING_INDEX("ratingIndex"),
+    DESCRIPTION("descriptionTerm"),
+    RELEASE_YEAR("releaseYearTerm"),
+    FEATURE_FILM("featureFilmTerm"),
+    MOVIE_ARTIST("moviesArtisTerm");
 
     private String parameterValue;
 
-    MusicAttribute(String parameterValue) {
+    MovieAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 
