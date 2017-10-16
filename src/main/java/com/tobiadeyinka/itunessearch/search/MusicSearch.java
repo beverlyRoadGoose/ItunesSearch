@@ -164,7 +164,7 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
     }
 
     /**
-     * allow/remove content in search results. Explicit content is allowed by default.
+     * allow/remove explicit content in search results. Explicit content is allowed by default.
      *
      * @param allowExplicit allow explicit content or not.
      * @return the current instance of {@link MusicSearch}
