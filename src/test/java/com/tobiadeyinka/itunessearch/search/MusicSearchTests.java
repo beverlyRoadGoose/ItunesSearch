@@ -46,9 +46,9 @@ public class MusicSearchTests {
     private MusicSearch search = null;
     private JSONObject response = null;
 
+    static final String TEST_LOG_TAG = "test: ";
     static final String URL_LOG_TAG = "search url: ";
     static final String RESPONSE_LOG_TAG = "search response: ";
-
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForMusicWithoutSearchTerm() throws ItunesSearchException {
@@ -57,6 +57,8 @@ public class MusicSearchTests {
 
     @Test
     public void searchForMusicWithDefaultParameters() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch().with(searchTerm);
             response = search.execute();
@@ -65,12 +67,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicUsingArtistAttribute() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -81,12 +86,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicInSpecificStore() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -97,12 +105,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicWithLimit() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -114,12 +125,15 @@ public class MusicSearchTests {
                     .isGreaterThan(0)
                     .isLessThan(6);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicWithApiVersion1() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -130,12 +144,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicWithJapaneseResponse() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -146,12 +163,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicWithArtistReturnType() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -163,12 +183,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicWithoutExplicitContent() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -179,12 +202,15 @@ public class MusicSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void comprehensiveMusicSearch() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -200,13 +226,27 @@ public class MusicSearchTests {
                     .isGreaterThan(0)
                     .isLessThan(6);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
-    private void logUrlAndResponse() {
-        logger.info(URL_LOG_TAG + search.getSearchUrl());
-        logger.info(RESPONSE_LOG_TAG + response.toString());
+    private void logUrlAndResponse(String callingMethod) {
+        if (search != null && response != null) {
+            logger.info("\n" + TEST_LOG_TAG + callingMethod + "\n"
+                    + URL_LOG_TAG + search.getSearchUrl() + "\n"
+                    + RESPONSE_LOG_TAG + response.toString() + "\n\n");
+        }
+    }
+
+    /*
+     * search and response objects are nullified at the start of
+     * each tests to prevent the values from a previous test from
+     * being logged when the current test fails.
+     */
+    private void nullifySearchAndResponse() {
+        search = null;
+        response = null;
     }
 
 }

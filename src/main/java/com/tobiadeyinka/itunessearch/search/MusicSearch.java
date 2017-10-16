@@ -239,7 +239,7 @@ public class MusicSearch extends Search
         urlString += "&country=" + countryCode.getAlpha2();
         urlString += "&media=" + media.getParameterValue();
         urlString += "&entity=" + returnType.getParameterValue();
-        urlString += "&attribute=" + attribute.getParameterValue();
+        urlString += "&attributeType=" + attribute.getParameterValue();
         urlString += "&limit=" + limit;
         urlString += "&lang=" + returnLanguage.getCodeName();
         urlString += "&version=" + apiVersion;

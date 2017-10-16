@@ -42,6 +42,7 @@ public class MovieSearchTests {
     private MovieSearch search = null;
     private JSONObject response = null;
 
+    static final String TEST_LOG_TAG = "test: ";
     private static final String URL_LOG_TAG = "search url: ";
     private static final String RESPONSE_LOG_TAG = "search response: ";
 
@@ -52,6 +53,8 @@ public class MovieSearchTests {
 
     @Test
     public void searchForMovieWithDefaultParameters() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new MovieSearch().with(searchTerm);
             response = search.execute();
@@ -61,12 +64,15 @@ public class MovieSearchTests {
                     .isGreaterThan(0);
 
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForMusicUsingDirectorAttribute() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             String actor = "Steven";
 
@@ -79,13 +85,27 @@ public class MovieSearchTests {
             assertThat(matchingMusicArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
-    private void logUrlAndResponse() {
-        logger.info(URL_LOG_TAG + search.getSearchUrl());
-        logger.info(RESPONSE_LOG_TAG + response.toString());
+    private void logUrlAndResponse(String callingMethod) {
+        if (search != null && response != null) {
+            logger.info("\n" + TEST_LOG_TAG + callingMethod + "\n"
+                    + URL_LOG_TAG + search.getSearchUrl() + "\n"
+                    + RESPONSE_LOG_TAG + response.toString() + "\n\n");
+        }
+    }
+
+    /*
+     * search and response objects are nullified at the start of
+     * each tests to prevent the values from a previous test from
+     * being logged when the current test fails.
+     */
+    private void nullifySearchAndResponse() {
+        search = null;
+        response = null;
     }
 
 }

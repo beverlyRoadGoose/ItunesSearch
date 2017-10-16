@@ -29,6 +29,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.logging.Logger;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,12 +43,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class PodcastSearchTests {
 
-    private String searchTerm = "radiolab";
+    private String searchTerm = "radio";
     private Logger logger = Logger.getLogger(PodcastSearchTests.class.getName());
 
     private PodcastsSearch search = null;
     private JSONObject response = null;
 
+    static final String TEST_LOG_TAG = "test: ";
     static final String URL_LOG_TAG = "search url: ";
     static final String RESPONSE_LOG_TAG = "search response: ";
 
@@ -56,6 +60,8 @@ public class PodcastSearchTests {
 
     @Test
     public void searchForPodcastWithDefaultParameters() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch().with(searchTerm);
             response = search.execute();
@@ -64,12 +70,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastUsingTitleAttribute() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -80,12 +89,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastInSpecificStore() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -96,12 +108,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastWithLimit() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -114,12 +129,15 @@ public class PodcastSearchTests {
                     .isGreaterThan(0)
                     .isLessThan(6);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastWithApiVersion1() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -130,12 +148,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastWithJapaneseResponse() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -146,12 +167,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastWithAuthorReturnType() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -163,12 +187,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void searchForPodcastWithoutExplicitContent() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -179,12 +206,15 @@ public class PodcastSearchTests {
             assertThat(matchingPodcastsArray.length())
                     .isGreaterThan(0);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
     @Test
     public void comprehensivePodcastSearch() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
         try {
             search = new PodcastsSearch()
                     .with(searchTerm)
@@ -200,13 +230,27 @@ public class PodcastSearchTests {
                     .isGreaterThan(0)
                     .isLessThan(6);
         } finally {
-            logUrlAndResponse();
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            logUrlAndResponse(methodName);
         }
     }
 
-    private void logUrlAndResponse() {
-        logger.info(URL_LOG_TAG + search.getSearchUrl());
-        logger.info(RESPONSE_LOG_TAG + response.toString());
+    private void logUrlAndResponse(String callingMethod) {
+        if (search != null && response != null) {
+            logger.info("\n" + TEST_LOG_TAG + callingMethod + "\n"
+                    + URL_LOG_TAG + search.getSearchUrl() + "\n"
+                    + RESPONSE_LOG_TAG + response.toString() + "\n\n");
+        }
+    }
+
+    /*
+     * search and response objects are nullified at the start of
+     * each tests to prevent the values from a previous test from
+     * being logged when the current test fails.
+     */
+    private void nullifySearchAndResponse() {
+        search = null;
+        response = null;
     }
 
 }
