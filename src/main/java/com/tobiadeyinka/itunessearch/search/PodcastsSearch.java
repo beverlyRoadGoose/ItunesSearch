@@ -37,7 +37,8 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAttribute, PodcastSearchReturnType> {
+public class PodcastsSearch extends Search
+        implements SearchEndpoint<PodcastsSearch, PodcastAttribute, PodcastSearchReturnType> {
 
     /**
      * The term to search for.
@@ -45,7 +46,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     private String searchTerm;
 
     /**
-     * The media type to search for. Default is all.
+     * The media type to search for. In this case podcasts.
      */
     private ItunesMedia media = ItunesMedia.PODCAST;
 
@@ -81,7 +82,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     private ReturnLanguage returnLanguage = ReturnLanguage.ENGLISH;
 
     /**
-     * The type of results returned (Podcasts or PodcastArtists)
+     * The type of results returned (Podcasts or PodcastArtists). Default is the podcast itself.
      */
     private PodcastSearchReturnType returnType = PodcastSearchReturnType.PODCAST;
 
@@ -199,7 +200,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
     public JSONObject execute() throws ItunesSearchException {
 
         runPreExecutionChecks();
-        String urlString = constructUrlString(this);
+        String urlString = constructUrlString();
         URL url = createUrlObject(urlString);
         searchUrl = url;
         return new SearchManager().executeSearch(url);
@@ -233,17 +234,17 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch, PodcastAtt
         }
     }
 
-    private String constructUrlString(PodcastsSearch podcastsSearch) {
+    private String constructUrlString() {
         String urlString = "https://itunes.apple.com/search?";
-        urlString += "term=" + podcastsSearch.getSearchTerm();
-        urlString += "&country=" + podcastsSearch.getCountryCode().getAlpha2();
-        urlString += "&media=" + podcastsSearch.getMedia().getParameterValue();
-        urlString += "&entity=" + podcastsSearch.getReturnType().getParameterValue();
-        urlString += "&attribute=" + podcastsSearch.getAttribute().getParameterValue();
-        urlString += "&limit=" + podcastsSearch.getLimit();
-        urlString += "&lang=" + podcastsSearch.getReturnLanguage().getCodeName();
-        urlString += "&version=" + podcastsSearch.getApiVersion();
-        urlString += "&explicit=" + (podcastsSearch.explicitAllowed() ? "Yes" : "No");
+        urlString += "term=" + searchTerm;
+        urlString += "&country=" + countryCode.getAlpha2();
+        urlString += "&media=" + media.getParameterValue();
+        urlString += "&entity=" + returnType.getParameterValue();
+        urlString += "&attribute=" + attribute.getParameterValue();
+        urlString += "&limit=" + limit;
+        urlString += "&lang=" + returnLanguage.getCodeName();
+        urlString += "&version=" + apiVersion;
+        urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
     }

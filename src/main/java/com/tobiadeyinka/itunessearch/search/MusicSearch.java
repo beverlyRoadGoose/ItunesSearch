@@ -37,7 +37,8 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, MusicSearchReturnType> {
+public class MusicSearch extends Search
+        implements SearchEndpoint<MusicSearch, MusicAttribute, MusicSearchReturnType> {
 
     /**
      * The term to search for.
@@ -45,7 +46,7 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
     private String searchTerm;
 
     /**
-     * The media type to search for. Default is all.
+     * The media type to search for. In this case music.
      */
     private ItunesMedia media = ItunesMedia.MUSIC;
 
@@ -198,7 +199,7 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
      */
     public JSONObject execute() throws ItunesSearchException {
         runPreExecutionChecks();
-        String urlString = constructUrlString(this);
+        String urlString = constructUrlString();
         URL url = createUrlObject(urlString);
         searchUrl = url;
         return new SearchManager().executeSearch(url);
@@ -232,17 +233,17 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
         }
     }
 
-    private String constructUrlString(MusicSearch musicSearch) {
+    private String constructUrlString() {
         String urlString = "https://itunes.apple.com/search?";
-        urlString += "term=" + musicSearch.getSearchTerm();
-        urlString += "&country=" + musicSearch.getCountryCode().getAlpha2();
-        urlString += "&media=" + musicSearch.getMedia().getParameterValue();
-        urlString += "&entity=" + musicSearch.getReturnType().getParameterValue();
-        urlString += "&attribute=" + musicSearch.getAttribute().getParameterValue();
-        urlString += "&limit=" + musicSearch.getLimit();
-        urlString += "&lang=" + musicSearch.getReturnLanguage().getCodeName();
-        urlString += "&version=" + musicSearch.getApiVersion();
-        urlString += "&explicit=" + (musicSearch.explicitAllowed() ? "Yes" : "No");
+        urlString += "term=" + searchTerm;
+        urlString += "&country=" + countryCode.getAlpha2();
+        urlString += "&media=" + media.getParameterValue();
+        urlString += "&entity=" + returnType.getParameterValue();
+        urlString += "&attribute=" + attribute.getParameterValue();
+        urlString += "&limit=" + limit;
+        urlString += "&lang=" + returnLanguage.getCodeName();
+        urlString += "&version=" + apiVersion;
+        urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
     }

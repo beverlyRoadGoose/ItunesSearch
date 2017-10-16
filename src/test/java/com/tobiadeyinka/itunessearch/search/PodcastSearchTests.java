@@ -38,10 +38,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class PodcastsSearchTests {
+public class PodcastSearchTests {
 
     private String searchTerm = "radiolab";
-    private Logger logger = Logger.getLogger(PodcastsSearchTests.class.getName());
+    private Logger logger = Logger.getLogger(PodcastSearchTests.class.getName());
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForPodcastWithoutSearchTerm() throws ItunesSearchException {
