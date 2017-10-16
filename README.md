@@ -25,7 +25,7 @@ is ready for use. In time, all iTunes media types would be covered.
 2. Add the dependency
       ```Gradle
         dependencies {
-            compile 'com.github.EtherealT:ItunesSearch:v0.0.2'
+            compile 'com.github.EtherealT:ItunesSearch:v0.0.3'
         }
       ```
       
