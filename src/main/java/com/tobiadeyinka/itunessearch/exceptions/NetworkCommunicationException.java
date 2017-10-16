@@ -22,7 +22,7 @@ package com.tobiadeyinka.itunessearch.exceptions;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class NetworkCommunicationException extends Exception {
+public class NetworkCommunicationException extends ItunesSearchException {
 
     public NetworkCommunicationException(String message) {
         super(message);

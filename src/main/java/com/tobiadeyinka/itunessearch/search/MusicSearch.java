@@ -196,10 +196,7 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
      * @throws SearchURLConstructionFailure if there is an error during url construction.
      * @throws NetworkCommunicationException if any issues occur while communicating with the iTunes api.
      */
-    public JSONObject execute()
-            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
-            NetworkCommunicationException {
-
+    public JSONObject execute() throws ItunesSearchException {
         runPreExecutionChecks();
         String urlString = constructUrlString(this);
         URL url = createUrlObject(urlString);
@@ -213,7 +210,7 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
      * @throws MissingRequiredParameterException if the search term is not set.
      * @throws InvalidParameterException if any of the set parameters are invalid.
      */
-    private void runPreExecutionChecks() throws MissingRequiredParameterException, InvalidParameterException {
+    private void runPreExecutionChecks() throws ItunesSearchException {
         /*
          * search term must be set.
          */
@@ -227,7 +224,7 @@ public class MusicSearch implements SearchEndpoint<MusicSearch, MusicAttribute, 
             throw new InvalidParameterException("Search execution failed: invalid api version code");
     }
 
-    private URL createUrlObject(String urlString) throws SearchURLConstructionFailure {
+    private URL createUrlObject(String urlString) throws ItunesSearchException {
         try {
             return new URL(urlString);
         } catch (MalformedURLException e) {

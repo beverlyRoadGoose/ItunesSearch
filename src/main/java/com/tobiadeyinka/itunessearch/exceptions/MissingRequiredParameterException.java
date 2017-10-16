@@ -22,7 +22,7 @@ package com.tobiadeyinka.itunessearch.exceptions;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class MissingRequiredParameterException extends Exception {
+public class MissingRequiredParameterException extends ItunesSearchException {
 
     public MissingRequiredParameterException(String message) {
         super(message);

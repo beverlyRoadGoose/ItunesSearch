@@ -44,17 +44,12 @@ public class MusicSearchTests {
     private Logger logger = Logger.getLogger(MusicSearchTests.class.getName());
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForMusicWithoutSearchTerm()
-            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
-            NetworkCommunicationException {
-
+    public void searchForMusicWithoutSearchTerm() throws ItunesSearchException {
         new MusicSearch().execute();
     }
 
     @Test
-    public void searchForMusicWithDefaultParameters() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicWithDefaultParameters() throws ItunesSearchException {
         MusicSearch search = new MusicSearch().with(searchTerm);
         logger.info("search url: " + search.getSearchUrl());
 
@@ -67,9 +62,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicUsingArtistAttribute() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicUsingArtistAttribute() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .inAttribute(MusicAttribute.ARTIST);
@@ -84,9 +77,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicInSpecificStore() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicInSpecificStore() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .inCountry(CountryCode.NG);
@@ -101,9 +92,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicWithLimit() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicWithLimit() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .withLimit(5);
@@ -119,9 +108,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicWithApiVersion1() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicWithApiVersion1() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .withApiVersion(ItunesApiVersion.ONE);
@@ -136,9 +123,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicWithJapaneseResponse() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicWithJapaneseResponse() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .withReturnLanguage(ReturnLanguage.JAPANESE);
@@ -153,9 +138,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicWithArtistReturnType() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicWithArtistReturnType() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .inAttribute(MusicAttribute.ARTIST)
@@ -171,9 +154,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void searchForMusicWithoutExplicitContent() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForMusicWithoutExplicitContent() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .allowExplicit(false);
@@ -188,9 +169,7 @@ public class MusicSearchTests {
     }
 
     @Test
-    public void comprehensiveMusicSearch() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void comprehensiveMusicSearch() throws ItunesSearchException {
         MusicSearch search = new MusicSearch()
                 .with(searchTerm)
                 .withLimit(5)

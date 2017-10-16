@@ -40,8 +40,6 @@ interface SearchEndpoint<T, U, V> {
     T withReturnLanguage(ReturnLanguage returnLanguage);
     T allowExplicit(boolean allowExplicit);
     T andReturn(V returnType);
-    JSONObject execute()
-            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
-            NetworkCommunicationException;
+    JSONObject execute() throws ItunesSearchException;
 
 }

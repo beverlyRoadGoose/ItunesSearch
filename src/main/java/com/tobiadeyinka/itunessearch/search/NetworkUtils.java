@@ -17,6 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
+import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.NetworkCommunicationException;
 
 import org.json.JSONObject;
@@ -34,7 +35,7 @@ import java.util.Scanner;
  */
 abstract class NetworkUtils {
 
-    protected static JSONObject executeSearch(URL url) throws NetworkCommunicationException {
+    protected static JSONObject executeSearch(URL url) throws ItunesSearchException {
         try {
             /*
              * encode url before query

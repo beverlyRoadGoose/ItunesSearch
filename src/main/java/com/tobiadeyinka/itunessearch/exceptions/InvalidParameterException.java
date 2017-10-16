@@ -22,7 +22,7 @@ package com.tobiadeyinka.itunessearch.exceptions;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class InvalidParameterException extends Exception {
+public class InvalidParameterException extends ItunesSearchException {
 
     public InvalidParameterException(String message) {
         super(message);

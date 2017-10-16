@@ -18,13 +18,13 @@
 package com.tobiadeyinka.itunessearch.exceptions;
 
 /**
- * Thrown when the search url construction is unsuccessful.
+ * API exceptions base.
  *
- * Created by Tobi Adeyinka on 2017. 10. 15..
+ * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public class SearchURLConstructionFailure extends ItunesSearchException {
+public class ItunesSearchException extends Exception {
 
-    public SearchURLConstructionFailure(String message) {
+    ItunesSearchException(String message) {
         super(message);
     }
 

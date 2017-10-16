@@ -16,12 +16,11 @@
  */
 
 package com.tobiadeyinka.itunessearch.search;
-import com.tobiadeyinka.itunessearch.exceptions.NetworkCommunicationException;
-import com.tobiadeyinka.itunessearch.exceptions.SearchURLConstructionFailure;
 
-import org.json.JSONObject;
+import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 
 import java.net.URL;
+import org.json.JSONObject;
 
 /**
  * All searches triggered from here.
@@ -30,10 +29,8 @@ import java.net.URL;
  */
 class SearchManager {
 
-    public JSONObject executeSearch(URL url)
-            throws SearchURLConstructionFailure, NetworkCommunicationException {
+    public JSONObject executeSearch(URL url) throws ItunesSearchException {
         return NetworkUtils.executeSearch(url);
     }
-
 
 }

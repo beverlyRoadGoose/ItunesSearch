@@ -28,9 +28,8 @@ import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastSearchReturnType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import org.testng.annotations.Test;
-
 import java.util.logging.Logger;
+import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,17 +44,12 @@ public class PodcastsSearchTests {
     private Logger logger = Logger.getLogger(PodcastsSearchTests.class.getName());
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForPodcastWithoutSearchTerm()
-            throws MissingRequiredParameterException, InvalidParameterException, SearchURLConstructionFailure,
-            NetworkCommunicationException {
-
+    public void searchForPodcastWithoutSearchTerm() throws ItunesSearchException {
         new PodcastsSearch().execute();
     }
 
     @Test
-    public void searchForPodcastWithDefaultParameters() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastWithDefaultParameters() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch().with(searchTerm);
         logger.info("search url: " + search.getSearchUrl());
 
@@ -68,9 +62,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastUsingTitleAttribute() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastUsingTitleAttribute() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .inAttribute(PodcastAttribute.TITLE);
@@ -85,9 +77,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastInSpecificStore() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastInSpecificStore() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .inCountry(CountryCode.NG);
@@ -102,9 +92,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithLimit() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastWithLimit() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withLimit(5);
@@ -120,9 +108,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithApiVersion1() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastWithApiVersion1() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withApiVersion(ItunesApiVersion.ONE);
@@ -137,9 +123,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithJapaneseResponse() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastWithJapaneseResponse() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withReturnLanguage(ReturnLanguage.JAPANESE);
@@ -154,9 +138,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithAuthorReturnType() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastWithAuthorReturnType() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .inAttribute(PodcastAttribute.TITLE)
@@ -172,9 +154,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithoutExplicitContent() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void searchForPodcastWithoutExplicitContent() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .allowExplicit(false);
@@ -189,9 +169,7 @@ public class PodcastsSearchTests {
     }
 
     @Test
-    public void comprehensivePodcastSearch() throws NetworkCommunicationException, InvalidParameterException,
-            MissingRequiredParameterException, SearchURLConstructionFailure {
-
+    public void comprehensivePodcastSearch() throws ItunesSearchException {
         PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withLimit(5)
