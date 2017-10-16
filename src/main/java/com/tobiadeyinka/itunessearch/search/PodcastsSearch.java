@@ -226,7 +226,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the term to be searched for
      */
-    protected String getSearchTerm() {
+    public String getSearchTerm() {
         return searchTerm;
     }
 
@@ -234,7 +234,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the set media type being searched for
      */
-    protected ItunesMedia getMedia() {
+    public ItunesMedia getMedia() {
         return media;
     }
 
@@ -242,7 +242,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the iTunes store being searched
      */
-    protected CountryCode getCountryCode() {
+    public CountryCode getCountryCode() {
         return countryCode;
     }
 
@@ -250,7 +250,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the maximum number of results
      */
-    protected int getLimit() {
+    public int getLimit() {
         return limit;
     }
 
@@ -258,7 +258,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the api version to use
      */
-    protected int getApiVersion() {
+    public int getApiVersion() {
         return apiVersion;
     }
 
@@ -266,7 +266,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the explicit data setting
      */
-    protected boolean explicitAllowed() {
+    public boolean explicitAllowed() {
         return allowExplicit;
     }
 
@@ -274,7 +274,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the language the result should be returned in
      */
-    protected ReturnLanguage getReturnLanguage() {
+    public ReturnLanguage getReturnLanguage() {
         return returnLanguage;
     }
 
@@ -282,7 +282,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the attribute to search in
      */
-    protected PodcastAttribute getAttribute() {
+    public PodcastAttribute getAttribute() {
         return attribute;
     }
 
@@ -290,7 +290,7 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      *
      * @return the type of data to return
      */
-    protected PodcastSearchReturnType getReturnType() {
+    public PodcastSearchReturnType getReturnType() {
         return returnType;
     }
     
