@@ -30,6 +30,8 @@ import org.json.JSONObject;
 
 import org.testng.annotations.Test;
 
+import java.util.logging.Logger;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -40,6 +42,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PodcastsSearchTests {
 
     private String searchTerm = "radiolab";
+    private Logger logger = Logger.getLogger(PodcastsSearchTests.class.getName());
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForPodcastWithoutSearchTerm()
@@ -53,132 +56,158 @@ public class PodcastsSearchTests {
     public void searchForPodcastWithDefaultParameters() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
-                .with(searchTerm)
-                .execute();
+        PodcastsSearch search = new PodcastsSearch().with(searchTerm);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastUsingTitleAttribute() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
-                .inAttribute(PodcastAttribute.TITLE)
-                .execute();
+                .inAttribute(PodcastAttribute.TITLE);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastInSpecificStore() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
-                .inCountry(CountryCode.NG)
-                .execute();
+                .inCountry(CountryCode.NG);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastWithLimit() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
-                .withLimit(5)
-                .execute();
+                .withLimit(5);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0)
                 .isLessThan(6);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastWithApiVersion1() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
-                .withApiVersion(ItunesApiVersion.ONE)
-                .execute();
+                .withApiVersion(ItunesApiVersion.ONE);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastWithJapaneseResponse() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
-                .withReturnLanguage(ReturnLanguage.JAPANESE)
-                .execute();
+                .withReturnLanguage(ReturnLanguage.JAPANESE);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastWithAuthorReturnType() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .inAttribute(PodcastAttribute.TITLE)
-                .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR)
-                .execute();
+                .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void searchForPodcastWithoutExplicitContent() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
-                .allowExplicit(false)
-                .execute();
+                .allowExplicit(false);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
     @Test
     public void comprehensivePodcastSearch() throws NetworkCommunicationException, InvalidParameterException,
             MissingRequiredParameterException, SearchURLConstructionFailure {
 
-        JSONObject response = new PodcastsSearch()
+        PodcastsSearch search = new PodcastsSearch()
                 .with(searchTerm)
                 .withLimit(5)
                 .inCountry(CountryCode.NG)
                 .inAttribute(PodcastAttribute.TITLE)
                 .withReturnLanguage(ReturnLanguage.JAPANESE)
-                .withApiVersion(ItunesApiVersion.ONE)
-                .execute();
+                .withApiVersion(ItunesApiVersion.ONE);
+        JSONObject response = search.execute();
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
                 .isGreaterThan(0)
                 .isLessThan(6);
+
+        logger.info("search url: " + search.getSearchUrl());
+        logger.info("search response: " + response.toString());
     }
 
 }

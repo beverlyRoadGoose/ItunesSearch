@@ -26,6 +26,9 @@ import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastSearchReturnType;
 
 import org.json.JSONObject;
 
+import java.net.URL;
+import java.net.MalformedURLException;
+
 /**
  * Podcasts search API endpoint.
  *
@@ -81,6 +84,11 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
      * The type of results returned (Podcasts or PodcastArtists)
      */
     private PodcastSearchReturnType returnType = PodcastSearchReturnType.PODCAST;
+
+    /**
+     * URL used to search the iTunes store, generated using all the variables of the instance
+     */
+    private URL searchUrl;
 
     /**
      * creates a media search instance and set's the media type to podcast
@@ -199,7 +207,10 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
             NetworkCommunicationException {
 
         runPreExecutionChecks();
-        return new PodcastsSearchManager().executePodcastSearch(this);
+        String urlString = constructUrlString(this);
+        URL url = createUrlObject(urlString);
+        searchUrl = url;
+        return new PodcastsSearchManager().executePodcastSearch(url);
     }
 
     /**
@@ -220,6 +231,29 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
          */
         if (apiVersion < 1 || apiVersion > 2)
             throw new InvalidParameterException("Search execution failed: invalid api version code");
+    }
+
+    private URL createUrlObject(String urlString) throws SearchURLConstructionFailure {
+        try {
+            return new URL(urlString);
+        } catch (MalformedURLException e) {
+            throw new SearchURLConstructionFailure("Error during search url construction: " + e.getMessage());
+        }
+    }
+
+    private String constructUrlString(PodcastsSearch podcastsSearch) {
+        String urlString = "https://itunes.apple.com/search?";
+        urlString += "term=" + podcastsSearch.getSearchTerm();
+        urlString += "&country=" + podcastsSearch.getCountryCode().getAlpha2();
+        urlString += "&media=" + podcastsSearch.getMedia().getParameterValue();
+        urlString += "&entity=" + podcastsSearch.getReturnType().getParameterValue();
+        urlString += "&attribute=" + podcastsSearch.getAttribute().getParameterValue();
+        urlString += "&limit=" + podcastsSearch.getLimit();
+        urlString += "&lang=" + podcastsSearch.getReturnLanguage().getCodeName();
+        urlString += "&version=" + podcastsSearch.getApiVersion();
+        urlString += "&explicit=" + (podcastsSearch.explicitAllowed() ? "Yes" : "No");
+
+        return urlString;
     }
 
     /**
@@ -293,5 +327,12 @@ public class PodcastsSearch implements SearchEndpoint<PodcastsSearch> {
     public PodcastSearchReturnType getReturnType() {
         return returnType;
     }
-    
+
+    /**
+     *
+     * @return the url used to search the iTunes store.
+     */
+    public URL getSearchUrl() {
+        return searchUrl;
+    }
 }

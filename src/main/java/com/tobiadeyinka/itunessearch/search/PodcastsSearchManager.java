@@ -31,34 +31,10 @@ import java.net.MalformedURLException;
  */
 class PodcastsSearchManager {
 
-    public JSONObject executePodcastSearch(PodcastsSearch podcastsSearch)
+    public JSONObject executePodcastSearch(URL url)
             throws SearchURLConstructionFailure, NetworkCommunicationException {
-        String urlString = constructUrlString(podcastsSearch);
-        URL url = createUrlObject(urlString);
         return NetworkUtils.executeSearch(url);
     }
 
-    private URL createUrlObject(String urlString) throws SearchURLConstructionFailure {
-        try {
-            return new URL(urlString);
-        } catch (MalformedURLException e) {
-            throw new SearchURLConstructionFailure("Error during search url construction: " + e.getMessage());
-        }
-    }
-
-    private String constructUrlString(PodcastsSearch podcastsSearch) {
-        String urlString = "https://itunes.apple.com/search?";
-        urlString += "term=" + podcastsSearch.getSearchTerm();
-        urlString += "&country=" + podcastsSearch.getCountryCode().getAlpha2();
-        urlString += "&media=" + podcastsSearch.getMedia().getParameterValue();
-        urlString += "&entity=" + podcastsSearch.getReturnType().getParameterValue();
-        urlString += "&attribute=" + podcastsSearch.getAttribute().getParameterValue();
-        urlString += "&limit=" + podcastsSearch.getLimit();
-        urlString += "&lang=" + podcastsSearch.getReturnLanguage().getCodeName();
-        urlString += "&version=" + podcastsSearch.getApiVersion();
-        urlString += "&explicit=" + (podcastsSearch.explicitAllowed() ? "Yes" : "No");
-
-        return urlString;
-    }
 
 }
