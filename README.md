@@ -36,6 +36,7 @@ new PodcastsSearch()
     .with("radiolab")
     .execute();
 ```
+The full javadoc is available [here](https://etherealt.github.io/ItunesSearch/docs/)
 
 ## License
 
