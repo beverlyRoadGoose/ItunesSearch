@@ -6,8 +6,7 @@
 <!--[![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)-->
 
 ## About
-This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/). 
-As it's still in active development, only Podcast, Music & Movie searches are ready for use. In time, all iTunes media types would be covered.
+This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/).
 
 ## Usage
 **Adding the library to your project**
@@ -25,7 +24,7 @@ As it's still in active development, only Podcast, Music & Movie searches are re
 2. Add the dependency
       ```Gradle
         dependencies {
-            compile 'com.github.EtherealT:ItunesSearch:v0.0.5'
+            compile 'com.github.EtherealT:ItunesSearch:v0.0.6'
         }
       ```
       

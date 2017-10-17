@@ -90,6 +90,18 @@ public class MediaSearch {
     }
 
     /**
+     * Sets the media type to search for (Movie, Music, Podcast, etc.).
+     * Default is all.
+     *
+     * @param mediaType the type of media to be searched for
+     * @return the current instance of {@link MediaSearch}
+     */
+    public MediaSearch withMediaType(ItunesMedia mediaType) {
+        this.media = mediaType;
+        return this;
+    }
+
+    /**
      * Sets the maximum number of item's to return. Default is 50.
      *
      * @param limit the maximum number of item's to return.
