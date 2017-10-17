@@ -37,7 +37,24 @@ new PodcastsSearch()
     .with("radiolab")
     .execute();
 ```
-The full javadoc is available [here](https://etherealt.github.io/ItunesSearch/docs/)
+
+To run the same search but only in the U.S (or any other country) itunes store, just pass the [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
+for that country :
+```java
+new PodcastsSearch()
+    .with("radiolab")
+    .inCountry(CountryCode.US)
+    .execute();
+```
+
+Searching other media types follow the same method. To search every media type in one call, use [MediaSearch](https://etherealt.github.io/ItunesSearch/docs/):
+```java
+new MediaSearch()
+    .with("something")
+    .execute();
+```
+There are much more configurations available all of which are detailed in the documentation available [here](https://etherealt.github.io/ItunesSearch/docs/).
+All searches return a [JSON object](https://stleary.github.io/JSON-java/).
 
 ## License
 
