@@ -37,12 +37,20 @@ new PodcastSearch()
     .execute();
 ```
 
-To run the same search but only in the U.S (or any other country) itunes store, just pass the [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
-for that country :
+To compare your search term with only a particular attribute, for example the genre of podcasts, you can specify that this way:
 ```java
 new PodcastSearch()
     .with("radiolab")
-    .inCountry(CountryCode.US)
+    .inAttribute(PodcastAttribute.GENRE);
+    .execute();
+```
+
+To search on only one itunes store, just pass the [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
+for that country, this example uses Nigeria:
+```java
+new PodcastSearch()
+    .with("radiolab")
+    .inCountry(CountryCode.NG)
     .execute();
 ```
 
