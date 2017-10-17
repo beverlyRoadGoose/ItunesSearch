@@ -1,10 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="com.tobiadeyinka.itunessearch" verbose="1">
 
-    <test name="Podcast Search Tests">
+    <test name="Search Tests">
         <classes>
             <class name="com.tobiadeyinka.itunessearch.search.MediaSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.MusicSearchTests" />
+            <class name="com.tobiadeyinka.itunessearch.search.MusicVideoSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.MovieSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.PodcastSearchTests" />
         </classes>
