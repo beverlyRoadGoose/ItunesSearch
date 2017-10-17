@@ -65,13 +65,9 @@ public class PodcastSearchTests {
         try {
             search = new PodcastsSearch().with(searchTerm);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -84,13 +80,9 @@ public class PodcastSearchTests {
                     .with(searchTerm)
                     .inAttribute(PodcastAttribute.TITLE);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -103,13 +95,9 @@ public class PodcastSearchTests {
                     .with(searchTerm)
                     .inCountry(CountryCode.NG);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -118,19 +106,16 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
+            int limit = 5;
             search = new PodcastsSearch()
                     .with(searchTerm)
-                    .withLimit(5);
-
+                    .withLimit(limit);
             response = search.execute();
 
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0)
-                    .isLessThan(6);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -143,13 +128,9 @@ public class PodcastSearchTests {
                     .with(searchTerm)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -162,13 +143,9 @@ public class PodcastSearchTests {
                     .with(searchTerm)
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -182,13 +159,9 @@ public class PodcastSearchTests {
                     .inAttribute(PodcastAttribute.TITLE)
                     .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -201,13 +174,9 @@ public class PodcastSearchTests {
                     .with(searchTerm)
                     .allowExplicit(false);
             response = search.execute();
-
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
@@ -216,28 +185,39 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
+            int limit = 5;
             search = new PodcastsSearch()
                     .with(searchTerm)
-                    .withLimit(5)
+                    .withLimit(limit)
                     .inCountry(CountryCode.NG)
                     .inAttribute(PodcastAttribute.TITLE)
                     .withReturnLanguage(ReturnLanguage.JAPANESE)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
 
-            JSONArray matchingPodcastsArray = response.getJSONArray("results");
-            assertThat(matchingPodcastsArray.length())
-                    .isGreaterThan(0)
-                    .isLessThan(6);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
-    private void logUrlAndResponse(String callingMethod) {
+    private void verifyResponseHasResults() {
+        assertThat(response.has("results"));
+    }
+
+    private void verifyResponseMatchesLimit(int limit) {
+        JSONArray matchingPodcastsArray = response.getJSONArray("results");
+        assertThat(matchingPodcastsArray.length())
+                .isGreaterThan(0)
+                .isLessThan(limit + 1);
+    }
+
+    private void logUrlAndResponse() {
+        String callingMethodName = Thread.currentThread().getStackTrace()[2].getMethodName();
+
         if (search != null && response != null) {
-            logger.info("\n" + TEST_LOG_TAG + callingMethod + "\n"
+            logger.info("\n" + TEST_LOG_TAG + callingMethodName + "\n"
                     + URL_LOG_TAG + search.getSearchUrl() + "\n"
                     + RESPONSE_LOG_TAG + response.toString() + "\n\n");
         }
@@ -246,7 +226,7 @@ public class PodcastSearchTests {
     /*
      * search and response objects are nullified at the start of
      * each tests to prevent the values from a previous test from
-     * being logged when the current test fails.
+     * being used when the current test fails.
      */
     private void nullifySearchAndResponse() {
         search = null;

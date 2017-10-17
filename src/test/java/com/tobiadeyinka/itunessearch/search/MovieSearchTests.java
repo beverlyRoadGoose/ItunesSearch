@@ -17,10 +17,15 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
+import com.neovisionaries.i18n.CountryCode;
+
+import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.movies.enums.MovieAttribute;
+import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
+import com.tobiadeyinka.itunessearch.movies.enums.MovieSearchReturnType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -58,41 +63,166 @@ public class MovieSearchTests {
         try {
             search = new MovieSearch().with(searchTerm);
             response = search.execute();
-
-            JSONArray matchingMusicArray = response.getJSONArray("results");
-            assertThat(matchingMusicArray.length())
-                    .isGreaterThan(0);
-
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
     @Test
-    public void searchForMusicUsingDirectorAttribute() throws ItunesSearchException {
+    public void searchForMovieUsingDirectorAttribute() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
             String actor = "Steven";
-
             search = new MovieSearch()
                     .with(actor)
                     .inAttribute(MovieAttribute.DIRECTOR);
             response = search.execute();
-
-            JSONArray matchingMusicArray = response.getJSONArray("results");
-            assertThat(matchingMusicArray.length())
-                    .isGreaterThan(0);
+            verifyResponseHasResults();
         } finally {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            logUrlAndResponse(methodName);
+            logUrlAndResponse();
         }
     }
 
-    private void logUrlAndResponse(String callingMethod) {
+    @Test
+    public void searchForMovieInSpecificStore() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            search = new MovieSearch()
+                    .with(searchTerm)
+                    .inCountry(CountryCode.CA);
+            response = search.execute();
+            verifyResponseHasResults();
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    @Test
+    public void searchForMovieWithLimit() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            /*
+             * use a common word to match a lot of movies
+             * for the sake of the limit test
+             */
+            String commonWord = "the";
+            int limit = 5;
+
+            search = new MovieSearch()
+                    .with(commonWord)
+                    .withLimit(limit);
+            response = search.execute();
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    @Test
+    public void searchForMovieWithApiVersion1() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            search = new MovieSearch()
+                    .with(searchTerm)
+                    .withApiVersion(ItunesApiVersion.ONE);
+            response = search.execute();
+            verifyResponseHasResults();
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    @Test
+    public void searchForMovieWithJapaneseResponse() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            search = new MovieSearch()
+                    .with(searchTerm)
+                    .withReturnLanguage(ReturnLanguage.JAPANESE);
+            response = search.execute();
+            verifyResponseHasResults();
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    @Test
+    public void searchForMovieWithArtistReturnType() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            search = new MovieSearch()
+                    .with(searchTerm)
+                    .andReturn(MovieSearchReturnType.MOVIE_ARTIST);
+            response = search.execute();
+            verifyResponseHasResults();
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    @Test
+    public void searchForMovieWithoutExplicitContent() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            search = new MovieSearch()
+                    .with(searchTerm)
+                    .allowExplicit(false);
+            response = search.execute();
+            verifyResponseHasResults();
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    @Test
+    public void comprehensiveMovieSearch() throws ItunesSearchException {
+        nullifySearchAndResponse();
+
+        try {
+            int limit = 5;
+
+            search = new MovieSearch()
+                    .with(searchTerm)
+                    .withLimit(limit)
+                    .inCountry(CountryCode.CA)
+                    .inAttribute(MovieAttribute.ARTIST)
+                    .withReturnLanguage(ReturnLanguage.JAPANESE)
+                    .withApiVersion(ItunesApiVersion.ONE);
+            response = search.execute();
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally {
+            logUrlAndResponse();
+        }
+    }
+
+    private void verifyResponseHasResults() {
+        assertThat(response.has("results"));
+    }
+
+    private void verifyResponseMatchesLimit(int limit) {
+        JSONArray matchingPodcastsArray = response.getJSONArray("results");
+        assertThat(matchingPodcastsArray.length())
+                .isGreaterThan(0)
+                .isLessThan(limit + 1);
+    }
+
+    private void logUrlAndResponse() {
+        String callingMethodName = Thread.currentThread().getStackTrace()[2].getMethodName();
+
         if (search != null && response != null) {
-            logger.info("\n" + TEST_LOG_TAG + callingMethod + "\n"
+            logger.info("\n" + TEST_LOG_TAG + callingMethodName + "\n"
                     + URL_LOG_TAG + search.getSearchUrl() + "\n"
                     + RESPONSE_LOG_TAG + response.toString() + "\n\n");
         }
@@ -101,7 +231,7 @@ public class MovieSearchTests {
     /*
      * search and response objects are nullified at the start of
      * each tests to prevent the values from a previous test from
-     * being logged when the current test fails.
+     * being used when the current test fails.
      */
     private void nullifySearchAndResponse() {
         search = null;

@@ -46,9 +46,9 @@ public class MovieSearch extends Search
     private String searchTerm;
 
     /**
-     * The media type to search for. In this case music.
+     * The media type to search for. In this case movies.
      */
-    private ItunesMedia media = ItunesMedia.MUSIC;
+    private ItunesMedia media = ItunesMedia.MOVIE;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.
