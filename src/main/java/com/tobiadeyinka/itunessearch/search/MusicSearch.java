@@ -48,7 +48,7 @@ public class MusicSearch extends Search
     /**
      * The media type to search for. In this case music.
      */
-    private ItunesMedia media = ItunesMedia.MUSIC;
+    private final ItunesMedia media = ItunesMedia.MUSIC;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.

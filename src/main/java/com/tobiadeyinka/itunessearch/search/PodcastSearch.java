@@ -48,7 +48,7 @@ public class PodcastSearch extends Search
     /**
      * The media type to search for. In this case podcasts.
      */
-    private ItunesMedia media = ItunesMedia.PODCAST;
+    private final ItunesMedia media = ItunesMedia.PODCAST;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.
