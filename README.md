@@ -6,7 +6,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?maxAge=1)](https://opensource.org/licenses/Apache-2.0)
 
 ## About
-This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/). As it's still in active development, only Podcast and Music searches are ready for use. In time, all iTunes media types would be covered.
+This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/). 
+As it's still in active development, only Podcast, Music & Movie searches are ready for use. In time, all iTunes media types would be covered.
 
 ## Usage
 **Adding the library to your project**
@@ -24,7 +25,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 2. Add the dependency
       ```Gradle
         dependencies {
-            compile 'com.github.EtherealT:ItunesSearch:v0.0.4'
+            compile 'com.github.EtherealT:ItunesSearch:v0.0.5'
         }
       ```
       
