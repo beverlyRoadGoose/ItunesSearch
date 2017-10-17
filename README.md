@@ -56,6 +56,11 @@ new MediaSearch()
 There are much more configurations available all of which are detailed in the documentation available [here](https://etherealt.github.io/ItunesSearch/docs/).
 All searches return a [JSON object](https://stleary.github.io/JSON-java/).
 
+## Disclaimer
+iTunes is a trademark of Apple Inc., registered in the U.S. and other countries.
+
+This library has not been authorized, sponsored, or otherwise approved by Apple Inc.
+
 ## License
 
 ```
