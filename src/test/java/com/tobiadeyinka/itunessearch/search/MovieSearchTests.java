@@ -19,13 +19,12 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.movies.enums.*;
 import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
-import com.tobiadeyinka.itunessearch.movies.enums.MovieAttribute;
 import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
-import com.tobiadeyinka.itunessearch.movies.enums.MovieSearchReturnType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,7 +46,7 @@ public class MovieSearchTests {
     private MovieSearch search = null;
     private JSONObject response = null;
 
-    static final String TEST_LOG_TAG = "test: ";
+    private static final String TEST_LOG_TAG = "test: ";
     private static final String URL_LOG_TAG = "search url: ";
     private static final String RESPONSE_LOG_TAG = "search response: ";
 

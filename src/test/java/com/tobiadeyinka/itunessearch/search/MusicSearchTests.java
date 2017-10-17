@@ -46,9 +46,9 @@ public class MusicSearchTests {
     private MusicSearch search = null;
     private JSONObject response = null;
 
-    static final String TEST_LOG_TAG = "test: ";
-    static final String URL_LOG_TAG = "search url: ";
-    static final String RESPONSE_LOG_TAG = "search response: ";
+    private static final String TEST_LOG_TAG = "test: ";
+    private static final String URL_LOG_TAG = "search url: ";
+    private static final String RESPONSE_LOG_TAG = "search response: ";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForMusicWithoutSearchTerm() throws ItunesSearchException {
