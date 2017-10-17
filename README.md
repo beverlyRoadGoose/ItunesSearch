@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/EtherealT/ItunesSearch.svg?branch=master)](https://travis-ci.org/EtherealT/ItunesSearch)
 [![Coverage Status](https://coveralls.io/repos/github/EtherealT/ItunesSearch/badge.svg?branch=master)](https://coveralls.io/github/EtherealT/ItunesSearch?branch=master)
-[![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)
 [![Jitpack](https://jitpack.io/v/EtherealT/ItunesSearch.svg)](https://jitpack.io/#EtherealT/ItunesSearch)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6139acc8bc4c44dd91d73fa2456ec52d)](https://www.codacy.com/app/EtherealT/ItunesSearch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=EtherealT/ItunesSearch&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?maxAge=1)](https://opensource.org/licenses/Apache-2.0)
+<!--[![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)-->
 
 ## About
 This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/). 
