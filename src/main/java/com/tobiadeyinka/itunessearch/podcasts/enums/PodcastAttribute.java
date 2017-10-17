@@ -18,7 +18,7 @@
 package com.tobiadeyinka.itunessearch.podcasts.enums;
 
 /**
- * Enumeration of podcast attributes that can be used to narrow down podcast searches.
+ * Enumeration of podcast attributes that can be used to narrow down searches.
  *
  * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.

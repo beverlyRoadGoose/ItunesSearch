@@ -15,25 +15,24 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.music_videos.enums;
+package com.tobiadeyinka.itunessearch.audio_books.enums;
 
 /**
- * Enumeration of music video attributes that can be used to narrow down searches.
+ * Enumeration of audio book attributes that can be used to narrow down searches.
  *
- * Created by Tobi Adeyinka on 2017. 10. 17..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public enum MusicVideoAttribute {
+public enum AudioBookAttribute {
 
     ALL(""),
-    SONG("songTerm"),
-    ALBUM("albumTerm"),
-    ARTIST("artistTerm"),
+    TITLE("titleTerm"),
     GENRE("genreIndex"),
+    AUTHOR("authorTerm"),
     RATING("ratingIndex");
 
     private String parameterValue;
 
-    MusicVideoAttribute(String parameterValue) {
+    AudioBookAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 

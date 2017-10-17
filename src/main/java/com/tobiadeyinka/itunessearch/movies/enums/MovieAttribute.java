@@ -18,7 +18,7 @@
 package com.tobiadeyinka.itunessearch.movies.enums;
 
 /**
- * Enumeration of music attributes that can be used to narrow down music searches.
+ * Enumeration of movie attributes that can be used to narrow down searches.
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
