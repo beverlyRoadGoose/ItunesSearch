@@ -45,7 +45,7 @@ new PodcastSearch()
     .execute();
 ```
 
-To search on only one itunes store, just pass the [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
+To run your search in only one itunes store, just pass the [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
 for that country, this example uses Nigeria:
 ```java
 new PodcastSearch()
