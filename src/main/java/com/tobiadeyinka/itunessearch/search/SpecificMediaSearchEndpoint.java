@@ -26,11 +26,11 @@ import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
 import org.json.JSONObject;
 
 /**
- * Declares required methods for all search endpoints
+ * Declares required methods for search endpoints with specific media types
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-interface SearchEndpoint<T, U, V> {
+interface SpecificMediaSearchEndpoint<T, U, V> {
 
     T with(String searchTerm);
     T withLimit(int limit);

@@ -43,7 +43,7 @@ public class PodcastSearchTests {
     private String searchTerm = "radio";
     private Logger logger = Logger.getLogger(PodcastSearchTests.class.getName());
 
-    private PodcastsSearch search = null;
+    private PodcastSearch search = null;
     private JSONObject response = null;
 
     private static final String TEST_LOG_TAG = "test: ";
@@ -52,7 +52,7 @@ public class PodcastSearchTests {
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
     public void searchForPodcastWithoutSearchTerm() throws ItunesSearchException {
-        new PodcastsSearch().execute();
+        new PodcastSearch().execute();
     }
 
     @Test
@@ -60,7 +60,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch().with(searchTerm);
+            search = new PodcastSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -73,7 +73,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .inAttribute(PodcastAttribute.TITLE);
             response = search.execute();
@@ -88,7 +88,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .inCountry(CountryCode.NG);
             response = search.execute();
@@ -104,7 +104,7 @@ public class PodcastSearchTests {
 
         try {
             int limit = 5;
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .withLimit(limit);
             response = search.execute();
@@ -121,7 +121,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
@@ -136,7 +136,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
@@ -151,7 +151,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .inAttribute(PodcastAttribute.TITLE)
                     .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
@@ -167,7 +167,7 @@ public class PodcastSearchTests {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .allowExplicit(false);
             response = search.execute();
@@ -183,7 +183,7 @@ public class PodcastSearchTests {
 
         try {
             int limit = 5;
-            search = new PodcastsSearch()
+            search = new PodcastSearch()
                     .with(searchTerm)
                     .withLimit(limit)
                     .inCountry(CountryCode.NG)

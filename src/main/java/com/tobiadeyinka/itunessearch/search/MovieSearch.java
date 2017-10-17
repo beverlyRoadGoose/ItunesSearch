@@ -38,7 +38,7 @@ import java.net.MalformedURLException;
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
 public class MovieSearch extends Search
-        implements SearchEndpoint<MovieSearch, MovieAttribute, MovieSearchReturnType> {
+        implements SpecificMediaSearchEndpoint<MovieSearch, MovieAttribute, MovieSearchReturnType> {
 
     /**
      * The term to search for.

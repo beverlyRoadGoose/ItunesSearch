@@ -33,7 +33,7 @@ As it's still in active development, only Podcast, Music & Movie searches are re
 
 Using Podcast's search as an example, to search for "Radiolab" and leaving all other parameters set to default, it's as simple as:
 ```java
-new PodcastsSearch()
+new PodcastSearch()
     .with("radiolab")
     .execute();
 ```
@@ -41,7 +41,7 @@ new PodcastsSearch()
 To run the same search but only in the U.S (or any other country) itunes store, just pass the [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
 for that country :
 ```java
-new PodcastsSearch()
+new PodcastSearch()
     .with("radiolab")
     .inCountry(CountryCode.US)
     .execute();

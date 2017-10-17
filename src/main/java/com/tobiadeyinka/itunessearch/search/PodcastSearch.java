@@ -37,8 +37,8 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class PodcastsSearch extends Search
-        implements SearchEndpoint<PodcastsSearch, PodcastAttribute, PodcastSearchReturnType> {
+public class PodcastSearch extends Search
+        implements SpecificMediaSearchEndpoint<PodcastSearch, PodcastAttribute, PodcastSearchReturnType> {
 
     /**
      * The term to search for.
@@ -95,10 +95,10 @@ public class PodcastsSearch extends Search
      * Sets the term to search for. Required.
      *
      * @param searchTerm the term to search for
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch with(String searchTerm) {
+    public PodcastSearch with(String searchTerm) {
         this.searchTerm = searchTerm;
         return this;
     }
@@ -107,10 +107,10 @@ public class PodcastsSearch extends Search
      * Sets the maximum number of item's to return. Default is 50.
      *
      * @param limit the maximum number of item's to return.
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch withLimit(int limit) {
+    public PodcastSearch withLimit(int limit) {
         this.limit = limit;
         return this;
     }
@@ -119,10 +119,10 @@ public class PodcastsSearch extends Search
      * Sets the podcast attribute the search term is compared with. Default is all attributes.
      *
      * @param attribute the podcast attribute the {@link #searchTerm} is compared with.
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch inAttribute(PodcastAttribute attribute) {
+    public PodcastSearch inAttribute(PodcastAttribute attribute) {
         this.attribute = attribute;
         return this;
     }
@@ -132,10 +132,10 @@ public class PodcastsSearch extends Search
      *
      * @param countryCode <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code
      *                    for the iTunes store to search. Default is US.
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch inCountry(CountryCode countryCode) {
+    public PodcastSearch inCountry(CountryCode countryCode) {
         this.countryCode = countryCode;
         return this;
     }
@@ -144,10 +144,10 @@ public class PodcastsSearch extends Search
      * Set the version of the iTunes api to use (1/2). Default is 2.
      *
      * @param apiVersion the version of the iTunes api to use.
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch withApiVersion(ItunesApiVersion apiVersion) {
+    public PodcastSearch withApiVersion(ItunesApiVersion apiVersion) {
         this.apiVersion = apiVersion.getVersionNumber();
         return this;
     }
@@ -156,10 +156,10 @@ public class PodcastsSearch extends Search
      * Sets the language results are return in. Default is english.
      *
      * @param returnLanguage The language result should be return in.
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch withReturnLanguage(ReturnLanguage returnLanguage) {
+    public PodcastSearch withReturnLanguage(ReturnLanguage returnLanguage) {
         this.returnLanguage = returnLanguage;
         return this;
     }
@@ -168,10 +168,10 @@ public class PodcastsSearch extends Search
      * allow/remove explicit content in search results. Explicit content is allowed by default.
      *
      * @param allowExplicit allow explicit content or not.
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch allowExplicit(boolean allowExplicit) {
+    public PodcastSearch allowExplicit(boolean allowExplicit) {
         this.allowExplicit = allowExplicit;
         return this;
     }
@@ -180,10 +180,10 @@ public class PodcastsSearch extends Search
      * Sets the return type of the results (Podcasts or PodcastArtists)
      *
      * @param returnType the type of results you want returned
-     * @return the current instance of {@link PodcastsSearch}
+     * @return the current instance of {@link PodcastSearch}
      */
     @Override
-    public PodcastsSearch andReturn(PodcastSearchReturnType returnType) {
+    public PodcastSearch andReturn(PodcastSearchReturnType returnType) {
         this.returnType = returnType;
         return this;
     }
