@@ -1,9 +1,11 @@
 com.tobiadeyinka.itunessearch.audio_books.enums
 com.tobiadeyinka.itunessearch.common.enums
 com.tobiadeyinka.itunessearch.exceptions
+com.tobiadeyinka.itunessearch.lookup
 com.tobiadeyinka.itunessearch.media.enums
 com.tobiadeyinka.itunessearch.movies.enums
 com.tobiadeyinka.itunessearch.music.enums
 com.tobiadeyinka.itunessearch.music_videos.enums
+com.tobiadeyinka.itunessearch.networking
 com.tobiadeyinka.itunessearch.podcasts.enums
 com.tobiadeyinka.itunessearch.search

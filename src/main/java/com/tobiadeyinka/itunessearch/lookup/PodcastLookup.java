@@ -65,6 +65,7 @@ public class PodcastLookup {
     /**
      * get a list of (limit) comedy podcasts in the iTunes store
      *
+     * @param limit the maximum number of podcasts to return
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject comedyPodcasts(int limit) {
@@ -73,7 +74,7 @@ public class PodcastLookup {
     }
 
     /**
-     * get a list of 100 news & politics podcasts in the iTunes store
+     * get a list of 100 news &amp; politics podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -83,8 +84,9 @@ public class PodcastLookup {
     }
 
     /**
-     * get a list of (limit) news & politics podcasts in the iTunes store
+     * get a list of (limit) news &amp; politics podcasts in the iTunes store
      *
+     * @param limit the maximum number of podcasts to return
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject newsAndPoliticsPodcasts(int limit) {
@@ -93,7 +95,7 @@ public class PodcastLookup {
     }
 
     /**
-     * get a list of 100 society & culture podcasts in the iTunes store
+     * get a list of 100 society &amp; culture podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -103,8 +105,9 @@ public class PodcastLookup {
     }
 
     /**
-     * get a list of (limit) society & culture podcasts in the iTunes store
+     * get a list of (limit) society &amp; culture podcasts in the iTunes store
      *
+     * @param limit the maximum number of podcasts to return
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject societyAndCulturePodcasts(int limit) {
