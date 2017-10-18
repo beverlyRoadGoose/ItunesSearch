@@ -21,6 +21,8 @@ import com.neovisionaries.i18n.CountryCode;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 import com.tobiadeyinka.itunessearch.common.enums.*;
+import com.tobiadeyinka.itunessearch.media.enums.MediaAttribute;
+import com.tobiadeyinka.itunessearch.media.enums.MediaSearchReturnType;
 
 import org.json.JSONObject;
 
@@ -35,7 +37,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class MediaSearch {
+public class MediaSearch extends Search implements SearchEndpoint<MediaSearch, MediaAttribute, MediaSearchReturnType> {
 
     /**
      * The term to search for.
@@ -45,7 +47,7 @@ public class MediaSearch {
     /**
      * The media type to search for. In this case all types.
      */
-    private ItunesMedia media = ItunesMedia.ALL;
+    private final ItunesMedia media = ItunesMedia.ALL;
 
     /**
      * The version of the iTunes api to use (1/2). Default is 2.
@@ -63,6 +65,11 @@ public class MediaSearch {
     private boolean allowExplicit = true;
 
     /**
+     * The media attribute the search term is compared with. Default is all attributes.
+     */
+    private MediaAttribute attribute = MediaAttribute.ALL;
+
+    /**
      *  <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code for the
      *  iTunes store to search. Default is US.
      */
@@ -72,6 +79,11 @@ public class MediaSearch {
      * The language to return the result in (only english/japanese). Default is english.
      */
     private ReturnLanguage returnLanguage = ReturnLanguage.ENGLISH;
+
+    /**
+     * The type of results returned.
+     */
+    private MediaSearchReturnType returnType = MediaSearchReturnType.DEFAULT;
 
     /**
      * URL used to search the iTunes store, generated using all the variables of the instance
@@ -90,18 +102,6 @@ public class MediaSearch {
     }
 
     /**
-     * Sets the media type to search for (Movie, Music, Podcast, etc.).
-     * Default is all.
-     *
-     * @param mediaType the type of media to be searched for
-     * @return the current instance of {@link MediaSearch}
-     */
-    public MediaSearch withMediaType(ItunesMedia mediaType) {
-        this.media = mediaType;
-        return this;
-    }
-
-    /**
      * Sets the maximum number of item's to return. Default is 50.
      *
      * @param limit the maximum number of item's to return.
@@ -109,6 +109,18 @@ public class MediaSearch {
      */
     public MediaSearch withLimit(int limit) {
         this.limit = limit;
+        return this;
+    }
+
+    /**
+     * Sets the media attribute the search term is compared with. Default is all attributes.
+     *
+     * @param attribute the music attribute the {@link #searchTerm} is compared with.
+     * @return the current instance of {@link MediaSearch}
+     */
+    @Override
+    public MediaSearch inAttribute(MediaAttribute attribute) {
+        this.attribute = attribute;
         return this;
     }
 
@@ -154,6 +166,18 @@ public class MediaSearch {
      */
     public MediaSearch allowExplicit(boolean allowExplicit) {
         this.allowExplicit = allowExplicit;
+        return this;
+    }
+
+    /**
+     * Sets the return type of the results
+     *
+     * @param returnType the type of results you want returned
+     * @return the current instance of {@link MediaSearch}
+     */
+    @Override
+    public MediaSearch andReturn(MediaSearchReturnType returnType) {
+        this.returnType = returnType;
         return this;
     }
 
@@ -208,6 +232,8 @@ public class MediaSearch {
         urlString += "term=" + searchTerm;
         urlString += "&country=" + countryCode.getAlpha2();
         urlString += "&media=" + media.getParameterValue();
+        urlString += "&entity=" + returnType.getParameterValue();
+        urlString += "&attributeType=" + attribute.getParameterValue();
         urlString += "&limit=" + limit;
         urlString += "&lang=" + returnLanguage.getCodeName();
         urlString += "&version=" + apiVersion;

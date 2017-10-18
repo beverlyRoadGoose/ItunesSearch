@@ -24,6 +24,8 @@ import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
+import com.tobiadeyinka.itunessearch.media.enums.MediaAttribute;
+import com.tobiadeyinka.itunessearch.media.enums.MediaSearchReturnType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -75,7 +77,8 @@ public class MediaSearchTests {
             searchTerm = "radiolab";
             search = new MediaSearch()
                     .with(searchTerm)
-                    .withMediaType(ItunesMedia.PODCAST);
+                    .inAttribute(MediaAttribute.TITLE)
+                    .andReturn(MediaSearchReturnType.PODCAST);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -170,7 +173,6 @@ public class MediaSearchTests {
             search = new MediaSearch()
                     .with(searchTerm)
                     .withLimit(limit)
-                    .withMediaType(ItunesMedia.MUSIC)
                     .inCountry(CountryCode.CA)
                     .withReturnLanguage(ReturnLanguage.JAPANESE)
                     .withApiVersion(ItunesApiVersion.ONE);

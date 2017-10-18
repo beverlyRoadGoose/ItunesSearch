@@ -15,28 +15,41 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.movies.enums;
+package com.tobiadeyinka.itunessearch.media.enums;
 
 /**
- * Enumeration of movie attributes that can be used to narrow down searches.
+ * Enumeration of music attributes that can be used to narrow down searches.
  *
  * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 16..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public enum MovieAttribute {
+public enum MediaAttribute {
 
     ALL(""),
+    MIX("mixTerm"),
+    SONG("songTerm"),
+    SHOW("showTerm"),
     MOVIE("movieTerm"),
-    ACTOR("actorTerm"),
+    ALBUM("albumTerm"),
+    TITLE("titleTerm"),
     GENRE("genreIndex"),
+    AUTHOR("authorTerm"),
     ARTIST("artistTerm"),
-    PRODUCER("producerTerm"),
+    ACTOR_TERM("actorTerm"),
+    COMPOSER("composerTerm"),
+    KEYWORDS("keywordsTerm"),
     DIRECTOR("directorTerm"),
+    PRODUCER("producerTerm"),
     RATING_TERM("ratingTerm"),
+    ALL_TRACK("allTrackTerm"),
+    TV_SEASON("tvSeasonTerm"),
+    ALL_ARTIST("allArtistTerm"),
+    TV_EPISODE("tvEpisodeTerm"),
     SHORT_FILM("shortFilmTerm"),
     RATING_INDEX("ratingIndex"),
+    LANGUAGE_TERM("languageTerm"),
     DESCRIPTION("descriptionTerm"),
     RELEASE_YEAR("releaseYearTerm"),
     FEATURE_FILM("featureFilmTerm"),
@@ -44,7 +57,7 @@ public enum MovieAttribute {
 
     private String parameterValue;
 
-    MovieAttribute(String parameterValue) {
+    MediaAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 

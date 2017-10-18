@@ -30,7 +30,7 @@ import org.json.JSONObject;
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-interface SpecificMediaSearchEndpoint<T, U, V> {
+interface SearchEndpoint<T, U, V> {
 
     T with(String searchTerm);
     T withLimit(int limit);

@@ -15,31 +15,32 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.music.enums;
+package com.tobiadeyinka.itunessearch.media.enums;
 
 /**
- * Enumeration of the possible entity return types from music search queries.
+ * Enumeration of the possible entity return types from media search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 16..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public enum MusicSearchReturnType {
+public enum MediaSearchReturnType {
 
     DEFAULT(""),
     MIX("mix"),
-    SONG("song"),
+    MOVIE("movie"),
     ALBUM("album"),
+    PODCAST("podcast"),
     VIDEO("musicVideo"),
-    ARTIST("musicArtist"),
-    COMPOSER("composerTerm"),
-    GENRE_INDEX("genreIndex"),
-    TRACK("musicTrack");
+    TV_SEASON("tvSeason"),
+    ALL_TRACK("allTrack"),
+    ALL_ARTIST("allArtist"),
+    AUDIO_BOOK("audiobook");
 
     private String parameterValue;
 
-    MusicSearchReturnType(String parameterValue){
+    MediaSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 

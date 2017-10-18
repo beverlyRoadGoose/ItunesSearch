@@ -37,8 +37,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public class AudioBookSearch extends Search
-        implements SpecificMediaSearchEndpoint<AudioBookSearch, AudioBookAttribute, AudioBookSearchReturnType> {
+public class AudioBookSearch extends Search implements SearchEndpoint<AudioBookSearch, AudioBookAttribute, AudioBookSearchReturnType> {
 
     /**
      * The term to search for.

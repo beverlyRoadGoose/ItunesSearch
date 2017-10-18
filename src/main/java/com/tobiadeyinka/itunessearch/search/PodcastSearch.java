@@ -37,8 +37,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class PodcastSearch extends Search
-        implements SpecificMediaSearchEndpoint<PodcastSearch, PodcastAttribute, PodcastSearchReturnType> {
+public class PodcastSearch extends Search implements SearchEndpoint<PodcastSearch, PodcastAttribute, PodcastSearchReturnType> {
 
     /**
      * The term to search for.

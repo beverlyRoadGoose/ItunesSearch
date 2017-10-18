@@ -37,8 +37,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 17..
  */
-public class MusicVideoSearch extends Search
-        implements SpecificMediaSearchEndpoint<MusicVideoSearch, MusicVideoAttribute, MusicVideoSearchReturnType> {
+public class MusicVideoSearch extends Search implements SearchEndpoint<MusicVideoSearch, MusicVideoAttribute, MusicVideoSearchReturnType> {
 
     /**
      * The term to search for.

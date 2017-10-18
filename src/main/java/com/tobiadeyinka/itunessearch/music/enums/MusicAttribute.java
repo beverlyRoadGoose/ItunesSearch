@@ -20,6 +20,9 @@ package com.tobiadeyinka.itunessearch.music.enums;
 /**
  * Enumeration of music attributes that can be used to narrow down searches.
  *
+ * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
+ *     Searching the iTunes Store</a> for more details.
+ *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
 public enum MusicAttribute {
