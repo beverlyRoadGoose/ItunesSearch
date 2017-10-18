@@ -60,7 +60,7 @@ new MediaSearch()
     .with("something")
     .execute();
 ```
-There are much more configurations available all of which are detailed in the documentation available [here](https://etherealt.github.io/ItunesSearch/docs/).
+There are much more configurations available all of which are detailed in the [wiki](https://github.com/EtherealT/ItunesSearch/wiki). The javadoc is also available [here](https://etherealt.github.io/ItunesSearch/docs/).
 All searches return a [JSON object](https://stleary.github.io/JSON-java/).
 
 ## Disclaimer
