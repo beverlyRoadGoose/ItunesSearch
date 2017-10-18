@@ -19,31 +19,35 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
-import com.tobiadeyinka.itunessearch.exceptions.*;
 import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.music_videos.enums.MusicVideoAttribute;
-import com.tobiadeyinka.itunessearch.music_videos.enums.MusicVideoSearchReturnType;
+import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
+import com.tobiadeyinka.itunessearch.audio_books.enums.AudioBookAttribute;
+import com.tobiadeyinka.itunessearch.audio_books.enums.AudioBookSearchReturnType;
+import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
-import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for all music video search methods.
+ * Tests for all audio book search methods.
  *
- * Created by Tobi Adeyinka on 2017. 10. 17..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public class MusicVideoSearchTests {
+public class AudioBookSearchTests {
 
-    private String searchTerm = "the national";
-    private Logger logger = Logger.getLogger(MusicVideoSearchTests.class.getName());
+    /*
+     * used a common word on purpose
+     */
+    private String searchTerm = "the";
+    private Logger logger = Logger.getLogger(AudioBookSearchTests.class.getName());
 
-    private MusicVideoSearch search = null;
+    private AudioBookSearch search = null;
     private JSONObject response = null;
 
     private static final String TEST_LOG_TAG = "test: ";
@@ -51,16 +55,16 @@ public class MusicVideoSearchTests {
     private static final String RESPONSE_LOG_TAG = "search response: ";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForMusicVideoWithoutSearchTerm() throws ItunesSearchException {
-        new MusicVideoSearch().execute();
+    public void searchForAudioBookWithoutSearchTerm() throws ItunesSearchException {
+        new AudioBookSearch().execute();
     }
 
     @Test
-    public void searchForMusicVideoWithDefaultParameters() throws ItunesSearchException {
+    public void searchForAudioBookWithDefaultParameters() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch().with(searchTerm);
+            search = new AudioBookSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -69,13 +73,13 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoUsingArtistAttribute() throws ItunesSearchException {
+    public void searchForAudioBookUsingAuthorAttribute() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
-                    .inAttribute(MusicVideoAttribute.ARTIST);
+                    .inAttribute(AudioBookAttribute.AUTHOR);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -84,11 +88,11 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoInSpecificStore() throws ItunesSearchException {
+    public void searchForAudioBookInSpecificStore() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
                     .inCountry(CountryCode.NG);
             response = search.execute();
@@ -99,12 +103,12 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoWithLimit() throws ItunesSearchException {
+    public void searchForAudioBookWithLimit() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
             int limit = 5;
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
                     .withLimit(limit);
             response = search.execute();
@@ -117,11 +121,11 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoWithApiVersion1() throws ItunesSearchException {
+    public void searchForAudioBookWithApiVersion1() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
@@ -132,11 +136,11 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForAudioBookWithJapaneseResponse() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
@@ -147,14 +151,14 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoWithArtistReturnType() throws ItunesSearchException {
+    public void searchForAudioBookWithAuthorReturnType() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
-                    .inAttribute(MusicVideoAttribute.ARTIST)
-                    .andReturn(MusicVideoSearchReturnType.MUSIC_ARTIST);
+                    .inAttribute(AudioBookAttribute.AUTHOR)
+                    .andReturn(AudioBookSearchReturnType.AUTHOR);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -163,11 +167,11 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void searchForMusicVideoWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForAudioBookWithoutExplicitContent() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
                     .allowExplicit(false);
             response = search.execute();
@@ -178,16 +182,16 @@ public class MusicVideoSearchTests {
     }
 
     @Test
-    public void comprehensiveMusicVideoSearch() throws ItunesSearchException {
+    public void comprehensiveAudioBookSearch() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
             int limit = 5;
-            search = new MusicVideoSearch()
+            search = new AudioBookSearch()
                     .with(searchTerm)
                     .withLimit(limit)
                     .inCountry(CountryCode.US)
-                    .inAttribute(MusicVideoAttribute.ARTIST)
+                    .inAttribute(AudioBookAttribute.AUTHOR)
                     .withReturnLanguage(ReturnLanguage.JAPANESE)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();

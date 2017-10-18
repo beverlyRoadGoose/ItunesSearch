@@ -5,9 +5,10 @@
         <classes>
             <class name="com.tobiadeyinka.itunessearch.search.MediaSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.MusicSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.MusicVideoSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.MovieSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.PodcastSearchTests" />
+            <class name="com.tobiadeyinka.itunessearch.search.AudioBookSearchTests" />
+            <class name="com.tobiadeyinka.itunessearch.search.MusicVideoSearchTests" />
         </classes>
     </test>
 

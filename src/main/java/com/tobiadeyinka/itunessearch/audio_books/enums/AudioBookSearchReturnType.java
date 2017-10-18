@@ -28,7 +28,7 @@ package com.tobiadeyinka.itunessearch.audio_books.enums;
 public enum  AudioBookSearchReturnType {
 
     AUTHOR("audiobookAuthor"),
-    AUDIO_BOOK("audioBook");
+    AUDIO_BOOK("audiobook");
 
     private String parameterValue;
 
