@@ -24,7 +24,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 2. Add the dependency
       ```Gradle
         dependencies {
-            compile 'com.github.EtherealT:ItunesSearch:v0.0.8'
+            compile 'com.github.EtherealT:ItunesSearch:v0.0.9'
         }
       ```
       
