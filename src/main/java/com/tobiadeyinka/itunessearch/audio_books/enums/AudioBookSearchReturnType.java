@@ -15,24 +15,24 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.movies.enums;
+package com.tobiadeyinka.itunessearch.audio_books.enums;
 
 /**
- * Enumeration of the possible entity return types from movie search queries.
+ * Enumeration of the possible entity return types from audio book search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 16..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public enum MovieSearchReturnType {
+public enum  AudioBookSearchReturnType {
 
-    MOVIE("movie"),
-    MOVIE_ARTIST("movieArtist");
+    AUTHOR("audiobookAuthor"),
+    AUDIO_BOOK("audioBook");
 
     private String parameterValue;
 
-    MovieSearchReturnType(String parameterValue){
+    AudioBookSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 
