@@ -12,4 +12,10 @@
         </classes>
     </test>
 
+    <test name="Lookup Tests">
+        <classes>
+            <class name="com.tobiadeyinka.itunessearch.lookup.PodcastLookupTests" />
+        </classes>
+    </test>
+
 </suite>

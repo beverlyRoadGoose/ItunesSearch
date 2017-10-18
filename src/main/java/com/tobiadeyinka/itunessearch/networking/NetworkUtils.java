@@ -15,7 +15,7 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.search;
+package com.tobiadeyinka.itunessearch.networking;
 
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.NetworkCommunicationException;
@@ -33,9 +33,9 @@ import java.util.Scanner;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-abstract class NetworkUtils {
+public abstract class NetworkUtils {
 
-    protected static JSONObject executeSearch(URL url) throws ItunesSearchException {
+    public static JSONObject executeQuery(URL url) throws ItunesSearchException {
         try {
             /*
              * encode url before query
@@ -46,7 +46,7 @@ abstract class NetworkUtils {
 
             return new JSONObject(query(encodedUrl));
         } catch (IOException | URISyntaxException e) {
-            throw new NetworkCommunicationException("Error while executing search: " + e.getMessage());
+            throw new NetworkCommunicationException("Error while executing query: " + e.getMessage());
         }
     }
 

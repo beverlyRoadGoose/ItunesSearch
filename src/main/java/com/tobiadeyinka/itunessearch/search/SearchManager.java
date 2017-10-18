@@ -17,9 +17,11 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
+import com.tobiadeyinka.itunessearch.networking.NetworkUtils;
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 
 import java.net.URL;
+
 import org.json.JSONObject;
 
 /**
@@ -30,7 +32,7 @@ import org.json.JSONObject;
 class SearchManager {
 
     public JSONObject executeSearch(URL url) throws ItunesSearchException {
-        return NetworkUtils.executeSearch(url);
+        return NetworkUtils.executeQuery(url);
     }
 
 }
