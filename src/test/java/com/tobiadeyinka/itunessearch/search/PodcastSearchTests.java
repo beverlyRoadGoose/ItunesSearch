@@ -19,11 +19,12 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
+import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
+import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastAttribute;
+import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastSearchReturnType;
+
 import com.tobiadeyinka.itunessearch.exceptions.*;
-import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
-import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastAttribute;
-import com.tobiadeyinka.itunessearch.podcasts.enums.PodcastSearchReturnType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

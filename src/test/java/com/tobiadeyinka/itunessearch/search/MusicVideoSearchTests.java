@@ -19,11 +19,12 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
+import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
+import com.tobiadeyinka.itunessearch.entities.music_videos.MusicVideoAttribute;
+import com.tobiadeyinka.itunessearch.entities.music_videos.MusicVideoSearchReturnType;
+
 import com.tobiadeyinka.itunessearch.exceptions.*;
-import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
-import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.music_videos.enums.MusicVideoAttribute;
-import com.tobiadeyinka.itunessearch.music_videos.enums.MusicVideoSearchReturnType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

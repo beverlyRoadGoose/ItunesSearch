@@ -19,10 +19,13 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
+import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
+import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
+import com.tobiadeyinka.itunessearch.entities.audio_books.AudioBookAttribute;
+import com.tobiadeyinka.itunessearch.entities.audio_books.AudioBookSearchReturnType;
+
 import com.tobiadeyinka.itunessearch.exceptions.*;
-import com.tobiadeyinka.itunessearch.common.enums.*;
-import com.tobiadeyinka.itunessearch.audio_books.enums.AudioBookAttribute;
-import com.tobiadeyinka.itunessearch.audio_books.enums.AudioBookSearchReturnType;
 
 import org.json.JSONObject;
 

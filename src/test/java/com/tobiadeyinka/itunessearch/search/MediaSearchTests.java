@@ -18,14 +18,15 @@
 package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
-import com.tobiadeyinka.itunessearch.common.enums.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.common.enums.ItunesMedia;
-import com.tobiadeyinka.itunessearch.common.enums.ReturnLanguage;
+
+import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
+import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
+import com.tobiadeyinka.itunessearch.entities.media.MediaAttribute;
+import com.tobiadeyinka.itunessearch.entities.media.MediaSearchReturnType;
+
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
-import com.tobiadeyinka.itunessearch.media.enums.MediaAttribute;
-import com.tobiadeyinka.itunessearch.media.enums.MediaSearchReturnType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
