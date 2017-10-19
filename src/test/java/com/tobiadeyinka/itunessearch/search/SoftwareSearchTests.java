@@ -21,8 +21,8 @@ import com.neovisionaries.i18n.CountryCode;
 
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastAttribute;
-import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.software.SoftwareAttribute;
+import com.tobiadeyinka.itunessearch.entities.software.SoftwareSearchReturnType;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 
@@ -35,16 +35,16 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for all podcast search methods.
- *
- * Created by Tobi Adeyinka on 2017. 10. 15..
+ * Tests for all software search methods.
+ * 
+ * Created by Tobi Adeyinka on 2017. 10. 19..
  */
-public class PodcastSearchTests {
+public class SoftwareSearchTests {
 
-    private String searchTerm = "radio";
-    private Logger logger = Logger.getLogger(PodcastSearchTests.class.getName());
+    private String searchTerm = "test";
+    private Logger logger = Logger.getLogger(SoftwareSearchTests.class.getName());
 
-    private PodcastSearch search = null;
+    private SoftwareSearch search = null;
     private JSONObject response = null;
 
     private static final String TEST_LOG_TAG = "test: ";
@@ -52,16 +52,16 @@ public class PodcastSearchTests {
     private static final String RESPONSE_LOG_TAG = "search response: ";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForPodcastWithoutSearchTerm() throws ItunesSearchException {
-        new PodcastSearch().execute();
+    public void searchForSoftwareWithoutSearchTerm() throws ItunesSearchException {
+        new SoftwareSearch().execute();
     }
 
     @Test
-    public void searchForPodcastWithDefaultParameters() throws ItunesSearchException {
+    public void searchForSoftwareWithDefaultParameters() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch().with(searchTerm);
+            search = new SoftwareSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -70,13 +70,13 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastUsingTitleAttribute() throws ItunesSearchException {
+    public void searchForSoftwareUsingDeveloperAttribute() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
-                    .inAttribute(PodcastAttribute.TITLE);
+                    .inAttribute(SoftwareAttribute.SOFTWARE_DEVELOPER);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -85,11 +85,11 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastInSpecificStore() throws ItunesSearchException {
+    public void searchForSoftwareInSpecificStore() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
                     .inCountry(CountryCode.NG);
             response = search.execute();
@@ -100,12 +100,12 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithLimit() throws ItunesSearchException {
+    public void searchForSoftwareWithLimit() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
             int limit = 5;
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
                     .withLimit(limit);
             response = search.execute();
@@ -118,11 +118,11 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithApiVersion1() throws ItunesSearchException {
+    public void searchForSoftwareWithApiVersion1() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
@@ -133,11 +133,11 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForSoftwareWithJapaneseResponse() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
@@ -148,14 +148,14 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithAuthorReturnType() throws ItunesSearchException {
+    public void searchForSoftwareWithIpadSoftwareReturnType() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
-                    .inAttribute(PodcastAttribute.TITLE)
-                    .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
+                    .inAttribute(SoftwareAttribute.SOFTWARE_DEVELOPER)
+                    .andReturn(SoftwareSearchReturnType.IPAD_SOFTWARE);
             response = search.execute();
             verifyResponseHasResults();
         } finally {
@@ -164,11 +164,11 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void searchForPodcastWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForSoftwareWithoutExplicitContent() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
                     .allowExplicit(false);
             response = search.execute();
@@ -179,16 +179,16 @@ public class PodcastSearchTests {
     }
 
     @Test
-    public void comprehensivePodcastSearch() throws ItunesSearchException {
+    public void comprehensiveSoftwareSearch() throws ItunesSearchException {
         nullifySearchAndResponse();
 
         try {
             int limit = 5;
-            search = new PodcastSearch()
+            search = new SoftwareSearch()
                     .with(searchTerm)
                     .withLimit(limit)
                     .inCountry(CountryCode.NG)
-                    .inAttribute(PodcastAttribute.TITLE)
+                    .inAttribute(SoftwareAttribute.SOFTWARE_DEVELOPER)
                     .withReturnLanguage(ReturnLanguage.JAPANESE)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
@@ -205,8 +205,8 @@ public class PodcastSearchTests {
     }
 
     private void verifyResponseMatchesLimit(int limit) {
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
+        JSONArray matchingSoftwaresArray = response.getJSONArray("results");
+        assertThat(matchingSoftwaresArray.length())
                 .isGreaterThanOrEqualTo(0)
                 .isLessThan(limit + 1);
     }
@@ -230,5 +230,5 @@ public class PodcastSearchTests {
         search = null;
         response = null;
     }
-
+    
 }

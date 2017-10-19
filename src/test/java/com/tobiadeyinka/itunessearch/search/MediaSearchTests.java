@@ -193,7 +193,7 @@ public class MediaSearchTests {
     private void verifyResponseMatchesLimit(int limit) {
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0)
+                .isGreaterThanOrEqualTo(0)
                 .isLessThan(limit + 1);
     }
 
