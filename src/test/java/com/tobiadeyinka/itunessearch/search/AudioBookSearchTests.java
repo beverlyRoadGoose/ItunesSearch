@@ -29,7 +29,9 @@ import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterExceptio
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import org.testng.annotations.Test;
+import org.testng.annotations.AfterClass;
 
 import java.util.logging.Logger;
 
@@ -233,6 +235,21 @@ public class AudioBookSearchTests {
     private void nullifySearchAndResponse() {
         search = null;
         response = null;
+    }
+
+    /*
+     * The itunes api limits call per minute, so sleep for a minute before the next
+     * set of tests start, to avoid failures.
+     */
+    @AfterClass
+    private void sleepForAMinute() {
+        logger.info("sleeping for 1 minute");
+
+        try {
+            Thread.sleep(60000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     
 }
