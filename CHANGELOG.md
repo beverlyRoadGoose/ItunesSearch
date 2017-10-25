@@ -1,3 +1,7 @@
+##### v0.4.0 (10.25.2017)
+
+- Added TV shows search module.  
+
 ##### v0.3.0 (10.22.2017)
 
 - Added short films search module.  
