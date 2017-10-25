@@ -22,8 +22,9 @@ import com.neovisionaries.i18n.CountryCode;
 import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmAttribute;
-import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmSearchReturnType;
+
+import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowAttribute;
+import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowSearchReturnType;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 
@@ -33,14 +34,14 @@ import java.net.URL;
 import java.net.MalformedURLException;
 
 /**
- * Short film search API endpoint.
+ * TV show search API endpoint.
  *
  * See <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details about the parameters.
  *
- * Created by Tobi Adeyinka on 2017. 10. 19..
+ * Created by Tobi Adeyinka on 2017. 10. 25..
  */
-public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmSearch, ShortFilmAttribute, ShortFilmSearchReturnType> {
+public class TvShowSearch extends Search implements SearchEndpoint<TvShowSearch, TvShowAttribute, TvShowSearchReturnType> {
 
     /**
      * The term to search for.
@@ -48,7 +49,7 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
     private String searchTerm;
 
     /**
-     * The media type to search for. In this case short films.
+     * The media type to search for. In this case tv shows.
      */
     private final ItunesMedia media = ItunesMedia.SHORT_FILM;
 
@@ -68,9 +69,9 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
     private boolean allowExplicit = true;
 
     /**
-     * The short film attribute the search term is compared with. Default is all attributes.
+     * The tv show attribute the search term is compared with. Default is all attributes.
      */
-    private ShortFilmAttribute attribute = ShortFilmAttribute.ALL;
+    private TvShowAttribute attribute = TvShowAttribute.ALL;
 
     /**
      *  <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code for the
@@ -84,9 +85,9 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
     private ReturnLanguage returnLanguage = ReturnLanguage.ENGLISH;
 
     /**
-     * The type of results returned. Default is the short film itself
+     * The type of results returned
      */
-    private ShortFilmSearchReturnType returnType = ShortFilmSearchReturnType.SHORT_FILM;
+    private TvShowSearchReturnType returnType = TvShowSearchReturnType.DEFAULT;
 
     /**
      * URL used to search the iTunes store, generated using all the variables of the instance
@@ -97,10 +98,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * Sets the term to search for. Required.
      *
      * @param searchTerm the term to search for
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch with(String searchTerm) {
+    public TvShowSearch with(String searchTerm) {
         this.searchTerm = searchTerm;
         return this;
     }
@@ -109,10 +110,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * Sets the maximum number of item's to return. Default is 50.
      *
      * @param limit the maximum number of item's to return.
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch withLimit(int limit) {
+    public TvShowSearch withLimit(int limit) {
         this.limit = limit;
         return this;
     }
@@ -121,10 +122,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * Sets the attribute the search term is compared with. Default is all attributes.
      *
      * @param attribute the attribute the search term is compared with.
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch inAttribute(ShortFilmAttribute attribute) {
+    public TvShowSearch inAttribute(TvShowAttribute attribute) {
         this.attribute = attribute;
         return this;
     }
@@ -134,10 +135,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      *
      * @param countryCode <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code
      *                    for the iTunes store to search. Default is US.
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch inCountry(CountryCode countryCode) {
+    public TvShowSearch inCountry(CountryCode countryCode) {
         this.countryCode = countryCode;
         return this;
     }
@@ -146,10 +147,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * Set the version of the iTunes api to use (1/2). Default is 2.
      *
      * @param apiVersion the version of the iTunes api to use.
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch withApiVersion(ItunesApiVersion apiVersion) {
+    public TvShowSearch withApiVersion(ItunesApiVersion apiVersion) {
         this.apiVersion = apiVersion.getVersionNumber();
         return this;
     }
@@ -158,10 +159,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * Sets the language results are return in. Default is english.
      *
      * @param returnLanguage The language result should be return in.
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch withReturnLanguage(ReturnLanguage returnLanguage) {
+    public TvShowSearch withReturnLanguage(ReturnLanguage returnLanguage) {
         this.returnLanguage = returnLanguage;
         return this;
     }
@@ -170,10 +171,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * allow/remove explicit content in search results. Explicit content is allowed by default.
      *
      * @param allowExplicit allow explicit content or not.
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch allowExplicit(boolean allowExplicit) {
+    public TvShowSearch allowExplicit(boolean allowExplicit) {
         this.allowExplicit = allowExplicit;
         return this;
     }
@@ -182,10 +183,10 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      * Sets the return type of the results
      *
      * @param returnType the type of results you want returned
-     * @return the current instance of {@link ShortFilmSearch}
+     * @return the current instance of {@link TvShowSearch}
      */
     @Override
-    public ShortFilmSearch andReturn(ShortFilmSearchReturnType returnType) {
+    public TvShowSearch andReturn(TvShowSearchReturnType returnType) {
         this.returnType = returnType;
         return this;
     }
@@ -295,7 +296,7 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      *
      * @return the attribute to search in
      */
-    public ShortFilmAttribute getAttribute() {
+    public TvShowAttribute getAttribute() {
         return attribute;
     }
 
@@ -319,7 +320,7 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
      *
      * @return the type of data to return
      */
-    public ShortFilmSearchReturnType getReturnType() {
+    public TvShowSearchReturnType getReturnType() {
         return returnType;
     }
 
