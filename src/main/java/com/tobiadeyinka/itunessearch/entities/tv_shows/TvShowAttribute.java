@@ -21,4 +21,27 @@ package com.tobiadeyinka.itunessearch.entities.tv_shows;
  * Created by Tobi Adeyinka on 2017. 10. 23..
  */
 public enum TvShowAttribute {
+
+    ALL(""),
+    GENRE("genreIndex"),
+    TV_EPISODE("tvEpisodeTerm"),
+    TV_SEASON("tvSeasonTerm"),
+    RATING("ratingIndex"),
+    SHOW_TERM("showTerm"),
+    DESCRIPTION("descriptionTerm");
+
+    private String parameterValue;
+
+    TvShowAttribute(String parameterValue) {
+        this.parameterValue = parameterValue;
+    }
+
+    /**
+     *
+     * @return the value to be passed in the api request
+     */
+    public String getParameterValue() {
+        return parameterValue;
+    }
+
 }
