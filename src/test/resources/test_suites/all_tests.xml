@@ -6,6 +6,7 @@
             <class name="com.tobiadeyinka.itunessearch.search.MediaSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.MusicSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.MovieSearchTests" />
+            <class name="com.tobiadeyinka.itunessearch.search.TvShowSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.PodcastSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.SoftwareSearchTests" />
             <class name="com.tobiadeyinka.itunessearch.search.ShortFilmSearchTests" />
