@@ -18,7 +18,31 @@
 package com.tobiadeyinka.itunessearch.entities.tv_shows;
 
 /**
+ * Enumeration of the possible entity return types from tv show search queries.
+ *
+ * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
+ *     Searching the iTunes Store</a> for more details.
+ *
  * Created by Tobi Adeyinka on 2017. 10. 23..
  */
 public enum TvShowSearchReturnType {
+
+    DEFAULT(""),
+    EPISODE("tvEpisode"),
+    SEASON("tvSeason");
+
+    private String parameterValue;
+
+    TvShowSearchReturnType(String parameterValue){
+        this.parameterValue = parameterValue;
+    }
+
+    /**
+     *
+     * @return the value to be passed in the api request
+     */
+    public String getParameterValue() {
+        return parameterValue;
+    }
+
 }
