@@ -27,7 +27,8 @@ package com.tobiadeyinka.itunessearch.entities.ebooks;
  */
 public enum EBookSearchReturnType {
 
-    E_BOOK("ebook");
+    DEFAULT(""),
+    EBOOK("ebook");
 
     private String parameterValue;
 
