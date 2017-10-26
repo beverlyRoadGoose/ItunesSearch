@@ -1,3 +1,8 @@
+##### v1.0.0 (10.26.2017)
+
+- Added eBooks search module. 
+- Search modules complete. 
+
 ##### v0.4.0 (10.25.2017)
 
 - Added TV shows search module.  
