@@ -208,26 +208,6 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
         return new SearchManager().executeSearch(url);
     }
 
-    /**
-     * check the validity of all required data before executing the search
-     *
-     * @throws MissingRequiredParameterException if the search term is not set.
-     * @throws InvalidParameterException if any of the set parameters are invalid.
-     */
-    private void runPreExecutionChecks() throws ItunesSearchException {
-        /*
-         * search term must be set.
-         */
-        if (searchTerm == null || searchTerm.isEmpty())
-            throw new MissingRequiredParameterException("Search execution failed: missing search term parameter");
-
-        /*
-         * check the api version validity.
-         */
-        if (apiVersion < 1 || apiVersion > 2)
-            throw new InvalidParameterException("Search execution failed: invalid api version code");
-    }
-
     private URL createUrlObject(String urlString) throws ItunesSearchException {
         try {
             return new URL(urlString);
@@ -236,7 +216,7 @@ public class ShortFilmSearch extends Search implements SearchEndpoint<ShortFilmS
         }
     }
 
-    private String constructUrlString() {
+    String constructUrlString() {
         String urlString = "https://itunes.apple.com/search?";
         urlString += "term=" + searchTerm;
         urlString += "&country=" + countryCode.getAlpha2();
