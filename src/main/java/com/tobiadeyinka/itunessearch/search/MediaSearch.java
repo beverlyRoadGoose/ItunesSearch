@@ -40,12 +40,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public class MediaSearch extends Search implements SearchEndpoint<MediaSearch, MediaAttribute, MediaSearchReturnType> {
-
-    /**
-     * The term to search for.
-     */
-    private String searchTerm;
+public class MediaSearch extends Search<MediaSearch> {
 
     /**
      * The media type to search for. In this case all types.
@@ -56,11 +51,6 @@ public class MediaSearch extends Search implements SearchEndpoint<MediaSearch, M
      * The version of the iTunes api to use (1/2). Default is 2.
      */
     private int apiVersion = 2;
-
-    /**
-     * The maximum number of item's to return. Default is 50.
-     */
-    private int limit = 50;
 
     /**
      * allow/exclude explicit content in search results. Explicit content is allowed by default.
@@ -94,34 +84,11 @@ public class MediaSearch extends Search implements SearchEndpoint<MediaSearch, M
     private URL searchUrl;
 
     /**
-     * Sets the term to search for. Required.
-     *
-     * @param searchTerm the term to search for
-     * @return the current instance of {@link MediaSearch}
-     */
-    public MediaSearch with(String searchTerm) {
-        this.searchTerm = searchTerm;
-        return this;
-    }
-
-    /**
-     * Sets the maximum number of item's to return. Default is 50.
-     *
-     * @param limit the maximum number of item's to return.
-     * @return the current instance of {@link MediaSearch}
-     */
-    public MediaSearch withLimit(int limit) {
-        this.limit = limit;
-        return this;
-    }
-
-    /**
      * Sets the media attribute the search term is compared with. Default is all attributes.
      *
      * @param attribute the music attribute the {@link #searchTerm} is compared with.
      * @return the current instance of {@link MediaSearch}
      */
-    @Override
     public MediaSearch inAttribute(MediaAttribute attribute) {
         this.attribute = attribute;
         return this;
@@ -178,7 +145,6 @@ public class MediaSearch extends Search implements SearchEndpoint<MediaSearch, M
      * @param returnType the type of results you want returned
      * @return the current instance of {@link MediaSearch}
      */
-    @Override
     public MediaSearch andReturn(MediaSearchReturnType returnType) {
         this.returnType = returnType;
         return this;

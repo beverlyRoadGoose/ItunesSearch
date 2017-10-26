@@ -22,5 +22,38 @@ package com.tobiadeyinka.itunessearch.search;
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-abstract class Search {
+abstract class Search<T> {
+
+    /**
+     * The term to search for.
+     */
+    protected String searchTerm;
+
+    /**
+     * The maximum number of item's to return. Default is 50.
+     */
+    protected int limit = 50;
+
+    /**
+     * Sets the term to search for. Required.
+     *
+     * @param searchTerm the term to search for
+     * @return the current instance of {@link T}
+     */
+    public T with(String searchTerm) {
+        this.searchTerm = searchTerm;
+        return (T)this;
+    }
+
+    /**
+     * Sets the maximum number of item's to return. Default is 50.
+     *
+     * @param limit the maximum number of item's to return.
+     * @return the current instance of {@link T}
+     */
+    public T withLimit(int limit) {
+        this.limit = limit;
+        return (T)this;
+    }
+
 }
