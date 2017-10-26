@@ -32,7 +32,7 @@ import com.tobiadeyinka.itunessearch.entities.ebooks.EBookSearchReturnType;
 public class EBookSearch extends Search<EBookSearch> {
 
     /**
-     * The media type to search for. In this case eBooks.
+     * The media type to search for. In this case, eBooks.
      */
     private final ItunesMedia media = ItunesMedia.EBOOK;
 

@@ -32,7 +32,7 @@ import com.tobiadeyinka.itunessearch.entities.media.MediaSearchReturnType;
 public class MediaSearch extends Search<MediaSearch> {
 
     /**
-     * The media type to search for. In this case all types.
+     * The media type to search for. In this case, all types.
      */
     private final ItunesMedia media = ItunesMedia.ALL;
 

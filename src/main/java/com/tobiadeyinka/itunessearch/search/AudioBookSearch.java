@@ -32,7 +32,7 @@ import com.tobiadeyinka.itunessearch.entities.audio_books.AudioBookSearchReturnT
 public class AudioBookSearch extends Search<AudioBookSearch> {
 
     /**
-     * The media type to search for. In this case audio books.
+     * The media type to search for. In this case, audio books.
      */
     private final ItunesMedia media = ItunesMedia.AUDIO_BOOK;
 
