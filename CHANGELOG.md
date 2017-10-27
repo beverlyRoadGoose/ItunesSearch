@@ -1,3 +1,7 @@
+##### v1.0.1 (10.27.2017)
+
+- internal structure modifications.
+
 ##### v1.0.0 (10.26.2017)
 
 - Added eBooks search module. 
