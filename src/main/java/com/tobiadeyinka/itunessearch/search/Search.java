@@ -86,7 +86,7 @@ abstract class Search<T> {
      * Sets the term to search for. Required.
      *
      * @param searchTerm the term to search for
-     * @return the current instance of {@link T}
+     * @return the current search instance
      */
     public T with(String searchTerm) {
         this.searchTerm = searchTerm;
@@ -97,7 +97,7 @@ abstract class Search<T> {
      * Sets the maximum number of item's to return. Default is 50.
      *
      * @param limit the maximum number of item's to return.
-     * @return the current instance of {@link T}
+     * @return the current search instance
      */
     public T withLimit(int limit) {
         this.limit = limit;
@@ -108,7 +108,7 @@ abstract class Search<T> {
      * Set the version of the iTunes api to use (1/2). Default is 2.
      *
      * @param apiVersion the version of the iTunes api to use.
-     * @return the current instance of {@link T}
+     * @return the current search instance
      */
     public T withApiVersion(ItunesApiVersion apiVersion) {
         this.apiVersion = apiVersion.getVersionNumber();
@@ -119,7 +119,7 @@ abstract class Search<T> {
      * allow/remove explicit content in search results. Explicit content is allowed by default.
      *
      * @param allowExplicit allow explicit content or not.
-     * @return the current instance of {@link T}
+     * @return the current search instance
      */
     public T allowExplicit(boolean allowExplicit) {
         this.allowExplicit = allowExplicit;
@@ -130,7 +130,7 @@ abstract class Search<T> {
      * Sets the language results are return in. Default is english.
      *
      * @param returnLanguage The language result should be return in.
-     * @return the current instance of {@link T}
+     * @return the current search instance
      */
     public T withReturnLanguage(ReturnLanguage returnLanguage) {
         this.returnLanguage = returnLanguage;
