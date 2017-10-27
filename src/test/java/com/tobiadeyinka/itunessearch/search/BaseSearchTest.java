@@ -17,6 +17,8 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
+import com.tobiadeyinka.itunessearch.TestUtils;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -79,13 +81,7 @@ public class BaseSearchTest {
      */
     @AfterClass
     protected void sleepForAMinute() {
-        logger.info("sleeping for 1 minute");
-
-        try {
-            Thread.sleep(60000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        TestUtils.sleepForAMinute();
     }
 
 }
