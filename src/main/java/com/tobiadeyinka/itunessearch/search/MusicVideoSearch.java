@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.music_videos.MusicVideoSearchRetur
 public class MusicVideoSearch extends Search<MusicVideoSearch> {
 
     /**
-     * The media type to search for. In this case, music videos.
-     */
-    private final ItunesMedia media = ItunesMedia.MUSIC_VIDEO;
-
-    /**
      * The music attribute the search term is compared with. Default is all attributes.
      */
     private MusicVideoAttribute attribute = MusicVideoAttribute.ALL;
@@ -45,6 +40,13 @@ public class MusicVideoSearch extends Search<MusicVideoSearch> {
      * The type of results returned
      */
     private MusicVideoSearchReturnType returnType = MusicVideoSearchReturnType.DEFAULT;
+
+    public MusicVideoSearch () {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.MUSIC_VIDEO);
+    }
 
     /**
      * Sets the music video attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class MusicVideoSearch extends Search<MusicVideoSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

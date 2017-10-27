@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastSearchReturnType;
 public class PodcastSearch extends Search<PodcastSearch> {
 
     /**
-     * The media type to search for. In this case podcasts.
-     */
-    private final ItunesMedia media = ItunesMedia.PODCAST;
-
-    /**
      * The podcast attribute the search term is compared with. Default is all attributes.
      */
     private PodcastAttribute attribute = PodcastAttribute.ALL;
@@ -45,6 +40,13 @@ public class PodcastSearch extends Search<PodcastSearch> {
      * The type of results returned (Podcasts or PodcastArtists). Default is the podcast itself.
      */
     private PodcastSearchReturnType returnType = PodcastSearchReturnType.PODCAST;
+
+    public PodcastSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.PODCAST);
+    }
 
     /**
      * Sets the podcast attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class PodcastSearch extends Search<PodcastSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

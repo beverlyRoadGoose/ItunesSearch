@@ -21,6 +21,7 @@ import com.neovisionaries.i18n.CountryCode;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 
+import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
 
@@ -40,6 +41,11 @@ abstract class Search<T> {
      * The term to search for.
      */
     protected String searchTerm;
+
+    /**
+     * The media type to search for.
+     */
+    protected final ItunesMedia media;
 
     /**
      * The maximum number of item's to return. Default is 50.
@@ -71,6 +77,10 @@ abstract class Search<T> {
      * URL used to search the iTunes store, generated using all the variables of the instance
      */
     protected URL searchUrl;
+
+    protected Search(ItunesMedia media) {
+        this.media = media;
+    }
 
     /**
      * Sets the term to search for. Required.
@@ -192,6 +202,14 @@ abstract class Search<T> {
      */
     public String getSearchTerm() {
         return searchTerm;
+    }
+
+    /**
+     *
+     * @return the set media type being searched for
+     */
+    public ItunesMedia getMedia() {
+        return media;
     }
 
     /**

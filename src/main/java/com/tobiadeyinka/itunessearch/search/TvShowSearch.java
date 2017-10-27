@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowSearchReturnType;
 public class TvShowSearch extends Search<TvShowSearch> {
 
     /**
-     * The media type to search for. In this case tv shows.
-     */
-    private final ItunesMedia media = ItunesMedia.SHORT_FILM;
-
-    /**
      * The tv show attribute the search term is compared with. Default is all attributes.
      */
     private TvShowAttribute attribute = TvShowAttribute.ALL;
@@ -45,6 +40,13 @@ public class TvShowSearch extends Search<TvShowSearch> {
      * The type of results returned
      */
     private TvShowSearchReturnType returnType = TvShowSearchReturnType.DEFAULT;
+
+    public TvShowSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.TV_SHOW);
+    }
 
     /**
      * Sets the attribute the search term is compared with. Default is all attributes.
@@ -81,14 +83,6 @@ public class TvShowSearch extends Search<TvShowSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

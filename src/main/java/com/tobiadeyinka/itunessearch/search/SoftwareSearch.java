@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.software.SoftwareSearchReturnType;
 public class SoftwareSearch extends Search<SoftwareSearch> {
 
     /**
-     * The media type to search for. In this case software.
-     */
-    private final ItunesMedia media = ItunesMedia.SOFTWARE;
-
-    /**
      * The software attribute the search term is compared with. Default is all attributes.
      */
     private SoftwareAttribute attribute = SoftwareAttribute.ALL;
@@ -45,6 +40,13 @@ public class SoftwareSearch extends Search<SoftwareSearch> {
      * The type of results returned. Default is the software itself.
      */
     private SoftwareSearchReturnType returnType = SoftwareSearchReturnType.SOFTWARE;
+
+    public SoftwareSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.SOFTWARE);
+    }
 
     /**
      * Sets the software attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class SoftwareSearch extends Search<SoftwareSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.audio_books.AudioBookSearchReturnT
 public class AudioBookSearch extends Search<AudioBookSearch> {
 
     /**
-     * The media type to search for. In this case, audio books.
-     */
-    private final ItunesMedia media = ItunesMedia.AUDIO_BOOK;
-
-    /**
      * The audio book attribute the search term is compared with. Default is all attributes.
      */
     private AudioBookAttribute attribute = AudioBookAttribute.ALL;
@@ -45,6 +40,13 @@ public class AudioBookSearch extends Search<AudioBookSearch> {
      * The type of results returned. Default is the book itself
      */
     private AudioBookSearchReturnType returnType = AudioBookSearchReturnType.AUDIO_BOOK;
+
+    public AudioBookSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.AUDIO_BOOK);
+    }
 
     /**
      * Sets the audio book attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class AudioBookSearch extends Search<AudioBookSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

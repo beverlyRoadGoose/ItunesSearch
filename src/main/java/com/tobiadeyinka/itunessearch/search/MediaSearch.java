@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.media.MediaSearchReturnType;
 public class MediaSearch extends Search<MediaSearch> {
 
     /**
-     * The media type to search for. In this case, all types.
-     */
-    private final ItunesMedia media = ItunesMedia.ALL;
-
-    /**
      * The media attribute the search term is compared with. Default is all attributes.
      */
     private MediaAttribute attribute = MediaAttribute.ALL;
@@ -45,6 +40,13 @@ public class MediaSearch extends Search<MediaSearch> {
      * The type of results returned.
      */
     private MediaSearchReturnType returnType = MediaSearchReturnType.DEFAULT;
+
+    public MediaSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.ALL);
+    }
 
     /**
      * Sets the media attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class MediaSearch extends Search<MediaSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

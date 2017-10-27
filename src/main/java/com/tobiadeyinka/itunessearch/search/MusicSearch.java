@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.music.MusicSearchReturnType;
 public class MusicSearch extends Search<MusicSearch> {
 
     /**
-     * The media type to search for. In this case, music.
-     */
-    private final ItunesMedia media = ItunesMedia.MUSIC;
-
-    /**
      * The music attribute the search term is compared with. Default is all attributes.
      */
     private MusicAttribute attribute = MusicAttribute.ALL;
@@ -45,6 +40,13 @@ public class MusicSearch extends Search<MusicSearch> {
      * The type of results returned
      */
     private MusicSearchReturnType returnType = MusicSearchReturnType.DEFAULT;
+
+    public MusicSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.MUSIC);
+    }
 
     /**
      * Sets the music attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class MusicSearch extends Search<MusicSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

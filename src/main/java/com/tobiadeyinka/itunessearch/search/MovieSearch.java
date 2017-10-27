@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.movies.MovieSearchReturnType;
 public class MovieSearch extends Search<MovieSearch> {
 
     /**
-     * The media type to search for. In this case, movies.
-     */
-    private final ItunesMedia media = ItunesMedia.MOVIE;
-
-    /**
      * The music attribute the search term is compared with. Default is all attributes.
      */
     private MovieAttribute attribute = MovieAttribute.ALL;
@@ -45,6 +40,13 @@ public class MovieSearch extends Search<MovieSearch> {
      * The type of results returned (movie or movieArtist). Default is the movie itself.
      */
     private MovieSearchReturnType returnType = MovieSearchReturnType.MOVIE;
+
+    public MovieSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.MOVIE);
+    }
 
     /**
      * Sets the movie attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class MovieSearch extends Search<MovieSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.ebooks.EBookSearchReturnType;
 public class EBookSearch extends Search<EBookSearch> {
 
     /**
-     * The media type to search for. In this case, eBooks.
-     */
-    private final ItunesMedia media = ItunesMedia.EBOOK;
-
-    /**
      * The eBook attribute the search term is compared with. Default is all attributes.
      */
     private EBookAttribute attribute = EBookAttribute.ALL;
@@ -45,6 +40,13 @@ public class EBookSearch extends Search<EBookSearch> {
      * The type of results returned
      */
     private EBookSearchReturnType returnType = EBookSearchReturnType.DEFAULT;
+
+    public EBookSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.EBOOK);
+    }
 
     /**
      * Sets the eBook attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class EBookSearch extends Search<EBookSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**

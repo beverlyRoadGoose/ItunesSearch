@@ -32,11 +32,6 @@ import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmSearchReturnT
 public class ShortFilmSearch extends Search<ShortFilmSearch> {
 
     /**
-     * The media type to search for. In this case short films.
-     */
-    private final ItunesMedia media = ItunesMedia.SHORT_FILM;
-
-    /**
      * The short film attribute the search term is compared with. Default is all attributes.
      */
     private ShortFilmAttribute attribute = ShortFilmAttribute.ALL;
@@ -45,6 +40,13 @@ public class ShortFilmSearch extends Search<ShortFilmSearch> {
      * The type of results returned. Default is the short film itself
      */
     private ShortFilmSearchReturnType returnType = ShortFilmSearchReturnType.SHORT_FILM;
+
+    public ShortFilmSearch() {
+        /*
+         * set the media type to search for
+         */
+        super(ItunesMedia.SHORT_FILM);
+    }
 
     /**
      * Sets the attribute the search term is compared with. Default is all attributes.
@@ -82,14 +84,6 @@ public class ShortFilmSearch extends Search<ShortFilmSearch> {
         urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
 
         return urlString;
-    }
-
-    /**
-     *
-     * @return the set media type being searched for
-     */
-    public ItunesMedia getMedia() {
-        return media;
     }
 
     /**
