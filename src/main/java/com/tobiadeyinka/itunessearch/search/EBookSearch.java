@@ -71,7 +71,7 @@ public class EBookSearch extends Search<EBookSearch> {
     }
 
     @Override
-    String constructUrlString() {
+    protected String constructUrlString() {
         String urlString = "https://itunes.apple.com/search?";
         urlString += "term=" + searchTerm;
         urlString += "&country=" + countryCode.getAlpha2();

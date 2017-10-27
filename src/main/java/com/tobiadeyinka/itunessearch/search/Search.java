@@ -194,7 +194,7 @@ abstract class Search<T> {
         }
     }
 
-    abstract String constructUrlString();
+    protected abstract String constructUrlString();
 
     /**
      *
