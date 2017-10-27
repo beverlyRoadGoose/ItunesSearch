@@ -5,6 +5,7 @@ sudo: false
 branches:
   except:
   - dev
+  - exp
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

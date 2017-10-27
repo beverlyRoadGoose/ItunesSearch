@@ -17,6 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.lookup;
 
+import com.tobiadeyinka.itunessearch.TestUtils;
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 
 import org.json.JSONArray;
@@ -189,13 +190,7 @@ public class PodcastLookupTests {
      */
     @AfterClass
     private void sleepForAMinute() {
-        logger.info("sleeping for 1 minute");
-
-        try {
-            Thread.sleep(60000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        TestUtils.sleepForAMinute();
     }
 
 }
