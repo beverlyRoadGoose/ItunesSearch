@@ -30,7 +30,7 @@ import java.net.MalformedURLException;
  *
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public class PodcastLookup {
+public abstract class PodcastLookup {
 
     /**
      * get the top 100 podcasts in the iTunes store
