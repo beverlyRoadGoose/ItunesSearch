@@ -1,3 +1,7 @@
+##### v1.0.2 (10.29.2017)
+
+- internal structure modifications.
+
 ##### v1.0.1 (10.27.2017)
 
 - internal structure modifications.
