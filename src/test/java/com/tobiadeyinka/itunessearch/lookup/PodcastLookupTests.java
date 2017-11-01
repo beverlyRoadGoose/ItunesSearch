@@ -18,7 +18,8 @@
 package com.tobiadeyinka.itunessearch.lookup;
 
 import com.tobiadeyinka.itunessearch.TestUtils;
-import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
+
+import com.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,7 +46,37 @@ public class PodcastLookupTests {
     private static final String RESPONSE_LOG_TAG = "response: ";
 
     @Test
-    public void getTopPodcasts() throws ItunesSearchException {
+    public void getPodcastByID() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            int limit = 1;
+            long podcastID = 1272970334;
+            response = PodcastLookup.getById(podcastID);
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally {
+            logResponse();
+        }
+
+    }
+
+    @Test(expectedExceptions = NoMatchFoundException.class)
+    public void getPodcastByNonExistingID() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            long podcastID = 1;
+            response = PodcastLookup.getById(podcastID);
+        } finally {
+            logResponse();
+        }
+
+    }
+
+    @Test
+    public void getTopPodcasts() {
         nullifyResponse();
 
         try {
@@ -57,12 +88,13 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getTopPodcastsWithLimit() throws ItunesSearchException {
+    public void getTopPodcastsWithLimit() {
         nullifyResponse();
 
         try {
             int limit = 5;
             response = PodcastLookup.topPodcasts(limit);
+
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally {
@@ -71,7 +103,7 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getComedyPodcasts() throws ItunesSearchException {
+    public void getComedyPodcasts() {
         nullifyResponse();
 
         try {
@@ -83,12 +115,13 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getComedyPodcastsWithLimit() throws ItunesSearchException {
+    public void getComedyPodcastsWithLimit() {
         nullifyResponse();
 
         try {
             int limit = 5;
             response = PodcastLookup.comedyPodcasts(limit);
+
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally {
@@ -97,7 +130,7 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getNewsAndPoliticsPodcasts() throws ItunesSearchException {
+    public void getNewsAndPoliticsPodcasts() {
         nullifyResponse();
 
         try {
@@ -109,12 +142,13 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getNewsAndPoliticsPodcastsWithLimit() throws ItunesSearchException {
+    public void getNewsAndPoliticsPodcastsWithLimit() {
         nullifyResponse();
 
         try {
             int limit = 5;
             response = PodcastLookup.newsAndPoliticsPodcasts(limit);
+
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally {
@@ -123,7 +157,7 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getSocietyAndCulturePodcasts() throws ItunesSearchException {
+    public void getSocietyAndCulturePodcasts() {
         nullifyResponse();
 
         try {
@@ -135,12 +169,13 @@ public class PodcastLookupTests {
     }
 
     @Test
-    public void getSocietyAndCulturePodcastsWithLimit() throws ItunesSearchException {
+    public void getSocietyAndCulturePodcastsWithLimit() {
         nullifyResponse();
 
         try {
             int limit = 5;
             response = PodcastLookup.societyAndCulturePodcasts(limit);
+
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally {
