@@ -41,6 +41,7 @@ public abstract class PodcastLookup {
      *
      * @param id the itunes id for the podcast
      * @return a JSONObject representation of the podcast
+     * @throws NoMatchFoundException if no matching podcast is found
      */
     public static JSONObject getById(long id) throws NoMatchFoundException {
         String urlString = BASE_LOOKUP_URL + "id=" + id;
