@@ -17,43 +17,14 @@
 
 package com.tobiadeyinka.itunessearch.lookup;
 
-import com.tobiadeyinka.itunessearch.networking.NetworkUtils;
-import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
-import com.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.net.URL;
-import java.net.MalformedURLException;
 
 /**
  * This class manages looking up podcasts with different attributes
  *
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public abstract class PodcastLookup {
-
-    private static final String BASE_LOOKUP_URL = "https://itunes.apple.com/lookup?";
-
-    /**
-     * retrieve a podcast by its id
-     *
-     * @param id the itunes id for the podcast
-     * @return a JSONObject representation of the podcast
-     * @throws NoMatchFoundException if no matching podcast is found
-     */
-    public static JSONObject getById(long id) throws NoMatchFoundException {
-        String urlString = BASE_LOOKUP_URL + "id=" + id;
-
-        JSONObject response = executeQuery(urlString);
-        JSONArray matchingPodcastArray = response.getJSONArray("results");
-
-        if (matchingPodcastArray.length() == 0)
-            throw new NoMatchFoundException("No podcast matches the given id");
-
-        return response;
-    }
+public abstract class PodcastLookup extends Lookup {
 
     /**
      * get the top 100 podcasts in the iTunes store
@@ -148,19 +119,6 @@ public abstract class PodcastLookup {
     private static JSONObject getPodcastGenre(int genreId, int limit) {
         String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genreId;
         return executeQuery(urlString);
-    }
-
-    private static JSONObject executeQuery(String urlString) {
-        JSONObject response = null;
-
-        try {
-            URL url = new URL(urlString);
-            response = NetworkUtils.executeQuery(url);
-        } catch (MalformedURLException | ItunesSearchException e) {
-            e.printStackTrace();
-        }
-
-        return response;
     }
 
 }

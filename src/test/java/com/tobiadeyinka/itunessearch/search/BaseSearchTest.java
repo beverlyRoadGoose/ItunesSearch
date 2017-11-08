@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Base class for all tests.
+ * Base class for all search tests.
  *
  * Created by Tobi Adeyinka on 2017. 10. 27..
  */

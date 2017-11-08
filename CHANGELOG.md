@@ -1,3 +1,7 @@
+##### v1.1.1 (11.08.2017)
+
+- internal structure modifications.
+
 ##### v1.1.0 (11.1.2017)
 
 - Add podcast lookup by id.
