@@ -18,6 +18,7 @@
 package com.tobiadeyinka.itunessearch.lookup;
 
 import org.json.JSONObject;
+import com.neovisionaries.i18n.CountryCode;
 
 /**
  * This class manages looking up podcasts with different attributes
@@ -25,6 +26,8 @@ import org.json.JSONObject;
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
 public abstract class PodcastLookup extends Lookup {
+
+    private static final CountryCode DEFAULT_COUNTRY = CountryCode.US;
 
     /**
      * get the top 100 podcasts in the iTunes store
@@ -42,8 +45,7 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts(int limit) {
-        String urlString = "https://rss.itunes.apple.com/api/v1/us/podcasts/top-podcasts/all/" + limit + "/explicit.json";
-        return executeQuery(urlString);
+        return queryTopPodcasts(DEFAULT_COUNTRY, limit);
     }
 
     /**
@@ -118,6 +120,11 @@ public abstract class PodcastLookup extends Lookup {
      */
     private static JSONObject getPodcastGenre(int genreId, int limit) {
         String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genreId;
+        return executeQuery(urlString);
+    }
+
+    private static JSONObject queryTopPodcasts(CountryCode countryCode, int limit) {
+        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/podcasts/top-podcasts/all/" + limit + "/explicit.json";
         return executeQuery(urlString);
     }
 
