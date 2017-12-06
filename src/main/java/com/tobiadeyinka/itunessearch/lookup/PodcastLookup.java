@@ -27,19 +27,29 @@ import com.neovisionaries.i18n.CountryCode;
  */
 public abstract class PodcastLookup extends Lookup {
 
+    private static final int DEFAULT_LIMIT = 100;
     private static final CountryCode DEFAULT_COUNTRY = CountryCode.US;
 
     /**
-     * get the top 100 podcasts in the iTunes store
+     * get the top 100 podcasts in the default iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts() {
-        return topPodcasts(100);
+        return topPodcasts(DEFAULT_LIMIT);
     }
 
     /**
-     * get the top (limit) podcasts in the iTunes store
+     * get the top 100 podcasts in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the top podcasts
+     */
+    public static JSONObject topPodcasts(CountryCode countryCode) {
+        return queryTopPodcasts(countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) podcasts in the default iTunes store
      *
      * @param limit the maximum number of podcasts to return
      * @return a JSONObject containing a list of the top podcasts
@@ -49,13 +59,23 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
+     * get the top (limit) podcasts in the default iTunes store
+     *
+     * @param limit the maximum number of podcasts to return
+     * @return a JSONObject containing a list of the top podcasts
+     */
+    public static JSONObject topPodcasts(CountryCode countryCode, int limit) {
+        return queryTopPodcasts(countryCode, limit);
+    }
+
+    /**
      * get a list of 100 comedy podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject comedyPodcasts() {
         int genreId = 1303;
-        return getPodcastGenre(genreId, 100);
+        return getPodcastGenre(genreId, DEFAULT_LIMIT);
     }
 
     /**
@@ -76,7 +96,7 @@ public abstract class PodcastLookup extends Lookup {
      */
     public static JSONObject newsAndPoliticsPodcasts() {
         int genreId = 1311;
-        return getPodcastGenre(genreId, 100);
+        return getPodcastGenre(genreId, DEFAULT_LIMIT);
     }
 
     /**
@@ -97,7 +117,7 @@ public abstract class PodcastLookup extends Lookup {
      */
     public static JSONObject societyAndCulturePodcasts() {
         int genreId = 1324;
-        return getPodcastGenre(genreId, 100);
+        return getPodcastGenre(genreId, DEFAULT_LIMIT);
     }
 
     /**
