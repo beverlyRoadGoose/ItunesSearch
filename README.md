@@ -71,7 +71,7 @@ This library has not been authorized, sponsored, or otherwise approved by Apple 
 ## License
 
 ```
-   Copyright 2017 Oluwatobi Adeyinka
+   Copyright 2018 Oluwatobi Adeyinka
 
    
    Licensed under the Apache License, Version 2.0 (the "License");
