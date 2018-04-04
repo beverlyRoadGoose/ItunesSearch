@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.software.SoftwareAttribute;
-import com.tobiadeyinka.itunessearch.entities.software.SoftwareSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * Software search API endpoint.

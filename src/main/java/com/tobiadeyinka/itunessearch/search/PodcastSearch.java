@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastAttribute;
-import com.tobiadeyinka.itunessearch.entities.podcasts.PodcastSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * Podcasts search API endpoint.

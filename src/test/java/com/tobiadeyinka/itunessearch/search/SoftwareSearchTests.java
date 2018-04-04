@@ -19,11 +19,7 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
-import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
-import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.entities.software.SoftwareAttribute;
-import com.tobiadeyinka.itunessearch.entities.software.SoftwareSearchReturnType;
-
+import com.tobiadeyinka.itunessearch.entities.*;
 import com.tobiadeyinka.itunessearch.exceptions.*;
 
 import org.testng.annotations.Test;

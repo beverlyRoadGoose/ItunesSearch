@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.media.MediaAttribute;
-import com.tobiadeyinka.itunessearch.entities.media.MediaSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * API endpoint for non-specific media types.
