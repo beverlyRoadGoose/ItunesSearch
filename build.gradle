@@ -27,7 +27,7 @@ dependencies {
     compile group: 'com.neovisionaries', name: 'nv-i18n', version: '1.22'
 
     testCompile group: 'org.testng', name: 'testng', version: '6.11'
-    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.9.1'
 }
 
 test {
