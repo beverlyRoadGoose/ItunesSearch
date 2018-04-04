@@ -1,5 +1,5 @@
-com.tobiadeyinka.itunessearch.entities
-com.tobiadeyinka.itunessearch.exceptions
-com.tobiadeyinka.itunessearch.lookup
-com.tobiadeyinka.itunessearch.networking
-com.tobiadeyinka.itunessearch.search
+me.tobiadeyinka.itunessearch.entities
+me.tobiadeyinka.itunessearch.exceptions
+me.tobiadeyinka.itunessearch.lookup
+me.tobiadeyinka.itunessearch.networking
+me.tobiadeyinka.itunessearch.search

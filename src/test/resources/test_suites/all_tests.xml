@@ -3,22 +3,22 @@
 
     <test name="Lookup Tests">
         <classes>
-            <class name="com.tobiadeyinka.itunessearch.lookup.PodcastLookupTests" />
+            <class name="me.tobiadeyinka.itunessearch.lookup.PodcastLookupTests" />
         </classes>
     </test>
 
     <test name="Search Tests">
         <classes>
-            <class name="com.tobiadeyinka.itunessearch.search.MediaSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.EBookSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.MusicSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.MovieSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.TvShowSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.PodcastSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.SoftwareSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.ShortFilmSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.AudioBookSearchTests" />
-            <class name="com.tobiadeyinka.itunessearch.search.MusicVideoSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.MediaSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.EBookSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.MusicSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.MovieSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.TvShowSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.PodcastSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.SoftwareSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.ShortFilmSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.AudioBookSearchTests" />
+            <class name="me.tobiadeyinka.itunessearch.search.MusicVideoSearchTests" />
         </classes>
     </test>
 

@@ -1,3 +1,8 @@
+##### v1.2.0 (TBD)
+
+- Internal structure modifications
+- Renamed base package due to domain change
+
 ##### v1.1.1 (11.08.2017)
 
 - internal structure modifications.
