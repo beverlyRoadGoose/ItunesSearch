@@ -1,6 +1,4 @@
 com.tobiadeyinka.itunessearch.entities
-com.tobiadeyinka.itunessearch.entities.audio_books
-com.tobiadeyinka.itunessearch.entities.ebooks
 com.tobiadeyinka.itunessearch.entities.media
 com.tobiadeyinka.itunessearch.entities.movies
 com.tobiadeyinka.itunessearch.entities.music
