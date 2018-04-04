@@ -21,8 +21,8 @@ import com.neovisionaries.i18n.CountryCode;
 
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.entities.music_videos.MusicVideoAttribute;
-import com.tobiadeyinka.itunessearch.entities.music_videos.MusicVideoSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.MusicVideoAttribute;
+import com.tobiadeyinka.itunessearch.entities.MusicVideoSearchReturnType;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 

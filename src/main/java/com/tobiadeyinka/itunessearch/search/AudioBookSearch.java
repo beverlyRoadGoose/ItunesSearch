@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.audio_books.AudioBookAttribute;
-import com.tobiadeyinka.itunessearch.entities.audio_books.AudioBookSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * Audio book search API endpoint.

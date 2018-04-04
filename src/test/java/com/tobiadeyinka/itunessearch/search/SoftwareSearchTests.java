@@ -21,8 +21,8 @@ import com.neovisionaries.i18n.CountryCode;
 
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
-import com.tobiadeyinka.itunessearch.entities.software.SoftwareAttribute;
-import com.tobiadeyinka.itunessearch.entities.software.SoftwareSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.SoftwareAttribute;
+import com.tobiadeyinka.itunessearch.entities.SoftwareSearchReturnType;
 
 import com.tobiadeyinka.itunessearch.exceptions.*;
 

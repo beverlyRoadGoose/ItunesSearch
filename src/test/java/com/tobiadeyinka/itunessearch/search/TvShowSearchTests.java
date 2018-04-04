@@ -22,8 +22,8 @@ import com.neovisionaries.i18n.CountryCode;
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
 
-import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowAttribute;
-import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.TvShowAttribute;
+import com.tobiadeyinka.itunessearch.entities.TvShowSearchReturnType;
 
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;

@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowAttribute;
-import com.tobiadeyinka.itunessearch.entities.tv_shows.TvShowSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * TV show search API endpoint.

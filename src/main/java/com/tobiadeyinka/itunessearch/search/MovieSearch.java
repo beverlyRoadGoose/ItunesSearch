@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.movies.MovieAttribute;
-import com.tobiadeyinka.itunessearch.entities.movies.MovieSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * Movies search API endpoint.
