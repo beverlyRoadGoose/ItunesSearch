@@ -15,25 +15,24 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.software;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from software search queries.
+ * Enumeration of the possible entity return types from short film search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
  * Created by Tobi Adeyinka on 2017. 10. 19..
  */
-public enum SoftwareSearchReturnType {
+public enum ShortFilmSearchReturnType {
 
-    SOFTWARE("software"),
-    IPAD_SOFTWARE("iPadSoftware"),
-    MAC_SOFTWARE("macSoftware");
+    ARTIST("shortFilmArtist"),
+    SHORT_FILM("shortFilm");
 
     private String parameterValue;
 
-    SoftwareSearchReturnType(String parameterValue){
+    ShortFilmSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 

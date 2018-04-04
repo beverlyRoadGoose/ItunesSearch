@@ -22,8 +22,8 @@ import com.neovisionaries.i18n.CountryCode;
 import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
 
-import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmAttribute;
-import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.ShortFilmAttribute;
+import com.tobiadeyinka.itunessearch.entities.ShortFilmSearchReturnType;
 
 import com.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import com.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;

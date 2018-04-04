@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmAttribute;
-import com.tobiadeyinka.itunessearch.entities.short_films.ShortFilmSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * Short film search API endpoint.

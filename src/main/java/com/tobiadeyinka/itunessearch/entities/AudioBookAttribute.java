@@ -15,25 +15,27 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.music_videos;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from music video search queries.
+ * Enumeration of audio book attributes that can be used to narrow down searches.
  *
- * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
+ * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 17..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public enum MusicVideoSearchReturnType {
+public enum AudioBookAttribute {
 
-    DEFAULT(""),
-    MUSIC_VIDEO("musicVideo"),
-    MUSIC_ARTIST("musicArtist");
+    ALL(""),
+    TITLE("titleTerm"),
+    GENRE("genreIndex"),
+    AUTHOR("authorTerm"),
+    RATING("ratingIndex");
 
     private String parameterValue;
 
-    MusicVideoSearchReturnType(String parameterValue){
+    AudioBookAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 

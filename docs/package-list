@@ -1,12 +1,4 @@
 com.tobiadeyinka.itunessearch.entities
-com.tobiadeyinka.itunessearch.entities.media
-com.tobiadeyinka.itunessearch.entities.movies
-com.tobiadeyinka.itunessearch.entities.music
-com.tobiadeyinka.itunessearch.entities.music_videos
-com.tobiadeyinka.itunessearch.entities.podcasts
-com.tobiadeyinka.itunessearch.entities.short_films
-com.tobiadeyinka.itunessearch.entities.software
-com.tobiadeyinka.itunessearch.entities.tv_shows
 com.tobiadeyinka.itunessearch.exceptions
 com.tobiadeyinka.itunessearch.lookup
 com.tobiadeyinka.itunessearch.networking

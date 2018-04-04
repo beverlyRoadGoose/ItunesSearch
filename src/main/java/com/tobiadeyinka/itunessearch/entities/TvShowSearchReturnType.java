@@ -15,24 +15,25 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.movies;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from movie search queries.
+ * Enumeration of the possible entity return types from tv show search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 16..
+ * Created by Tobi Adeyinka on 2017. 10. 23..
  */
-public enum MovieSearchReturnType {
+public enum TvShowSearchReturnType {
 
-    MOVIE("movie"),
-    MOVIE_ARTIST("movieArtist");
+    DEFAULT(""),
+    EPISODE("tvEpisode"),
+    SEASON("tvSeason");
 
     private String parameterValue;
 
-    MovieSearchReturnType(String parameterValue){
+    TvShowSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 

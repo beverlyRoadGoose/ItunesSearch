@@ -15,24 +15,29 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.software;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of software attributes that can be used to narrow down searches.
+ * Enumeration of tv show attributes that can be used to narrow down searches.
  *
  * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 19..
+ * Created by Tobi Adeyinka on 2017. 10. 23..
  */
-public enum SoftwareAttribute {
+public enum TvShowAttribute {
 
     ALL(""),
-    SOFTWARE_DEVELOPER("softwareDeveloper");
+    GENRE("genreIndex"),
+    TV_EPISODE("tvEpisodeTerm"),
+    TV_SEASON("tvSeasonTerm"),
+    RATING("ratingIndex"),
+    SHOW_TERM("showTerm"),
+    DESCRIPTION("descriptionTerm");
 
     private String parameterValue;
 
-    SoftwareAttribute(String parameterValue){
+    TvShowAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 

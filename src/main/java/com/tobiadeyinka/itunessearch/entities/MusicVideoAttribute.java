@@ -15,32 +15,28 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.media;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from media search queries.
+ * Enumeration of music video attributes that can be used to narrow down searches.
  *
- * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
+ * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 18..
+ * Created by Tobi Adeyinka on 2017. 10. 17..
  */
-public enum MediaSearchReturnType {
+public enum MusicVideoAttribute {
 
-    DEFAULT(""),
-    MIX("mix"),
-    MOVIE("movie"),
-    ALBUM("album"),
-    PODCAST("podcast"),
-    VIDEO("musicVideo"),
-    TV_SEASON("tvSeason"),
-    ALL_TRACK("allTrack"),
-    ALL_ARTIST("allArtist"),
-    AUDIO_BOOK("audiobook");
+    ALL(""),
+    SONG("songTerm"),
+    ALBUM("albumTerm"),
+    ARTIST("artistTerm"),
+    GENRE("genreIndex"),
+    RATING("ratingIndex");
 
     private String parameterValue;
 
-    MediaSearchReturnType(String parameterValue){
+    MusicVideoAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 

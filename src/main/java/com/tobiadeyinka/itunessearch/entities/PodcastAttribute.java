@@ -15,28 +15,31 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.short_films;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of short film attributes that can be used to narrow down searches.
+ * Enumeration of podcast attributes that can be used to narrow down searches.
  *
  * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 19..
+ * Created by Tobi Adeyinka on 2017. 10. 15..
  */
-public enum ShortFilmAttribute {
+public enum PodcastAttribute {
 
     ALL(""),
+    TITLE("titleTerm"),
     GENRE("genreIndex"),
+    AUTHOR("authorTerm"),
     ARTIST("artistTerm"),
     RATING("ratingIndex"),
-    SHORT_FILM("shortFilmTerm"),
+    LANGUAGE("languageTerm"),
+    KEYWORDS("keywordsTerm"),
     DESCRIPTION("descriptionTerm");
 
     private String parameterValue;
 
-    ShortFilmAttribute(String parameterValue) {
+    PodcastAttribute(String parameterValue){
         this.parameterValue = parameterValue;
     }
 

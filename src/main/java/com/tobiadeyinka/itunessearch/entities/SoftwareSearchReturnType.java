@@ -15,31 +15,25 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.music;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from music search queries.
+ * Enumeration of the possible entity return types from software search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 16..
+ * Created by Tobi Adeyinka on 2017. 10. 19..
  */
-public enum MusicSearchReturnType {
+public enum SoftwareSearchReturnType {
 
-    DEFAULT(""),
-    MIX("mix"),
-    SONG("song"),
-    ALBUM("album"),
-    VIDEO("musicVideo"),
-    ARTIST("musicArtist"),
-    COMPOSER("composerTerm"),
-    GENRE_INDEX("genreIndex"),
-    TRACK("musicTrack");
+    SOFTWARE("software"),
+    IPAD_SOFTWARE("iPadSoftware"),
+    MAC_SOFTWARE("macSoftware");
 
     private String parameterValue;
 
-    MusicSearchReturnType(String parameterValue){
+    SoftwareSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 

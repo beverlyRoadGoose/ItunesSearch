@@ -25,7 +25,7 @@ import java.net.URL;
 import org.json.JSONObject;
 
 /**
- * All searches triggered from here.
+ * All searches are triggered from here.
  *
  * Created by Tobi Adeyinka on 2017. 10. 15..
  */

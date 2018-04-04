@@ -15,24 +15,24 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.short_films;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from short film search queries.
+ * Enumeration of the possible entity return types from audio book search queries.
  *
  * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 19..
+ * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public enum ShortFilmSearchReturnType {
+public enum  AudioBookSearchReturnType {
 
-    ARTIST("shortFilmArtist"),
-    SHORT_FILM("shortFilm");
+    AUTHOR("audiobookAuthor"),
+    AUDIO_BOOK("audiobook");
 
     private String parameterValue;
 
-    ShortFilmSearchReturnType(String parameterValue){
+    AudioBookSearchReturnType(String parameterValue){
         this.parameterValue = parameterValue;
     }
 

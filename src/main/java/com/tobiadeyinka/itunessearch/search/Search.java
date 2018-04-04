@@ -19,11 +19,8 @@ package com.tobiadeyinka.itunessearch.search;
 
 import com.neovisionaries.i18n.CountryCode;
 
+import com.tobiadeyinka.itunessearch.entities.*;
 import com.tobiadeyinka.itunessearch.exceptions.*;
-
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.ReturnLanguage;
-import com.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
 
 import org.json.JSONObject;
 

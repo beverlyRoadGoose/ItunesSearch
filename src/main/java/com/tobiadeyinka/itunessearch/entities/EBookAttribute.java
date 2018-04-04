@@ -15,36 +15,23 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.movies;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of movie attributes that can be used to narrow down searches.
+ * Enumeration of eBook attributes that can be used to narrow down searches.
  *
  * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 16..
+ * Created by Tobi Adeyinka on 2017. 10. 26..
  */
-public enum MovieAttribute {
+public enum EBookAttribute {
 
-    ALL(""),
-    MOVIE("movieTerm"),
-    ACTOR("actorTerm"),
-    GENRE("genreIndex"),
-    ARTIST("artistTerm"),
-    PRODUCER("producerTerm"),
-    DIRECTOR("directorTerm"),
-    RATING_TERM("ratingTerm"),
-    SHORT_FILM("shortFilmTerm"),
-    RATING_INDEX("ratingIndex"),
-    DESCRIPTION("descriptionTerm"),
-    RELEASE_YEAR("releaseYearTerm"),
-    FEATURE_FILM("featureFilmTerm"),
-    MOVIE_ARTIST("movieArtistTerm");
+    ALL("");
 
     private String parameterValue;
 
-    MovieAttribute(String parameterValue) {
+    EBookAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 
@@ -55,5 +42,5 @@ public enum MovieAttribute {
     public String getParameterValue() {
         return parameterValue;
     }
-
+    
 }

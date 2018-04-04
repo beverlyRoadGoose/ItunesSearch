@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.music.MusicAttribute;
-import com.tobiadeyinka.itunessearch.entities.music.MusicSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * Music search API endpoint.

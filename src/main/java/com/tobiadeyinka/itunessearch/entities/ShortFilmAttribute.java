@@ -15,25 +15,28 @@
  *
  */
 
-package com.tobiadeyinka.itunessearch.entities.tv_shows;
+package com.tobiadeyinka.itunessearch.entities;
 
 /**
- * Enumeration of the possible entity return types from tv show search queries.
+ * Enumeration of short film attributes that can be used to narrow down searches.
  *
- * See entity parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
+ * See attribute parameter key in <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searching">
  *     Searching the iTunes Store</a> for more details.
  *
- * Created by Tobi Adeyinka on 2017. 10. 23..
+ * Created by Tobi Adeyinka on 2017. 10. 19..
  */
-public enum TvShowSearchReturnType {
+public enum ShortFilmAttribute {
 
-    DEFAULT(""),
-    EPISODE("tvEpisode"),
-    SEASON("tvSeason");
+    ALL(""),
+    GENRE("genreIndex"),
+    ARTIST("artistTerm"),
+    RATING("ratingIndex"),
+    SHORT_FILM("shortFilmTerm"),
+    DESCRIPTION("descriptionTerm");
 
     private String parameterValue;
 
-    TvShowSearchReturnType(String parameterValue){
+    ShortFilmAttribute(String parameterValue) {
         this.parameterValue = parameterValue;
     }
 
