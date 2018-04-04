@@ -17,9 +17,7 @@
 
 package com.tobiadeyinka.itunessearch.search;
 
-import com.tobiadeyinka.itunessearch.entities.ItunesMedia;
-import com.tobiadeyinka.itunessearch.entities.EBookAttribute;
-import com.tobiadeyinka.itunessearch.entities.EBookSearchReturnType;
+import com.tobiadeyinka.itunessearch.entities.*;
 
 /**
  * EBook search API endpoint.

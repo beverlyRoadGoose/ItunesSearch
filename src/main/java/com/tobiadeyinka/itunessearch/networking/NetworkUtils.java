@@ -40,10 +40,8 @@ public abstract class NetworkUtils {
             /*
              * encode url before query
              */
-            URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(),
-                    url.getQuery(), url.getRef());
+            URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), url.getRef());
             URL encodedUrl = new URL(uri.toASCIIString());
-
             return new JSONObject(query(encodedUrl));
         } catch (IOException | URISyntaxException e) {
             throw new NetworkCommunicationException("Error while executing query: " + e.getMessage());
