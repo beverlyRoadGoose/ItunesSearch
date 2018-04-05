@@ -70,18 +70,16 @@ public class AudioBookSearch extends Search<AudioBookSearch> {
 
     @Override
     protected String constructUrlString() {
-        String urlString = "https://itunes.apple.com/search?";
-        urlString += "term=" + searchTerm;
-        urlString += "&country=" + countryCode.getAlpha2();
-        urlString += "&media=" + media.getParameterValue();
-        urlString += "&entity=" + returnType.getParameterValue();
-        urlString += "&attributeType=" + attribute.getParameterValue();
-        urlString += "&limit=" + limit;
-        urlString += "&lang=" + returnLanguage.getCodeName();
-        urlString += "&version=" + apiVersion;
-        urlString += "&explicit=" + (allowExplicit ? "Yes" : "No");
-
-        return urlString;
+        return "https://itunes.apple.com/search?" +
+                "term=" + searchTerm +
+                "&country=" + countryCode.getAlpha2() +
+                "&media=" + media.getParameterValue() +
+                "&entity=" + returnType.getParameterValue() +
+                "&attributeType=" + attribute.getParameterValue() +
+                "&limit=" + limit +
+                "&lang=" + returnLanguage.getCodeName() +
+                "&version=" + apiVersion +
+                "&explicit=" + (allowExplicit ? "Yes" : "No");
     }
 
     /**
