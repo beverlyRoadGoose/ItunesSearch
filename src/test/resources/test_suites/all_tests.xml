@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="com.tobiadeyinka.itunessearch" verbose="1">
+<suite name="ItunesSearch Tests" verbose="1">
 
     <test name="Lookup Tests">
         <classes>
