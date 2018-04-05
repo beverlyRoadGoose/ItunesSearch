@@ -1,3 +1,7 @@
+##### v1.2.1 (04.05.2018)
+
+- Fix wrong version labels in v1.2.0
+
 ##### v1.2.0 (04.05.2018)
 
 - Internal structure modifications
