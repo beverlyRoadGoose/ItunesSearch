@@ -1,6 +1,6 @@
 /out
 /bin
-.gradle
+/.gradle
 /.idea
 /build
 /.settings
