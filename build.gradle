@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'me.tobiadeyinka'
-version '1.2.1'
+version '1.2.2-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -19,7 +19,7 @@ sourceCompatibility = 1.8
 
 jar {
     baseName = 'iTunesSearch'
-    version =  '1.2.1'
+    version =  project.version
 }
 
 dependencies {

@@ -1,3 +1,5 @@
+##### v1.2.2 (TBD)
+
 ##### v1.2.1 (04.05.2018)
 
 - Fix wrong version labels in v1.2.0
