@@ -1,9 +1,8 @@
 [![Build Status](https://travis-ci.org/EtherealT/ItunesSearch.svg?branch=master&maxAge=1)](https://travis-ci.org/EtherealT/ItunesSearch)
 [![Coverage Status](https://coveralls.io/repos/github/EtherealT/ItunesSearch/badge.svg?branch=master&maxAge=1)](https://coveralls.io/github/EtherealT/ItunesSearch?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6139acc8bc4c44dd91d73fa2456ec52d)](https://www.codacy.com/app/EtherealT/ItunesSearch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=EtherealT/ItunesSearch&amp;utm_campaign=Badge_Grade)
-[![Jitpack](https://jitpack.io/v/EtherealT/ItunesSearch.svg?maxAge=1)](https://jitpack.io/#EtherealT/ItunesSearch)
+[![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?maxAge=1)](https://opensource.org/licenses/Apache-2.0)
-<!--[![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)-->
 
 ## About
 This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/).
@@ -11,24 +10,23 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 ## Usage
 **Adding the library to your project**
 
-1. Add the JitPack repository to your build file
-      ```Gradle
-      allprojects {
-        repositories {
-            ...
-            maven { url 'https://jitpack.io' }
-        }
-      }
-      ```
-      
-2. Add the dependency
+-  Gradle
       ```Gradle
         dependencies {
-            compile 'com.github.EtherealT:ItunesSearch:v1.2.1'
+            compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.2.1'
         }
       ```
-
-I'm currently in the process of making the library available on the maven central repository, this would take a few days.
+      
+-  Maven
+      ```xml
+        <dependencies>
+          <dependency>
+            <groupId>me.tobiadeyinka</groupId>
+            <artifactId>iTunesSearch</artifactId>
+            <version>1.2.1</version>
+          </dependency>
+        </dependencies>
+      ```
       
 **Making calls to the API**
 
