@@ -27,6 +27,8 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
             compile 'com.github.EtherealT:ItunesSearch:v1.2.1'
         }
       ```
+
+I'm currently in the process of making the library available on the maven central repository, this would take a few days.
       
 **Making calls to the API**
 
