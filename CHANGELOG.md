@@ -1,4 +1,6 @@
-##### v1.2.2 (TBD)
+##### v1.3.0 (TBD)
+
+- Music lookup functionality
 
 ##### v1.2.1 (04.05.2018)
 
