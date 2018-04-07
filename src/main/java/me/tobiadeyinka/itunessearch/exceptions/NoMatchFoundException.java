@@ -22,7 +22,7 @@ package me.tobiadeyinka.itunessearch.exceptions;
  *
  * Created by Tobi Adeyinka on 2017. 11. 01..
  */
-public class NoMatchFoundException extends ItunesSearchException {
+public class NoMatchFoundException extends Exception {
 
     public NoMatchFoundException(String message) {
         super(message);

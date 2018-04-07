@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -35,25 +34,23 @@ public class MediaSearchTests extends BaseSearchTest {
     private String searchTerm = "test";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchWithoutSearchTerm() throws ItunesSearchException {
+    public void searchWithoutSearchTerm() {
         new MediaSearch().execute();
     }
 
     @Test
-    public void searchWithDefaultParameters() throws ItunesSearchException {
+    public void searchWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new MediaSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastWithMediaSearch() throws ItunesSearchException {
+    public void searchForPodcastWithMediaSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -64,13 +61,11 @@ public class MediaSearchTests extends BaseSearchTest {
                     .andReturn(MediaSearchReturnType.PODCAST);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchInSpecificStore() throws ItunesSearchException {
+    public void searchInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -79,13 +74,11 @@ public class MediaSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.CA);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchWithLimit() throws ItunesSearchException {
+    public void searchWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -97,13 +90,11 @@ public class MediaSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchWithApiVersion1() throws ItunesSearchException {
+    public void searchWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -112,13 +103,11 @@ public class MediaSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchWithoutExplicitContent() throws ItunesSearchException {
+    public void searchWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -127,13 +116,11 @@ public class MediaSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void specifyReturnLanguage() throws ItunesSearchException {
+    public void specifyReturnLanguage() {
         nullifySearchAndResponse();
 
         try {
@@ -142,13 +129,11 @@ public class MediaSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveMovieSearch() throws ItunesSearchException {
+    public void comprehensiveMovieSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -163,9 +148,7 @@ public class MediaSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
 }

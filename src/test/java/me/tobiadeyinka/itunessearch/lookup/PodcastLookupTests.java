@@ -56,10 +56,7 @@ public class PodcastLookupTests {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
-
+        } finally { logResponse(); }
     }
 
     @Test(expectedExceptions = NoMatchFoundException.class)
@@ -69,10 +66,7 @@ public class PodcastLookupTests {
         try {
             long podcastID = 1;
             response = PodcastLookup.getById(podcastID);
-        } finally {
-            logResponse();
-        }
-
+        } finally { logResponse(); }
     }
 
     @Test
@@ -82,9 +76,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.topPodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -97,9 +89,7 @@ public class PodcastLookupTests {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -109,9 +99,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.comedyPodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -124,9 +112,7 @@ public class PodcastLookupTests {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -136,9 +122,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.newsAndPoliticsPodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -151,9 +135,7 @@ public class PodcastLookupTests {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -163,9 +145,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.societyAndCulturePodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -178,9 +158,7 @@ public class PodcastLookupTests {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     private void verifyResponseHasResults() {

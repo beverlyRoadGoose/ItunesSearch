@@ -152,7 +152,7 @@ abstract class Search<T> {
      * @throws MissingRequiredParameterException if the search term is not set.
      * @throws InvalidParameterException if any of the set parameters are invalid.
      */
-    protected void runPreExecutionChecks() throws ItunesSearchException {
+    protected void runPreExecutionChecks() {
         /*
          * search term must be set.
          */
@@ -175,7 +175,7 @@ abstract class Search<T> {
      * @throws SearchURLConstructionFailure if there is an error during url construction.
      * @throws NetworkCommunicationException if any issues occur while communicating with the iTunes api.
      */
-    public JSONObject execute() throws ItunesSearchException {
+    public JSONObject execute() {
         runPreExecutionChecks();
         String urlString = constructUrlString();
         URL url = createUrlObject(urlString);
@@ -183,7 +183,7 @@ abstract class Search<T> {
         return new SearchManager().executeSearch(url);
     }
 
-    private URL createUrlObject(String urlString) throws ItunesSearchException {
+    private URL createUrlObject(String urlString) {
         try {
             return new URL(urlString);
         } catch (MalformedURLException e) {

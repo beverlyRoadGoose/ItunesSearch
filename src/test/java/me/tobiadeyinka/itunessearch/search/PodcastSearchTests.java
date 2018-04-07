@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -35,25 +34,23 @@ public class PodcastSearchTests extends BaseSearchTest {
     private String searchTerm = "radio";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForPodcastWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForPodcastWithoutSearchTerm() {
         new PodcastSearch().execute();
     }
 
     @Test
-    public void searchForPodcastWithDefaultParameters() throws ItunesSearchException {
+    public void searchForPodcastWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new PodcastSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastUsingTitleAttribute() throws ItunesSearchException {
+    public void searchForPodcastUsingTitleAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -62,13 +59,11 @@ public class PodcastSearchTests extends BaseSearchTest {
                     .inAttribute(PodcastAttribute.TITLE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastInSpecificStore() throws ItunesSearchException {
+    public void searchForPodcastInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -77,13 +72,11 @@ public class PodcastSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastWithLimit() throws ItunesSearchException {
+    public void searchForPodcastWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -95,13 +88,11 @@ public class PodcastSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastWithApiVersion1() throws ItunesSearchException {
+    public void searchForPodcastWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -110,13 +101,11 @@ public class PodcastSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForPodcastWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -125,13 +114,11 @@ public class PodcastSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastWithAuthorReturnType() throws ItunesSearchException {
+    public void searchForPodcastWithAuthorReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -141,13 +128,11 @@ public class PodcastSearchTests extends BaseSearchTest {
                     .andReturn(PodcastSearchReturnType.PODCAST_AUTHOR);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForPodcastWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForPodcastWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -156,13 +141,11 @@ public class PodcastSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensivePodcastSearch() throws ItunesSearchException {
+    public void comprehensivePodcastSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -178,9 +161,7 @@ public class PodcastSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
 }

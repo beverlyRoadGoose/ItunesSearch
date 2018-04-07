@@ -31,7 +31,7 @@ import org.json.JSONObject;
  */
 class SearchManager {
 
-    public JSONObject executeSearch(URL url) throws ItunesSearchException {
+    public JSONObject executeSearch(URL url) {
         return NetworkUtils.executeQuery(url);
     }
 
