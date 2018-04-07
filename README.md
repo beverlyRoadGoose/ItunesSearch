@@ -13,7 +13,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 **Gradle**
 ```Gradle
 dependencies {
-    compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.2.1'
+    compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.3.0'
 }
 ```
 
@@ -23,7 +23,7 @@ dependencies {
   <dependency>
     <groupId>me.tobiadeyinka</groupId>
     <artifactId>iTunesSearch</artifactId>
-    <version>1.2.1</version>
+    <version>1.3.0</version>
   </dependency>
 </dependencies>
 ```

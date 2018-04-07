@@ -17,10 +17,72 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
+import me.tobiadeyinka.itunessearch.TestUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.logging.Logger;
+import org.testng.annotations.AfterClass;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Base class for all lookup tests
  *
  * Created by Tobi Adeyinka on 2017. 11. 08..
  */
 public class BaseLookupTest {
+
+    private Logger logger = Logger.getLogger(BaseLookupTest.class.getName());
+
+    protected JSONObject response = null;
+    protected static final String TEST_LOG_TAG = "test: ";
+    protected static final String RESPONSE_LOG_TAG = "response: ";
+
+    protected void verifyResponseHasResults() {
+        assertThat(response.has("results"));
+    }
+
+    protected void verifyResponseMatchesLimit(int limit) {
+        /*
+         * depending on the query, the results are sometimes buried under
+         * a feed object. In that case, set the feed object as the response
+         * object.
+         */
+        if (response.has("feed")) response = response.getJSONObject("feed");
+
+        JSONArray matchingPodcastsArray = response.getJSONArray("results");
+        assertThat(matchingPodcastsArray.length())
+                .isGreaterThan(0)
+                .isLessThan(limit + 1);
+    }
+
+    protected void logResponse() {
+        String callingMethodName = Thread.currentThread().getStackTrace()[2].getMethodName();
+
+        if (response != null) {
+            logger.info("\n" + TEST_LOG_TAG + callingMethodName + "\n"
+                    + RESPONSE_LOG_TAG + response.toString() + "\n\n");
+        }
+    }
+
+    /*
+     * response object is nullified at the start of
+     * each tests to prevent the values from a previous test from
+     * being used when the current test fails.
+     */
+    protected void nullifyResponse() {
+        response = null;
+    }
+
+    /*
+     * The itunes api limits call per minute, so sleep for a minute before the next
+     * set of tests start, to avoid failures.
+     */
+    @AfterClass
+    protected void sleepForAMinute() {
+        TestUtils.sleepForAMinute();
+    }
+
 }
