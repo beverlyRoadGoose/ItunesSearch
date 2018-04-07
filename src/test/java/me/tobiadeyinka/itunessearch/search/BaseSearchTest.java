@@ -35,7 +35,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class BaseSearchTest {
 
-    protected Logger logger = Logger.getLogger(BaseSearchTest.class.getName());
+    private Logger logger = Logger.getLogger(BaseSearchTest.class.getName());
 
     protected static final String TEST_LOG_TAG = "test: ";
     protected static final String URL_LOG_TAG = "search url: ";

@@ -17,33 +17,16 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
-import me.tobiadeyinka.itunessearch.TestUtils;
-
 import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterClass;
-
-import java.util.logging.Logger;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests for all podcast look up methods
  *
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public class PodcastLookupTests {
-
-    private Logger logger = Logger.getLogger(PodcastLookupTests.class.getName());
-
-    private JSONObject response = null;
-
-    private static final String TEST_LOG_TAG = "test: ";
-    private static final String RESPONSE_LOG_TAG = "response: ";
+public class PodcastLookupTests extends BaseLookupTest{
 
     @Test
     public void getPodcastByID() throws NoMatchFoundException {
@@ -159,51 +142,6 @@ public class PodcastLookupTests {
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
-    }
-
-    private void verifyResponseHasResults() {
-        assertThat(response.has("results"));
-    }
-
-    private void verifyResponseMatchesLimit(int limit) {
-        /*
-         * depending on the query, the results are sometimes buried under
-         * a feed object. In that case, set the feed object as the response
-         * object.
-         */
-        if (response.has("feed")) response = response.getJSONObject("feed");
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0)
-                .isLessThan(limit + 1);
-    }
-
-    private void logResponse() {
-        String callingMethodName = Thread.currentThread().getStackTrace()[2].getMethodName();
-
-        if (response != null) {
-            logger.info("\n" + TEST_LOG_TAG + callingMethodName + "\n"
-                    + RESPONSE_LOG_TAG + response.toString() + "\n\n");
-        }
-    }
-
-    /*
-     * response object is nullified at the start of
-     * each tests to prevent the values from a previous test from
-     * being used when the current test fails.
-     */
-    private void nullifyResponse() {
-        response = null;
-    }
-
-    /*
-     * The itunes api limits call per minute, so sleep for a minute before the next
-     * set of tests start, to avoid failures.
-     */
-    @AfterClass
-    private void sleepForAMinute() {
-        TestUtils.sleepForAMinute();
     }
 
 }

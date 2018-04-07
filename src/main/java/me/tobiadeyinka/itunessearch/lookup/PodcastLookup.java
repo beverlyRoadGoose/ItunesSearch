@@ -27,9 +27,6 @@ import com.neovisionaries.i18n.CountryCode;
  */
 public abstract class PodcastLookup extends Lookup {
 
-    private static final int DEFAULT_LIMIT = 100;
-    private static final CountryCode DEFAULT_COUNTRY = CountryCode.US;
-
     /**
      * get the top 100 podcasts in the default iTunes store
      *
