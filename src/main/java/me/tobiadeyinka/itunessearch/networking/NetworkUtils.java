@@ -35,7 +35,7 @@ import java.util.Scanner;
  */
 public abstract class NetworkUtils {
 
-    public static JSONObject executeQuery(URL url) throws ItunesSearchException {
+    public static JSONObject executeQuery(URL url) {
         try {
             /*
              * encode url before query

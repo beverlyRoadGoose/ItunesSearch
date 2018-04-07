@@ -35,25 +35,23 @@ public class SoftwareSearchTests extends BaseSearchTest {
     private String searchTerm = "test";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForSoftwareWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForSoftwareWithoutSearchTerm() {
         new SoftwareSearch().execute();
     }
 
     @Test
-    public void searchForSoftwareWithDefaultParameters() throws ItunesSearchException {
+    public void searchForSoftwareWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new SoftwareSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareUsingDeveloperAttribute() throws ItunesSearchException {
+    public void searchForSoftwareUsingDeveloperAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -62,13 +60,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
                     .inAttribute(SoftwareAttribute.SOFTWARE_DEVELOPER);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareInSpecificStore() throws ItunesSearchException {
+    public void searchForSoftwareInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -77,13 +73,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareWithLimit() throws ItunesSearchException {
+    public void searchForSoftwareWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -95,13 +89,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareWithApiVersion1() throws ItunesSearchException {
+    public void searchForSoftwareWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -110,13 +102,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForSoftwareWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -125,13 +115,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareWithIpadSoftwareReturnType() throws ItunesSearchException {
+    public void searchForSoftwareWithIpadSoftwareReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -141,13 +129,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
                     .andReturn(SoftwareSearchReturnType.IPAD_SOFTWARE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForSoftwareWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForSoftwareWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -156,13 +142,11 @@ public class SoftwareSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveSoftwareSearch() throws ItunesSearchException {
+    public void comprehensiveSoftwareSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -178,9 +162,7 @@ public class SoftwareSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
     
 }

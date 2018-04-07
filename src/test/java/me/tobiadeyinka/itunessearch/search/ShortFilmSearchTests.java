@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -35,25 +34,23 @@ public class ShortFilmSearchTests extends BaseSearchTest {
     private String searchTerm = "the";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForShortFilmWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForShortFilmWithoutSearchTerm() {
         new ShortFilmSearch().execute();
     }
 
     @Test
-    public void searchForShortFilmWithDefaultParameters() throws ItunesSearchException {
+    public void searchForShortFilmWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new ShortFilmSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmUsingArtistAttribute() throws ItunesSearchException {
+    public void searchForShortFilmUsingArtistAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -62,13 +59,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
                     .inAttribute(ShortFilmAttribute.ARTIST);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmInSpecificStore() throws ItunesSearchException {
+    public void searchForShortFilmInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -77,13 +72,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmWithLimit() throws ItunesSearchException {
+    public void searchForShortFilmWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -95,13 +88,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmWithApiVersion1() throws ItunesSearchException {
+    public void searchForShortFilmWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -110,13 +101,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForShortFilmWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -125,13 +114,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmWithArtistReturnType() throws ItunesSearchException {
+    public void searchForShortFilmWithArtistReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -141,13 +128,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
                     .andReturn(ShortFilmSearchReturnType.ARTIST);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForShortFilmWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForShortFilmWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -156,13 +141,11 @@ public class ShortFilmSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveShortFilmSearch() throws ItunesSearchException {
+    public void comprehensiveShortFilmSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -178,9 +161,7 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
 }

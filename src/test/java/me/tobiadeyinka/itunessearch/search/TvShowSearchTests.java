@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -35,25 +34,23 @@ public class TvShowSearchTests extends BaseSearchTest {
     private String searchTerm = "the";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForTvShowWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForTvShowWithoutSearchTerm() {
         new TvShowSearch().execute();
     }
 
     @Test
-    public void searchForTvShowWithDefaultParameters() throws ItunesSearchException {
+    public void searchForTvShowWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new TvShowSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowUsingEpisodeAttribute() throws ItunesSearchException {
+    public void searchForTvShowUsingEpisodeAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -62,13 +59,11 @@ public class TvShowSearchTests extends BaseSearchTest {
                     .inAttribute(TvShowAttribute.TV_EPISODE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowInSpecificStore() throws ItunesSearchException {
+    public void searchForTvShowInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -77,13 +72,11 @@ public class TvShowSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowWithLimit() throws ItunesSearchException {
+    public void searchForTvShowWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -95,13 +88,11 @@ public class TvShowSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowWithApiVersion1() throws ItunesSearchException {
+    public void searchForTvShowWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -110,13 +101,11 @@ public class TvShowSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForTvShowWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -125,13 +114,11 @@ public class TvShowSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowWithEpisodeReturnType() throws ItunesSearchException {
+    public void searchForTvShowWithEpisodeReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -141,13 +128,11 @@ public class TvShowSearchTests extends BaseSearchTest {
                     .andReturn(TvShowSearchReturnType.EPISODE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForTvShowWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForTvShowWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -156,13 +141,11 @@ public class TvShowSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveTvShowSearch() throws ItunesSearchException {
+    public void comprehensiveTvShowSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -178,9 +161,7 @@ public class TvShowSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
     
 }

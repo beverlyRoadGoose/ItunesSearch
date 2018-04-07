@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -35,25 +34,23 @@ public class MusicVideoSearchTests extends BaseSearchTest {
     private String searchTerm = "the national";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForMusicVideoWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForMusicVideoWithoutSearchTerm() {
         new MusicVideoSearch().execute();
     }
 
     @Test
-    public void searchForMusicVideoWithDefaultParameters() throws ItunesSearchException {
+    public void searchForMusicVideoWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new MusicVideoSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoUsingArtistAttribute() throws ItunesSearchException {
+    public void searchForMusicVideoUsingArtistAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -62,13 +59,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
                     .inAttribute(MusicVideoAttribute.ARTIST);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoInSpecificStore() throws ItunesSearchException {
+    public void searchForMusicVideoInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -77,13 +72,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoWithLimit() throws ItunesSearchException {
+    public void searchForMusicVideoWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -95,13 +88,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoWithApiVersion1() throws ItunesSearchException {
+    public void searchForMusicVideoWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -110,13 +101,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForMusicVideoWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -125,13 +114,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoWithArtistReturnType() throws ItunesSearchException {
+    public void searchForMusicVideoWithArtistReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -141,13 +128,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
                     .andReturn(MusicVideoSearchReturnType.MUSIC_ARTIST);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMusicVideoWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForMusicVideoWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -156,13 +141,11 @@ public class MusicVideoSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveMusicVideoSearch() throws ItunesSearchException {
+    public void comprehensiveMusicVideoSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -178,9 +161,7 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
     
 }

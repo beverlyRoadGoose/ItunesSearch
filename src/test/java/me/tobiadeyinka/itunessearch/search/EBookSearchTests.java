@@ -21,7 +21,6 @@ import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.ReturnLanguage;
 import me.tobiadeyinka.itunessearch.entities.ItunesApiVersion;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -36,25 +35,23 @@ public class EBookSearchTests extends BaseSearchTest {
     private String searchTerm = "the";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForEBookWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForEBookWithoutSearchTerm() {
         new EBookSearch().execute();
     }
 
     @Test
-    public void searchForEBookWithDefaultParameters() throws ItunesSearchException {
+    public void searchForEBookWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new EBookSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForEBookInSpecificStore() throws ItunesSearchException {
+    public void searchForEBookInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -63,13 +60,11 @@ public class EBookSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForEBookWithLimit() throws ItunesSearchException {
+    public void searchForEBookWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -81,13 +76,11 @@ public class EBookSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForEBookWithApiVersion1() throws ItunesSearchException {
+    public void searchForEBookWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -96,13 +89,11 @@ public class EBookSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForEBookWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForEBookWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -111,13 +102,11 @@ public class EBookSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForEBookWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForEBookWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -126,9 +115,7 @@ public class EBookSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
     
 }

@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -38,25 +37,23 @@ public class AudioBookSearchTests extends BaseSearchTest {
     private String searchTerm = "the";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForAudioBookWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForAudioBookWithoutSearchTerm() {
         new AudioBookSearch().execute();
     }
 
     @Test
-    public void searchForAudioBookWithDefaultParameters() throws ItunesSearchException {
+    public void searchForAudioBookWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new AudioBookSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookUsingAuthorAttribute() throws ItunesSearchException {
+    public void searchForAudioBookUsingAuthorAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -65,13 +62,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
                     .inAttribute(AudioBookAttribute.AUTHOR);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookInSpecificStore() throws ItunesSearchException {
+    public void searchForAudioBookInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -80,13 +75,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.NG);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookWithLimit() throws ItunesSearchException {
+    public void searchForAudioBookWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -98,13 +91,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookWithApiVersion1() throws ItunesSearchException {
+    public void searchForAudioBookWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -113,13 +104,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForAudioBookWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -128,13 +117,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookWithAuthorReturnType() throws ItunesSearchException {
+    public void searchForAudioBookWithAuthorReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -144,13 +131,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
                     .andReturn(AudioBookSearchReturnType.AUTHOR);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForAudioBookWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForAudioBookWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -159,13 +144,11 @@ public class AudioBookSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveAudioBookSearch() throws ItunesSearchException {
+    public void comprehensiveAudioBookSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -181,9 +164,7 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
     
 }
