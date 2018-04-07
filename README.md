@@ -10,23 +10,23 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 ## Usage
 **Adding the library to your project**
 
--  Gradle
-      ```Gradle
-        dependencies {
-            compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.2.1'
-        }
-      ```
-      
--  Maven
-      ```xml
-        <dependencies>
-          <dependency>
-            <groupId>me.tobiadeyinka</groupId>
-            <artifactId>iTunesSearch</artifactId>
-            <version>1.2.1</version>
-          </dependency>
-        </dependencies>
-      ```
+**Gradle**
+```Gradle
+dependencies {
+    compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.2.1'
+}
+```
+
+**Maven**
+```xml
+<dependencies>
+  <dependency>
+    <groupId>me.tobiadeyinka</groupId>
+    <artifactId>iTunesSearch</artifactId>
+    <version>1.2.1</version>
+  </dependency>
+</dependencies>
+```
       
 **Making calls to the API**
 
