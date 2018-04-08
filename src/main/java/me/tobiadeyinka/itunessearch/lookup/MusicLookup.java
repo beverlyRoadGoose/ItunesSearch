@@ -173,6 +173,46 @@ public abstract class MusicLookup extends Lookup {
         return querySongList(MusicList.NEW_MUSIC, countryCode, limit);
     }
 
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} recent releases in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject recentReleases() {
+        return recentReleases(DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) recent releases in the default iTunes store
+     *
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject recentReleases(int limit) {
+        return querySongList(MusicList.RECENT_RELEASES, DEFAULT_COUNTRY, limit);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} recent releases in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject recentReleases(CountryCode countryCode) {
+        return querySongList(MusicList.RECENT_RELEASES, countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) recent releases in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject recentReleases(CountryCode countryCode, int limit) {
+        return querySongList(MusicList.RECENT_RELEASES, countryCode, limit);
+    }
+
     private static JSONObject querySongList(MusicList list, CountryCode countryCode, int limit) {
         String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/itunes-music/" +
                 list.urlKey + "/all/" + limit + "/explicit.json";
