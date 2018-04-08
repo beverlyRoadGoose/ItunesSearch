@@ -29,6 +29,17 @@ import com.neovisionaries.i18n.CountryCode;
  */
 public abstract class MusicLookup extends Lookup {
 
+    private enum MusicList {
+        TOP_SONGS("top-songs"),
+        HOT_TRACKS("hot-tracks");
+
+        String urlKey;
+
+        MusicList(String urlKey) {
+            this.urlKey = urlKey;
+        }
+    }
+
     /**
      * get a song by it's trackId
      *
@@ -56,7 +67,7 @@ public abstract class MusicLookup extends Lookup {
      * @return a JSONObject containing a list of the top songs
      */
     public static JSONObject topSongs(int limit) {
-        return queryTopSongs(DEFAULT_COUNTRY, limit);
+        return querySongList(MusicList.TOP_SONGS, DEFAULT_COUNTRY, limit);
     }
 
     /**
@@ -66,7 +77,7 @@ public abstract class MusicLookup extends Lookup {
      * @return a JSONObject containing a list of the top songs
      */
     public static JSONObject topSongs(CountryCode countryCode) {
-        return queryTopSongs(countryCode, DEFAULT_LIMIT);
+        return querySongList(MusicList.TOP_SONGS, countryCode, DEFAULT_LIMIT);
     }
 
     /**
@@ -77,11 +88,52 @@ public abstract class MusicLookup extends Lookup {
      * @return a JSONObject containing a list of the top songs
      */
     public static JSONObject topSongs(CountryCode countryCode, int limit) {
-        return queryTopSongs(countryCode, limit);
+        return querySongList(MusicList.TOP_SONGS, countryCode, limit);
     }
 
-    private static JSONObject queryTopSongs(CountryCode countryCode, int limit) {
-        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/itunes-music/top-songs/all/" + limit + "/explicit.json";
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} hot tracks in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the tracks
+     */
+    public static JSONObject hotTracks() {
+        return hotTracks(DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) hot tracks in the default iTunes store
+     *
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the tracks
+     */
+    public static JSONObject hotTracks(int limit) {
+        return querySongList(MusicList.HOT_TRACKS, DEFAULT_COUNTRY, limit);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} hot tracks in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the tracks
+     */
+    public static JSONObject hotTracks(CountryCode countryCode) {
+        return querySongList(MusicList.HOT_TRACKS, countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) hot tracks in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @param limit the maximum number of tracks to return
+     * @return a JSONObject containing a list of the tracks
+     */
+    public static JSONObject hotTracks(CountryCode countryCode, int limit) {
+        return querySongList(MusicList.HOT_TRACKS, countryCode, limit);
+    }
+
+    private static JSONObject querySongList(MusicList list, CountryCode countryCode, int limit) {
+        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/itunes-music/" +
+                list.urlKey + "/all/" + limit + "/explicit.json";
         return executeQuery(urlString);
     }
 
