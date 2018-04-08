@@ -1,11 +1,11 @@
 [![Build Status](https://travis-ci.org/EtherealT/ItunesSearch.svg?branch=master&maxAge=1)](https://travis-ci.org/EtherealT/ItunesSearch)
-[![Coverage Status](https://coveralls.io/repos/github/EtherealT/ItunesSearch/badge.svg?branch=master&maxAge=1)](https://coveralls.io/github/EtherealT/ItunesSearch?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/EtherealT/ItunesSearch/badge.svg?branch=master&maxAge=2)](https://coveralls.io/github/EtherealT/ItunesSearch?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6139acc8bc4c44dd91d73fa2456ec52d)](https://www.codacy.com/app/EtherealT/ItunesSearch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=EtherealT/ItunesSearch&amp;utm_campaign=Badge_Grade)
 [![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?maxAge=1)](https://opensource.org/licenses/Apache-2.0)
 
 ## About
-This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/).
+This is a Java wrapper for the [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/).
 
 ## Usage
 **Adding the library to your project**
@@ -13,7 +13,7 @@ This is a Java wrapper for the [iTunes search api](https://affiliate.itunes.appl
 **Gradle**
 ```Gradle
 dependencies {
-    compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.3.0'
+    compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.3.0-SNAPSHOT'
 }
 ```
 
@@ -23,7 +23,7 @@ dependencies {
   <dependency>
     <groupId>me.tobiadeyinka</groupId>
     <artifactId>iTunesSearch</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.0-SNAPSHOT</version>
   </dependency>
 </dependencies>
 ```
@@ -60,8 +60,20 @@ new MediaSearch()
     .with("something")
     .execute();
 ```
-There are much more configurations available all of which are detailed in the [wiki](https://github.com/EtherealT/ItunesSearch/wiki). The javadoc is also available [here](https://etherealt.github.io/ItunesSearch/docs/).
-All searches return a [JSON object](https://stleary.github.io/JSON-java/).
+There are much more configurations available all of which are detailed in the [wiki](https://github.com/EtherealT/ItunesSearch/wiki).
+
+To lookup up lists or items from the store, use the lookup API's. For example, to get the top songs in the store:
+```java
+MusicLookup.topSongs();
+```
+
+To get the top _n_ songs:
+```java
+MusicLookup.topSongs(n);
+```
+
+The javadoc is also available [here](https://etherealt.github.io/ItunesSearch/docs/).
+All searches and lookups return a [JSON object](https://stleary.github.io/JSON-java/).
 
 ## Disclaimer
 iTunes is a trademark of Apple Inc., registered in the U.S. and other countries.
