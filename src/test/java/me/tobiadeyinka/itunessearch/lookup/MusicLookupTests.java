@@ -32,12 +32,12 @@ public class MusicLookupTests extends BaseLookupTest {
     private int limit = 5;
 
     @Test
-    public void getSongByTrackId() throws NoMatchFoundException {
+    public void getSongById() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
             long trackId = 879273573;
-            response = MusicLookup.getSongByTrackId(trackId);
+            response = MusicLookup.getSongById(trackId);
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(1);
@@ -50,7 +50,7 @@ public class MusicLookupTests extends BaseLookupTest {
 
         try {
             long songID = 1;
-            response = MusicLookup.getById(songID);
+            response = MusicLookup.getSongById(songID);
         } finally { logResponse(); }
     }
 
@@ -217,6 +217,71 @@ public class MusicLookupTests extends BaseLookupTest {
 
         try {
             response = MusicLookup.recentReleases(CountryCode.CA, limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getAlbumById() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            long albumId = 879273573;
+            response = MusicLookup.getAlbumById(albumId);
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(1);
+        } finally { logResponse(); }
+    }
+
+    @Test(expectedExceptions = NoMatchFoundException.class)
+    public void getAlbumByNonExistingTrackId() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            long albumID = 1;
+            response = MusicLookup.getAlbumById(albumID);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void geTopAlbums() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topAlbums();
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopAlbumsWithLimit() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topAlbums(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopAlbumsInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topAlbums(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopAlbumsWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topAlbums(CountryCode.CA, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }

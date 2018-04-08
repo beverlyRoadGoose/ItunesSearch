@@ -31,8 +31,9 @@ public abstract class MusicLookup extends Lookup {
 
     private enum MusicList {
         TOP_SONGS("top-songs"),
-        HOT_TRACKS("hot-tracks"),
         NEW_MUSIC("new-music"),
+        TOP_ALBUMS("top-albums"),
+        HOT_TRACKS("hot-tracks"),
         RECENT_RELEASES("recent-releases");
 
         String urlKey;
@@ -43,14 +44,14 @@ public abstract class MusicLookup extends Lookup {
     }
 
     /**
-     * get a song by it's trackId
+     * get a song by it's id
      *
-     * @param trackId The trackId of the song
+     * @param id The id of the song
      * @return a JSONObject of the song
-     * @throws NoMatchFoundException if no song is found with the passed trackId
+     * @throws NoMatchFoundException if no song is found with the passed id
      */
-    public static JSONObject getSongByTrackId(long trackId) throws NoMatchFoundException {
-        return getById(trackId);
+    public static JSONObject getSongById(long id) throws NoMatchFoundException {
+        return getById(id);
     }
 
     /**
@@ -211,6 +212,57 @@ public abstract class MusicLookup extends Lookup {
      */
     public static JSONObject recentReleases(CountryCode countryCode, int limit) {
         return querySongList(MusicList.RECENT_RELEASES, countryCode, limit);
+    }
+
+    /**
+     * get an album by it's id
+     *
+     * @param id The id of the album
+     * @return a JSONObject of the album
+     * @throws NoMatchFoundException if no album is found with the passed id
+     */
+    public static JSONObject getAlbumById(long id) throws NoMatchFoundException {
+        return getById(id);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} top albums in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the albums
+     */
+    public static JSONObject topAlbums() {
+        return topAlbums(DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) top albums in the default iTunes store
+     *
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the albums
+     */
+    public static JSONObject topAlbums(int limit) {
+        return querySongList(MusicList.TOP_ALBUMS, DEFAULT_COUNTRY, limit);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} top albums in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the albums
+     */
+    public static JSONObject topAlbums(CountryCode countryCode) {
+        return querySongList(MusicList.TOP_ALBUMS, countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) top albums in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject topAlbums(CountryCode countryCode, int limit) {
+        return querySongList(MusicList.TOP_ALBUMS, countryCode, limit);
     }
 
     private static JSONObject querySongList(MusicList list, CountryCode countryCode, int limit) {

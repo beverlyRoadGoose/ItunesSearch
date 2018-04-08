@@ -42,14 +42,14 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a podcast by it's collectionId
+     * get a podcast by it's id
      *
-     * @param collectionId The collectionId of the podcast
+     * @param id The id of the podcast
      * @return a JSONObject of the podcast
-     * @throws NoMatchFoundException if no podcast is found with the passed collectionId
+     * @throws NoMatchFoundException if no podcast is found with the passed id
      */
-    public static JSONObject getPodcastByCollectionId(long collectionId) throws NoMatchFoundException {
-        return getById(collectionId);
+    public static JSONObject getPodcastById(long id) throws NoMatchFoundException {
+        return getById(id);
     }
 
     /**
