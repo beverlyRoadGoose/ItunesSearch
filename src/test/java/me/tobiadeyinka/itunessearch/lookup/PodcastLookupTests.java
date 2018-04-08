@@ -17,6 +17,7 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
+import com.neovisionaries.i18n.CountryCode;
 import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 
 import org.testng.annotations.Test;
@@ -28,17 +29,18 @@ import org.testng.annotations.Test;
  */
 public class PodcastLookupTests extends BaseLookupTest {
 
+    private int limit = 5;
+
     @Test
     public void getPodcastByCollectionId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
-            int limit = 1;
             long podcastID = 1272970334;
             response = PodcastLookup.getPodcastByCollectionId(podcastID);
 
             verifyResponseHasResults();
-            verifyResponseMatchesLimit(limit);
+            verifyResponseMatchesLimit(1);
         } finally { logResponse(); }
     }
 
@@ -67,9 +69,28 @@ public class PodcastLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.topPodcasts(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
 
+    @Test
+    public void getTopPodcastsInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = PodcastLookup.topPodcasts(CountryCode.NG);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPodcastsWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = PodcastLookup.topPodcasts(CountryCode.NG, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
@@ -90,9 +111,7 @@ public class PodcastLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.comedyPodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
@@ -113,9 +132,7 @@ public class PodcastLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.newsAndPoliticsPodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
@@ -136,9 +153,7 @@ public class PodcastLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.societyAndCulturePodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }

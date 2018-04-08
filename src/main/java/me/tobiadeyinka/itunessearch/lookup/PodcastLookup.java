@@ -29,6 +29,18 @@ import com.neovisionaries.i18n.CountryCode;
  */
 public abstract class PodcastLookup extends Lookup {
 
+    private enum PodcastGenre {
+        COMEDY(1303),
+        NEWS_AND_POLITICS(1311),
+        SOCIETY_AND_CULTURE(1324);
+
+        int id;
+
+        PodcastGenre(int id) {
+            this.id = id;
+        }
+    }
+
     /**
      * get a podcast by it's collectionId
      *
@@ -86,8 +98,7 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject comedyPodcasts() {
-        int genreId = 1303;
-        return getPodcastGenre(genreId, DEFAULT_LIMIT);
+        return getPodcastGenre(PodcastGenre.COMEDY, DEFAULT_LIMIT);
     }
 
     /**
@@ -97,8 +108,7 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject comedyPodcasts(int limit) {
-        int genreId = 1303;
-        return getPodcastGenre(genreId, limit);
+        return getPodcastGenre(PodcastGenre.COMEDY, limit);
     }
 
     /**
@@ -107,8 +117,7 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject newsAndPoliticsPodcasts() {
-        int genreId = 1311;
-        return getPodcastGenre(genreId, DEFAULT_LIMIT);
+        return getPodcastGenre(PodcastGenre.NEWS_AND_POLITICS, DEFAULT_LIMIT);
     }
 
     /**
@@ -118,8 +127,7 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject newsAndPoliticsPodcasts(int limit) {
-        int genreId = 1311;
-        return getPodcastGenre(genreId, limit);
+        return getPodcastGenre(PodcastGenre.NEWS_AND_POLITICS, limit);
     }
 
     /**
@@ -128,8 +136,7 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject societyAndCulturePodcasts() {
-        int genreId = 1324;
-        return getPodcastGenre(genreId, DEFAULT_LIMIT);
+        return getPodcastGenre(PodcastGenre.NEWS_AND_POLITICS, DEFAULT_LIMIT);
     }
 
     /**
@@ -139,19 +146,18 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject societyAndCulturePodcasts(int limit) {
-        int genreId = 1324;
-        return getPodcastGenre(genreId, limit);
+        return getPodcastGenre(PodcastGenre.SOCIETY_AND_CULTURE, limit);
     }
 
     /**
      * Get podcasts by their genre id
      *
-     * @param genreId the podcasts genre id
+     * @param genre the podcasts genre
      * @param limit maximum number of returned elements
      * @return a JSONObject containing a list of the matching podcasts
      */
-    private static JSONObject getPodcastGenre(int genreId, int limit) {
-        String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genreId;
+    private static JSONObject getPodcastGenre(PodcastGenre genre, int limit) {
+        String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genre.id;
         return executeQuery(urlString);
     }
 

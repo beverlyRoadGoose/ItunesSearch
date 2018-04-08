@@ -17,6 +17,7 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
+import com.neovisionaries.i18n.CountryCode;
 import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 
 import org.testng.annotations.Test;
@@ -28,17 +29,18 @@ import org.testng.annotations.Test;
  */
 public class MusicLookupTests extends BaseLookupTest {
 
+    private int limit = 5;
+
     @Test
     public void getSongByTrackId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
-            int limit = 1;
             long trackId = 879273573;
             response = MusicLookup.getSongByTrackId(trackId);
 
             verifyResponseHasResults();
-            verifyResponseMatchesLimit(limit);
+            verifyResponseMatchesLimit(1);
         } finally { logResponse(); }
     }
 
@@ -67,11 +69,30 @@ public class MusicLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = MusicLookup.topSongs(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(5);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopSongsInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topSongs(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopSongsWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topSongs(CountryCode.CA, limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
     }
 
@@ -90,9 +111,28 @@ public class MusicLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = MusicLookup.hotTracks(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
 
+    @Test
+    public void getHotTracksInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.hotTracks(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getHotTracksWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.hotTracks(CountryCode.CA, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
@@ -113,9 +153,28 @@ public class MusicLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = MusicLookup.newMusic(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
 
+    @Test
+    public void getNewMusicInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.newMusic(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getNewMusicWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.newMusic(CountryCode.CA, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
@@ -136,9 +195,28 @@ public class MusicLookupTests extends BaseLookupTest {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = MusicLookup.recentReleases(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
 
+    @Test
+    public void getRecentReleasesInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.recentReleases(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getRecentReleasesWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.recentReleases(CountryCode.CA, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
