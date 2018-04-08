@@ -17,6 +17,8 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
+import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
+
 import org.json.JSONObject;
 import com.neovisionaries.i18n.CountryCode;
 
@@ -27,25 +29,36 @@ import com.neovisionaries.i18n.CountryCode;
  */
 public abstract class PodcastLookup extends Lookup {
 
-    private static final int DEFAULT_LIMIT = 100;
-    private static final CountryCode DEFAULT_COUNTRY = CountryCode.US;
+    private enum PodcastGenre {
+        COMEDY(1303),
+        NEWS_AND_POLITICS(1311),
+        SOCIETY_AND_CULTURE(1324);
+
+        int id;
+
+        PodcastGenre(int id) {
+            this.id = id;
+        }
+    }
 
     /**
-     * get the top 100 podcasts in the default iTunes store
+     * get a podcast by it's id
+     *
+     * @param id The id of the podcast
+     * @return a JSONObject of the podcast
+     * @throws NoMatchFoundException if no podcast is found with the passed id
+     */
+    public static JSONObject getPodcastById(long id) throws NoMatchFoundException {
+        return getById(id);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} podcasts in the default iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts() {
         return topPodcasts(DEFAULT_LIMIT);
-    }
-
-    /**
-     * get the top 100 podcasts in the default iTunes store
-     *
-     * @return a JSONObject containing a list of the top podcasts
-     */
-    public static JSONObject topPodcasts(CountryCode countryCode) {
-        return queryTopPodcasts(countryCode, DEFAULT_LIMIT);
     }
 
     /**
@@ -59,9 +72,20 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get the top (limit) podcasts in the default iTunes store
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} podcasts in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the top podcasts
+     */
+    public static JSONObject topPodcasts(CountryCode countryCode) {
+        return queryTopPodcasts(countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) podcasts in the specified iTunes store
      *
      * @param limit the maximum number of podcasts to return
+     * @param countryCode country code of the itunes store to search
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts(CountryCode countryCode, int limit) {
@@ -69,13 +93,12 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of 100 comedy podcasts in the iTunes store
+     * get a list of {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} comedy podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject comedyPodcasts() {
-        int genreId = 1303;
-        return getPodcastGenre(genreId, DEFAULT_LIMIT);
+        return getPodcastGenre(PodcastGenre.COMEDY, DEFAULT_LIMIT);
     }
 
     /**
@@ -85,18 +108,16 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject comedyPodcasts(int limit) {
-        int genreId = 1303;
-        return getPodcastGenre(genreId, limit);
+        return getPodcastGenre(PodcastGenre.COMEDY, limit);
     }
 
     /**
-     * get a list of 100 news &amp; politics podcasts in the iTunes store
+     * get a list of {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} news &amp; politics podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject newsAndPoliticsPodcasts() {
-        int genreId = 1311;
-        return getPodcastGenre(genreId, DEFAULT_LIMIT);
+        return getPodcastGenre(PodcastGenre.NEWS_AND_POLITICS, DEFAULT_LIMIT);
     }
 
     /**
@@ -106,18 +127,16 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject newsAndPoliticsPodcasts(int limit) {
-        int genreId = 1311;
-        return getPodcastGenre(genreId, limit);
+        return getPodcastGenre(PodcastGenre.NEWS_AND_POLITICS, limit);
     }
 
     /**
-     * get a list of 100 society &amp; culture podcasts in the iTunes store
+     * get a list of {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} society &amp; culture podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject societyAndCulturePodcasts() {
-        int genreId = 1324;
-        return getPodcastGenre(genreId, DEFAULT_LIMIT);
+        return getPodcastGenre(PodcastGenre.NEWS_AND_POLITICS, DEFAULT_LIMIT);
     }
 
     /**
@@ -127,19 +146,18 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject societyAndCulturePodcasts(int limit) {
-        int genreId = 1324;
-        return getPodcastGenre(genreId, limit);
+        return getPodcastGenre(PodcastGenre.SOCIETY_AND_CULTURE, limit);
     }
 
     /**
      * Get podcasts by their genre id
      *
-     * @param genreId the podcasts genre id
+     * @param genre the podcasts genre
      * @param limit maximum number of returned elements
      * @return a JSONObject containing a list of the matching podcasts
      */
-    private static JSONObject getPodcastGenre(int genreId, int limit) {
-        String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genreId;
+    private static JSONObject getPodcastGenre(PodcastGenre genre, int limit) {
+        String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genre.id;
         return executeQuery(urlString);
     }
 

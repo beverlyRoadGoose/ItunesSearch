@@ -22,7 +22,7 @@ package me.tobiadeyinka.itunessearch.exceptions;
  *
  * Created by Tobi Adeyinka on 2017. 10. 16..
  */
-public class ItunesSearchException extends Exception {
+public class ItunesSearchException extends RuntimeException {
 
     ItunesSearchException(String message) {
         super(message);

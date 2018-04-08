@@ -20,7 +20,6 @@ package me.tobiadeyinka.itunessearch.search;
 import com.neovisionaries.i18n.CountryCode;
 
 import me.tobiadeyinka.itunessearch.entities.*;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.MissingRequiredParameterException;
 
 import org.testng.annotations.Test;
@@ -35,25 +34,23 @@ public class MovieSearchTests extends BaseSearchTest {
     private String searchTerm = "the imitation game";
 
     @Test(expectedExceptions = MissingRequiredParameterException.class)
-    public void searchForMovieWithoutSearchTerm() throws ItunesSearchException {
+    public void searchForMovieWithoutSearchTerm() {
         new MovieSearch().execute();
     }
 
     @Test
-    public void searchForMovieWithDefaultParameters() throws ItunesSearchException {
+    public void searchForMovieWithDefaultParameters() {
         nullifySearchAndResponse();
 
         try {
             search = new MovieSearch().with(searchTerm);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieUsingDirectorAttribute() throws ItunesSearchException {
+    public void searchForMovieUsingDirectorAttribute() {
         nullifySearchAndResponse();
 
         try {
@@ -63,13 +60,11 @@ public class MovieSearchTests extends BaseSearchTest {
                     .inAttribute(MovieAttribute.DIRECTOR);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieInSpecificStore() throws ItunesSearchException {
+    public void searchForMovieInSpecificStore() {
         nullifySearchAndResponse();
 
         try {
@@ -78,13 +73,11 @@ public class MovieSearchTests extends BaseSearchTest {
                     .inCountry(CountryCode.CA);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieWithLimit() throws ItunesSearchException {
+    public void searchForMovieWithLimit() {
         nullifySearchAndResponse();
 
         try {
@@ -102,13 +95,11 @@ public class MovieSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieWithApiVersion1() throws ItunesSearchException {
+    public void searchForMovieWithApiVersion1() {
         nullifySearchAndResponse();
 
         try {
@@ -117,13 +108,11 @@ public class MovieSearchTests extends BaseSearchTest {
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieWithJapaneseResponse() throws ItunesSearchException {
+    public void searchForMovieWithJapaneseResponse() {
         nullifySearchAndResponse();
 
         try {
@@ -132,13 +121,11 @@ public class MovieSearchTests extends BaseSearchTest {
                     .withReturnLanguage(ReturnLanguage.JAPANESE);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieWithArtistReturnType() throws ItunesSearchException {
+    public void searchForMovieWithArtistReturnType() {
         nullifySearchAndResponse();
 
         try {
@@ -147,13 +134,11 @@ public class MovieSearchTests extends BaseSearchTest {
                     .andReturn(MovieSearchReturnType.MOVIE_ARTIST);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void searchForMovieWithoutExplicitContent() throws ItunesSearchException {
+    public void searchForMovieWithoutExplicitContent() {
         nullifySearchAndResponse();
 
         try {
@@ -162,13 +147,11 @@ public class MovieSearchTests extends BaseSearchTest {
                     .allowExplicit(false);
             response = search.execute();
             verifyResponseHasResults();
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
     @Test
-    public void comprehensiveMovieSearch() throws ItunesSearchException {
+    public void comprehensiveMovieSearch() {
         nullifySearchAndResponse();
 
         try {
@@ -185,9 +168,7 @@ public class MovieSearchTests extends BaseSearchTest {
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logUrlAndResponse();
-        }
+        } finally { logUrlAndResponse(); }
     }
 
 }

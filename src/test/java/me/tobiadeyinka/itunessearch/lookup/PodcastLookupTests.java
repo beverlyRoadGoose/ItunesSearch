@@ -17,62 +17,41 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
-import me.tobiadeyinka.itunessearch.TestUtils;
-
+import com.neovisionaries.i18n.CountryCode;
 import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterClass;
-
-import java.util.logging.Logger;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests for all podcast look up methods
  *
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public class PodcastLookupTests {
+public class PodcastLookupTests extends BaseLookupTest {
 
-    private Logger logger = Logger.getLogger(PodcastLookupTests.class.getName());
-
-    private JSONObject response = null;
-
-    private static final String TEST_LOG_TAG = "test: ";
-    private static final String RESPONSE_LOG_TAG = "response: ";
+    private int limit = 5;
 
     @Test
-    public void getPodcastByID() throws NoMatchFoundException {
+    public void getPodcastById() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
-            int limit = 1;
             long podcastID = 1272970334;
-            response = PodcastLookup.getById(podcastID);
+            response = PodcastLookup.getPodcastById(podcastID);
 
             verifyResponseHasResults();
-            verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
-
+            verifyResponseMatchesLimit(1);
+        } finally { logResponse(); }
     }
 
     @Test(expectedExceptions = NoMatchFoundException.class)
-    public void getPodcastByNonExistingID() throws NoMatchFoundException {
+    public void getPodcastByNonExistingCollectionId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
             long podcastID = 1;
-            response = PodcastLookup.getById(podcastID);
-        } finally {
-            logResponse();
-        }
-
+            response = PodcastLookup.getPodcastById(podcastID);
+        } finally { logResponse(); }
     }
 
     @Test
@@ -82,9 +61,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.topPodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -92,14 +69,31 @@ public class PodcastLookupTests {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.topPodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPodcastsInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = PodcastLookup.topPodcasts(CountryCode.NG);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPodcastsWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = PodcastLookup.topPodcasts(CountryCode.NG, limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
     }
 
     @Test
@@ -109,9 +103,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.comedyPodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -119,14 +111,10 @@ public class PodcastLookupTests {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.comedyPodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -136,9 +124,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.newsAndPoliticsPodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -146,14 +132,10 @@ public class PodcastLookupTests {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.newsAndPoliticsPodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -163,9 +145,7 @@ public class PodcastLookupTests {
         try {
             response = PodcastLookup.societyAndCulturePodcasts();
             verifyResponseHasResults();
-        } finally {
-            logResponse();
-        }
+        } finally { logResponse(); }
     }
 
     @Test
@@ -173,59 +153,10 @@ public class PodcastLookupTests {
         nullifyResponse();
 
         try {
-            int limit = 5;
             response = PodcastLookup.societyAndCulturePodcasts(limit);
-
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
-        } finally {
-            logResponse();
-        }
-    }
-
-    private void verifyResponseHasResults() {
-        assertThat(response.has("results"));
-    }
-
-    private void verifyResponseMatchesLimit(int limit) {
-        /*
-         * depending on the query, the results are sometimes buried under
-         * a feed object. In that case, set the feed object as the response
-         * object.
-         */
-        if (response.has("feed")) response = response.getJSONObject("feed");
-
-        JSONArray matchingPodcastsArray = response.getJSONArray("results");
-        assertThat(matchingPodcastsArray.length())
-                .isGreaterThan(0)
-                .isLessThan(limit + 1);
-    }
-
-    private void logResponse() {
-        String callingMethodName = Thread.currentThread().getStackTrace()[2].getMethodName();
-
-        if (response != null) {
-            logger.info("\n" + TEST_LOG_TAG + callingMethodName + "\n"
-                    + RESPONSE_LOG_TAG + response.toString() + "\n\n");
-        }
-    }
-
-    /*
-     * response object is nullified at the start of
-     * each tests to prevent the values from a previous test from
-     * being used when the current test fails.
-     */
-    private void nullifyResponse() {
-        response = null;
-    }
-
-    /*
-     * The itunes api limits call per minute, so sleep for a minute before the next
-     * set of tests start, to avoid failures.
-     */
-    @AfterClass
-    private void sleepForAMinute() {
-        TestUtils.sleepForAMinute();
+        } finally { logResponse(); }
     }
 
 }

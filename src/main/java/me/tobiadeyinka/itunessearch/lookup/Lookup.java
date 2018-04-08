@@ -17,8 +17,9 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
-import me.tobiadeyinka.itunessearch.networking.NetworkUtils;
+import com.neovisionaries.i18n.CountryCode;
 
+import me.tobiadeyinka.itunessearch.networking.NetworkUtils;
 import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 
@@ -36,6 +37,8 @@ import java.net.MalformedURLException;
 abstract class Lookup {
 
     protected static final String BASE_LOOKUP_URL = "https://itunes.apple.com/lookup?";
+    protected static final int DEFAULT_LIMIT = 100;
+    protected static final CountryCode DEFAULT_COUNTRY = CountryCode.US;
 
     /**
      * retrieve a media item by its id
@@ -44,13 +47,13 @@ abstract class Lookup {
      * @return a JSONObject representation of the item
      * @throws NoMatchFoundException if no matching item is found
      */
-    public static JSONObject getById(long id) throws NoMatchFoundException {
+    protected static JSONObject getById(long id) throws NoMatchFoundException {
         String urlString = BASE_LOOKUP_URL + "id=" + id;
 
         JSONObject response = executeQuery(urlString);
-        JSONArray matchingPodcastArray = response.getJSONArray("results");
+        JSONArray responseJSONArray = response.getJSONArray("results");
 
-        if (matchingPodcastArray.length() == 0)
+        if (responseJSONArray.length() == 0)
             throw new NoMatchFoundException("No item matches the given id");
 
         return response;
