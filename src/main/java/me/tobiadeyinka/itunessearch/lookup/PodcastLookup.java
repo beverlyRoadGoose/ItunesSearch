@@ -33,6 +33,8 @@ public abstract class PodcastLookup extends Lookup {
      * get a podcast by it's collectionId
      *
      * @param collectionId The collectionId of the podcast
+     * @return a JSONObject of the podcast
+     * @throws NoMatchFoundException if no podcast is found with the passed collectionId
      */
     public static JSONObject getPodcastByCollectionId(long collectionId) throws NoMatchFoundException {
         return getById(collectionId);
@@ -60,6 +62,7 @@ public abstract class PodcastLookup extends Lookup {
     /**
      * get the top {@value #DEFAULT_LIMIT} podcasts in the specified iTunes store
      *
+     * @param countryCode country code of the itunes store to search
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts(CountryCode countryCode) {
@@ -70,6 +73,7 @@ public abstract class PodcastLookup extends Lookup {
      * get the top (limit) podcasts in the specified iTunes store
      *
      * @param limit the maximum number of podcasts to return
+     * @param countryCode country code of the itunes store to search
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts(CountryCode countryCode, int limit) {

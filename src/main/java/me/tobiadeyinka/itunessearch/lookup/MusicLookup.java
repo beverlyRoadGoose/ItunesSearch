@@ -33,6 +33,8 @@ public abstract class MusicLookup extends Lookup {
      * get a song by it's trackId
      *
      * @param trackId The trackId of the song
+     * @return a JSONObject of the song
+     * @throws NoMatchFoundException if no song is found with the passed trackId
      */
     public static JSONObject getSongByTrackId(long trackId) throws NoMatchFoundException {
         return getById(trackId);
@@ -60,6 +62,7 @@ public abstract class MusicLookup extends Lookup {
     /**
      * get the top {@value #DEFAULT_LIMIT} songs in the specified iTunes store
      *
+     * @param countryCode country code of the itunes store to search
      * @return a JSONObject containing a list of the top songs
      */
     public static JSONObject topSongs(CountryCode countryCode) {
@@ -69,6 +72,7 @@ public abstract class MusicLookup extends Lookup {
     /**
      * get the top (limit) songs in the specified iTunes store
      *
+     * @param countryCode country code of the itunes store to search
      * @param limit the maximum number of songs to return
      * @return a JSONObject containing a list of the top songs
      */
