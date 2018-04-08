@@ -41,7 +41,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get the top {@value #DEFAULT_LIMIT} podcasts in the default iTunes store
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} podcasts in the default iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -60,7 +60,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get the top {@value #DEFAULT_LIMIT} podcasts in the specified iTunes store
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} podcasts in the specified iTunes store
      *
      * @param countryCode country code of the itunes store to search
      * @return a JSONObject containing a list of the top podcasts
@@ -81,7 +81,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of {@value #DEFAULT_LIMIT} comedy podcasts in the iTunes store
+     * get a list of {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} comedy podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -102,7 +102,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of {@value #DEFAULT_LIMIT} news &amp; politics podcasts in the iTunes store
+     * get a list of {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} news &amp; politics podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -123,7 +123,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of {@value #DEFAULT_LIMIT} society &amp; culture podcasts in the iTunes store
+     * get a list of {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} society &amp; culture podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */

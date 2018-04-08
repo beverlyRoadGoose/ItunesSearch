@@ -41,7 +41,7 @@ public abstract class MusicLookup extends Lookup {
     }
 
     /**
-     * get the top {@value #DEFAULT_LIMIT} songs in the default iTunes store
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} songs in the default iTunes store
      *
      * @return a JSONObject containing a list of the top songs
      */
@@ -60,7 +60,7 @@ public abstract class MusicLookup extends Lookup {
     }
 
     /**
-     * get the top {@value #DEFAULT_LIMIT} songs in the specified iTunes store
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} songs in the specified iTunes store
      *
      * @param countryCode country code of the itunes store to search
      * @return a JSONObject containing a list of the top songs
