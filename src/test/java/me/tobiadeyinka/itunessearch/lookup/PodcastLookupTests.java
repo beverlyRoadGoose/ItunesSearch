@@ -32,12 +32,12 @@ public class PodcastLookupTests extends BaseLookupTest {
     private int limit = 5;
 
     @Test
-    public void getPodcastByCollectionId() throws NoMatchFoundException {
+    public void getPodcastById() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
             long podcastID = 1272970334;
-            response = PodcastLookup.getPodcastByCollectionId(podcastID);
+            response = PodcastLookup.getPodcastById(podcastID);
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(1);
@@ -50,7 +50,7 @@ public class PodcastLookupTests extends BaseLookupTest {
 
         try {
             long podcastID = 1;
-            response = PodcastLookup.getPodcastByCollectionId(podcastID);
+            response = PodcastLookup.getPodcastById(podcastID);
         } finally { logResponse(); }
     }
 
