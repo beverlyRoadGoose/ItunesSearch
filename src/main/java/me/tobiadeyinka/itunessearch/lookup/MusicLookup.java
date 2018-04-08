@@ -31,7 +31,9 @@ public abstract class MusicLookup extends Lookup {
 
     private enum MusicList {
         TOP_SONGS("top-songs"),
-        HOT_TRACKS("hot-tracks");
+        HOT_TRACKS("hot-tracks"),
+        NEW_MUSIC("new-music"),
+        RECENT_RELEASES("recent-releases");
 
         String urlKey;
 
@@ -129,6 +131,46 @@ public abstract class MusicLookup extends Lookup {
      */
     public static JSONObject hotTracks(CountryCode countryCode, int limit) {
         return querySongList(MusicList.HOT_TRACKS, countryCode, limit);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} new songs in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject newMusic() {
+        return newMusic(DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) new songs in the default iTunes store
+     *
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject newMusic(int limit) {
+        return querySongList(MusicList.NEW_MUSIC, DEFAULT_COUNTRY, limit);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} new songs in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject newMusic(CountryCode countryCode) {
+        return querySongList(MusicList.NEW_MUSIC, countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) new songs in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @param limit the maximum number of songs to return
+     * @return a JSONObject containing a list of the songs
+     */
+    public static JSONObject newMusic(CountryCode countryCode, int limit) {
+        return querySongList(MusicList.NEW_MUSIC, countryCode, limit);
     }
 
     private static JSONObject querySongList(MusicList list, CountryCode countryCode, int limit) {

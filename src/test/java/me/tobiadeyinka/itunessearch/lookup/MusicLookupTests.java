@@ -92,6 +92,30 @@ public class MusicLookupTests extends BaseLookupTest {
         try {
             int limit = 5;
             response = MusicLookup.hotTracks(limit);
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getNewMusic() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.newMusic();
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getNewMusicWithLimit() {
+        nullifyResponse();
+
+        try {
+            int limit = 5;
+            response = MusicLookup.newMusic(limit);
+
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
