@@ -26,16 +26,16 @@ import org.testng.annotations.Test;
  *
  * Created by Tobi Adeyinka on 2017. 10. 18..
  */
-public class PodcastLookupTests extends BaseLookupTest{
+public class PodcastLookupTests extends BaseLookupTest {
 
     @Test
-    public void getPodcastByID() throws NoMatchFoundException {
+    public void getPodcastByCollectionId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
             int limit = 1;
             long podcastID = 1272970334;
-            response = PodcastLookup.getById(podcastID);
+            response = PodcastLookup.getPodcastByCollectionId(podcastID);
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
@@ -43,12 +43,12 @@ public class PodcastLookupTests extends BaseLookupTest{
     }
 
     @Test(expectedExceptions = NoMatchFoundException.class)
-    public void getPodcastByNonExistingID() throws NoMatchFoundException {
+    public void getPodcastByNonExistingCollectionId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
             long podcastID = 1;
-            response = PodcastLookup.getById(podcastID);
+            response = PodcastLookup.getPodcastByCollectionId(podcastID);
         } finally { logResponse(); }
     }
 

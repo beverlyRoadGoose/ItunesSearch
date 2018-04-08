@@ -47,7 +47,7 @@ abstract class Lookup {
      * @return a JSONObject representation of the item
      * @throws NoMatchFoundException if no matching item is found
      */
-    public static JSONObject getById(long id) throws NoMatchFoundException {
+    protected static JSONObject getById(long id) throws NoMatchFoundException {
         String urlString = BASE_LOOKUP_URL + "id=" + id;
 
         JSONObject response = executeQuery(urlString);

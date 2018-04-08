@@ -17,6 +17,8 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
+import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
+
 import org.json.JSONObject;
 import com.neovisionaries.i18n.CountryCode;
 
@@ -28,21 +30,21 @@ import com.neovisionaries.i18n.CountryCode;
 public abstract class PodcastLookup extends Lookup {
 
     /**
-     * get the top 100 podcasts in the default iTunes store
+     * get a podcast by it's collectionId
+     *
+     * @param collectionId The collectionId of the podcast
+     */
+    public static JSONObject getPodcastByCollectionId(long collectionId) throws NoMatchFoundException {
+        return getById(collectionId);
+    }
+
+    /**
+     * get the top {@value #DEFAULT_LIMIT} podcasts in the default iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
     public static JSONObject topPodcasts() {
         return topPodcasts(DEFAULT_LIMIT);
-    }
-
-    /**
-     * get the top 100 podcasts in the default iTunes store
-     *
-     * @return a JSONObject containing a list of the top podcasts
-     */
-    public static JSONObject topPodcasts(CountryCode countryCode) {
-        return queryTopPodcasts(countryCode, DEFAULT_LIMIT);
     }
 
     /**
@@ -56,7 +58,16 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get the top (limit) podcasts in the default iTunes store
+     * get the top {@value #DEFAULT_LIMIT} podcasts in the specified iTunes store
+     *
+     * @return a JSONObject containing a list of the top podcasts
+     */
+    public static JSONObject topPodcasts(CountryCode countryCode) {
+        return queryTopPodcasts(countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) podcasts in the specified iTunes store
      *
      * @param limit the maximum number of podcasts to return
      * @return a JSONObject containing a list of the top podcasts
@@ -66,7 +77,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of 100 comedy podcasts in the iTunes store
+     * get a list of {@value #DEFAULT_LIMIT} comedy podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -87,7 +98,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of 100 news &amp; politics podcasts in the iTunes store
+     * get a list of {@value #DEFAULT_LIMIT} news &amp; politics podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */
@@ -108,7 +119,7 @@ public abstract class PodcastLookup extends Lookup {
     }
 
     /**
-     * get a list of 100 society &amp; culture podcasts in the iTunes store
+     * get a list of {@value #DEFAULT_LIMIT} society &amp; culture podcasts in the iTunes store
      *
      * @return a JSONObject containing a list of the top podcasts
      */

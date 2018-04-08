@@ -29,16 +29,49 @@ import org.testng.annotations.Test;
 public class MusicLookupTests extends BaseLookupTest {
 
     @Test
-    public void getSongByID() throws NoMatchFoundException {
+    public void getSongByTrackId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
             int limit = 1;
-            long songId = 879273573;
-            response = MusicLookup.getById(songId);
+            long trackId = 879273573;
+            response = MusicLookup.getSongByTrackId(trackId);
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test(expectedExceptions = NoMatchFoundException.class)
+    public void getSongByNonExistingTrackId() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            long songID = 1;
+            response = MusicLookup.getById(songID);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopSongs() {
+        nullifyResponse();
+
+        try {
+            response = MusicLookup.topSongs();
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopSongsWithLimit() {
+        nullifyResponse();
+
+        try {
+            int limit = 5;
+            response = MusicLookup.topSongs(limit);
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(5);
         } finally { logResponse(); }
     }
 

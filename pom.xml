@@ -170,7 +170,7 @@
         <dependency>
             <groupId>com.neovisionaries</groupId>
             <artifactId>nv-i18n</artifactId>
-            <version>1.4</version>
+            <version>1.22</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
