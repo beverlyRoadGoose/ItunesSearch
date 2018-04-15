@@ -2,7 +2,7 @@
 
 - Book lookup functionality
 
-##### v1.3.0 (04.18.2018)
+##### v1.3.0 (04.08.2018)
 
 - Music lookup functionality
 
