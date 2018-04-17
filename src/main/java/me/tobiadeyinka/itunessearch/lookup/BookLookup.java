@@ -86,6 +86,46 @@ public class BookLookup extends Lookup {
         return queryBookList(BookList.TOP_FREE, countryCode, limit);
     }
 
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} paid books in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the top paid books
+     */
+    public static JSONObject topPaid() {
+        return topPaid(DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) paid books in the default iTunes store
+     *
+     * @param limit the maximum number of books to return
+     * @return a JSONObject containing a list of the top paid books
+     */
+    public static JSONObject topPaid(int limit) {
+        return queryBookList(BookList.TOP_PAID, DEFAULT_COUNTRY, limit);
+    }
+
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} paid books in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the top paid books
+     */
+    public static JSONObject topPaid(CountryCode countryCode) {
+        return queryBookList(BookList.TOP_PAID, countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) paid books in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @param limit the maximum number of books to return
+     * @return a JSONObject containing a list of the top paid books
+     */
+    public static JSONObject topPaid(CountryCode countryCode, int limit) {
+        return queryBookList(BookList.TOP_PAID, countryCode, limit);
+    }
+
     private static JSONObject queryBookList(BookLookup.BookList list, CountryCode countryCode, int limit) {
         String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/books/" + list.urlKey +
                 "/all/" + limit + "/explicit.json";

@@ -17,5 +17,123 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
-public class BookLookupTests {
+import com.neovisionaries.i18n.CountryCode;
+import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
+
+import org.testng.annotations.Test;
+
+/**
+ * Tests for all book lookup methods
+ *
+ * Created by Tobi Adeyinka on 2018. 04. 17..
+ */
+public class BookLookupTests extends BaseLookupTest {
+
+    @Test
+    public void getBookById() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            long bookId = 1267086009;
+            response = BookLookup.getBookById(bookId);
+
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(1);
+        } finally { logResponse(); }
+    }
+
+    @Test(expectedExceptions = NoMatchFoundException.class)
+    public void getBookByNonExistingTrackId() throws NoMatchFoundException {
+        nullifyResponse();
+
+        try {
+            long bookId = 1;
+            response = BookLookup.getBookById(bookId);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopFreeBooks() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topFree(); 
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopFreeBooksWithLimit() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topFree(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopFreeBooksInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topFree(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopFreeBooksWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topFree(CountryCode.CA, limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPaidBooks() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topPaid();
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPaidBooksWithLimit() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topPaid(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPaidBooksInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topPaid(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPaidBooksWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topPaid(CountryCode.CA, limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
 }

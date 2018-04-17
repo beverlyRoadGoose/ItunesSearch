@@ -3,6 +3,7 @@
 
     <test name="Lookup Tests">
         <classes>
+            <class name="me.tobiadeyinka.itunessearch.lookup.BookLookupTests" />
             <class name="me.tobiadeyinka.itunessearch.lookup.MusicLookupTests" />
             <class name="me.tobiadeyinka.itunessearch.lookup.PodcastLookupTests" />
         </classes>
