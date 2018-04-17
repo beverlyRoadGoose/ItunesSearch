@@ -23,19 +23,19 @@ import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
 import org.testng.annotations.Test;
 
 /**
- * Tests for all podcast look up methods
+ * Tests for all book lookup methods
  *
- * Created by Tobi Adeyinka on 2017. 10. 18..
+ * Created by Tobi Adeyinka on 2018. 04. 17..
  */
-public class PodcastLookupTests extends BaseLookupTest {
+public class BookLookupTests extends BaseLookupTest {
 
     @Test
-    public void getPodcastById() throws NoMatchFoundException {
+    public void getBookById() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
-            long podcastID = 1272970334;
-            response = PodcastLookup.getPodcastById(podcastID);
+            long bookId = 1267086009;
+            response = BookLookup.getBookById(bookId);
 
             verifyResponseHasResults();
             verifyResponseMatchesLimit(1);
@@ -43,115 +43,94 @@ public class PodcastLookupTests extends BaseLookupTest {
     }
 
     @Test(expectedExceptions = NoMatchFoundException.class)
-    public void getPodcastByNonExistingCollectionId() throws NoMatchFoundException {
+    public void getBookByNonExistingTrackId() throws NoMatchFoundException {
         nullifyResponse();
 
         try {
-            long podcastID = 1;
-            response = PodcastLookup.getPodcastById(podcastID);
+            long bookId = 1;
+            response = BookLookup.getBookById(bookId);
         } finally { logResponse(); }
     }
 
     @Test
-    public void getTopPodcasts() {
+    public void getTopFreeBooks() {
         nullifyResponse();
 
         try {
-            response = PodcastLookup.topPodcasts();
+            response = BookLookup.topFree(); 
             verifyResponseHasResults();
         } finally { logResponse(); }
     }
 
     @Test
-    public void getTopPodcastsWithLimit() {
+    public void getTopFreeBooksWithLimit() {
         nullifyResponse();
 
         try {
-            response = PodcastLookup.topPodcasts(limit);
-            verifyResponseHasResults();
-            verifyResponseMatchesLimit(limit);
-        } finally { logResponse(); }
-    }
-
-    @Test
-    public void getTopPodcastsInSpecificCountry() {
-        nullifyResponse();
-
-        try {
-            response = PodcastLookup.topPodcasts(CountryCode.NG);
-            verifyResponseHasResults();
-        } finally { logResponse(); }
-    }
-
-    @Test
-    public void getTopPodcastsWithLimitInSpecificCountry() {
-        nullifyResponse();
-
-        try {
-            response = PodcastLookup.topPodcasts(CountryCode.NG, limit);
+            response = BookLookup.topFree(limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
     }
 
     @Test
-    public void getComedyPodcasts() {
+    public void getTopFreeBooksInSpecificCountry() {
         nullifyResponse();
 
         try {
-            response = PodcastLookup.comedyPodcasts();
+            response = BookLookup.topFree(CountryCode.CA);
             verifyResponseHasResults();
         } finally { logResponse(); }
     }
 
     @Test
-    public void getComedyPodcastsWithLimit() {
+    public void getTopFreeBooksWithLimitInSpecificCountry() {
         nullifyResponse();
 
         try {
-            response = PodcastLookup.comedyPodcasts(limit);
-            verifyResponseHasResults();
-            verifyResponseMatchesLimit(limit);
-        } finally { logResponse(); }
-    }
-
-    @Test
-    public void getNewsAndPoliticsPodcasts() {
-        nullifyResponse();
-
-        try {
-            response = PodcastLookup.newsAndPoliticsPodcasts();
-            verifyResponseHasResults();
-        } finally { logResponse(); }
-    }
-
-    @Test
-    public void getNewsAndPoliticsPodcastsWithLimit() {
-        nullifyResponse();
-
-        try {
-            response = PodcastLookup.newsAndPoliticsPodcasts(limit);
+            response = BookLookup.topFree(CountryCode.CA, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
     }
 
     @Test
-    public void getSocietyAndCulturePodcasts() {
+    public void getTopPaidBooks() {
         nullifyResponse();
 
         try {
-            response = PodcastLookup.societyAndCulturePodcasts();
+            response = BookLookup.topPaid();
             verifyResponseHasResults();
         } finally { logResponse(); }
     }
 
     @Test
-    public void getSocietyAndCulturePodcastsWithLimit() {
+    public void getTopPaidBooksWithLimit() {
         nullifyResponse();
 
         try {
-            response = PodcastLookup.societyAndCulturePodcasts(limit);
+            response = BookLookup.topPaid(limit);
+            verifyResponseHasResults();
+            verifyResponseMatchesLimit(limit);
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPaidBooksInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topPaid(CountryCode.CA);
+            verifyResponseHasResults();
+        } finally { logResponse(); }
+    }
+
+    @Test
+    public void getTopPaidBooksWithLimitInSpecificCountry() {
+        nullifyResponse();
+
+        try {
+            response = BookLookup.topPaid(CountryCode.CA, limit);
             verifyResponseHasResults();
             verifyResponseMatchesLimit(limit);
         } finally { logResponse(); }
