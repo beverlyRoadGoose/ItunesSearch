@@ -1,4 +1,4 @@
-##### v1.4.0 (TBD)
+##### v1.4.0 (04.18.2018)
 
 - Book lookup functionality
 
