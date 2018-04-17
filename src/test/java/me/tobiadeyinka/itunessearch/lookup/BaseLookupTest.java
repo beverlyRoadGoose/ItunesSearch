@@ -36,7 +36,9 @@ public class BaseLookupTest {
 
     private Logger logger = Logger.getLogger(BaseLookupTest.class.getName());
 
+    protected int limit = 5;
     protected JSONObject response = null;
+
     protected static final String TEST_LOG_TAG = "test: ";
     protected static final String RESPONSE_LOG_TAG = "response: ";
 

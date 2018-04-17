@@ -29,8 +29,6 @@ import org.testng.annotations.Test;
  */
 public class PodcastLookupTests extends BaseLookupTest {
 
-    private int limit = 5;
-
     @Test
     public void getPodcastById() throws NoMatchFoundException {
         nullifyResponse();
