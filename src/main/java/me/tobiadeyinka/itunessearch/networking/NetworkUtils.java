@@ -17,7 +17,6 @@
 
 package me.tobiadeyinka.itunessearch.networking;
 
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 import me.tobiadeyinka.itunessearch.exceptions.NetworkCommunicationException;
 
 import org.json.JSONObject;

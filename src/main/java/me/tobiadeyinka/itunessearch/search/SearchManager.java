@@ -18,7 +18,6 @@
 package me.tobiadeyinka.itunessearch.search;
 
 import me.tobiadeyinka.itunessearch.networking.NetworkUtils;
-import me.tobiadeyinka.itunessearch.exceptions.ItunesSearchException;
 
 import java.net.URL;
 
