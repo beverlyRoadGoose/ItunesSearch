@@ -17,9 +17,10 @@
 
 package me.tobiadeyinka.itunessearch.lookup;
 
-import org.json.JSONObject;
-
 import me.tobiadeyinka.itunessearch.exceptions.NoMatchFoundException;
+
+import org.json.JSONObject;
+import com.neovisionaries.i18n.CountryCode;
 
 /**
  * This class manages looking up movies.
@@ -38,12 +39,40 @@ public class MovieLookup extends Lookup {
         }
     }
 
+    /**
+     * get a movie by it's id
+     *
+     * @param id The id of the movie
+     * @return a JSONObject of the movie
+     * @throws NoMatchFoundException if no movie is found with the passed id
+     */
     public static JSONObject getMoviebyId(long id) throws NoMatchFoundException {
         return getById(id);
     }
 
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} movies in the default iTunes store
+     *
+     * @return a JSONObject containing a list of the top movies
+     */
     public static JSONObject topMovies() {
-        return null;
+        return topMovies(DEFAULT_LIMIT);
     }
-    
+
+    /**
+     * get the top (limit) movies in the default iTunes store
+     *
+     * @param limit the maximum number of movies to return
+     * @return a JSONObject containing a list of the top movies
+     */
+    public static JSONObject topMovies(int limit) {
+        return queryMovieList(MovieList.TOP_MOVIES, DEFAULT_COUNTRY, limit);
+    }
+
+    private static JSONObject queryMovieList(MovieList list, CountryCode countryCode, int limit) {
+        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/movies/" +
+                list.urlKey + "/all/" + limit + "/explicit.json";
+        return executeQuery(urlString);
+    }
+
 }
