@@ -46,7 +46,7 @@ public class MovieLookup extends Lookup {
      * @return a JSONObject of the movie
      * @throws NoMatchFoundException if no movie is found with the passed id
      */
-    public static JSONObject getMoviebyId(long id) throws NoMatchFoundException {
+    public static JSONObject getMovieById(long id) throws NoMatchFoundException {
         return getById(id);
     }
 
