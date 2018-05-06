@@ -12,20 +12,16 @@ This is a Java wrapper for the [iTunes Search API](https://affiliate.itunes.appl
 
 **Gradle**
 ```Gradle
-dependencies {
-    compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.5.0-SNAPSHOT'
-}
+compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.5.0'
 ```
 
 **Maven**
 ```xml
-<dependencies>
-  <dependency>
+<dependency>
     <groupId>me.tobiadeyinka</groupId>
     <artifactId>iTunesSearch</artifactId>
-    <version>1.5.0-SNAPSHOT</version>
-  </dependency>
-</dependencies>
+    <version>1.5.0</version>
+</dependency>
 ```
       
 **Making calls to the API**
