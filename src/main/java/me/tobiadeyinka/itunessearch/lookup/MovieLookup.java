@@ -69,6 +69,27 @@ public class MovieLookup extends Lookup {
         return queryMovieList(MovieList.TOP_MOVIES, DEFAULT_COUNTRY, limit);
     }
 
+    /**
+     * get the top {@value me.tobiadeyinka.itunessearch.lookup.Lookup#DEFAULT_LIMIT} movies in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @return a JSONObject containing a list of the top movies
+     */
+    public static JSONObject topMovies(CountryCode countryCode) {
+        return queryMovieList(MovieList.TOP_MOVIES, countryCode, DEFAULT_LIMIT);
+    }
+
+    /**
+     * get the top (limit) movies in the specified iTunes store
+     *
+     * @param countryCode country code of the itunes store to search
+     * @param limit the maximum number of movies to return
+     * @return a JSONObject containing a list of the top songs
+     */
+    public static JSONObject topMovies(CountryCode countryCode, int limit) {
+        return queryMovieList(MovieList.TOP_MOVIES, countryCode, limit);
+    }
+
     private static JSONObject queryMovieList(MovieList list, CountryCode countryCode, int limit) {
         String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/movies/" +
                 list.urlKey + "/all/" + limit + "/explicit.json";
