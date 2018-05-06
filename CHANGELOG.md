@@ -1,3 +1,7 @@
+##### v1.5.0 (05.06.2018)
+
+- Movie lookup functionality
+
 ##### v1.4.0 (04.18.2018)
 
 - Book lookup functionality
