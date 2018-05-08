@@ -1,1 +1,5 @@
-theme: jekyll-theme-tactile
+title: iTunesSearch
+description: A Java wrapper for the Itunes search API
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-minimal
