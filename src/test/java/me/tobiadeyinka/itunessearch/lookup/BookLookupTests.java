@@ -32,7 +32,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getBookById() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long bookId = 1267086009;
             response = BookLookup.getBookById(bookId);
@@ -45,7 +44,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test(expectedExceptions = NoMatchFoundException.class)
     public void getBookByNonExistingTrackId() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long bookId = 1;
             response = BookLookup.getBookById(bookId);
@@ -55,7 +53,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopFreeBooks() {
         nullifyResponse();
-
         try {
             response = BookLookup.topFree(); 
             verifyResponseHasResults();
@@ -65,7 +62,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopFreeBooksWithLimit() {
         nullifyResponse();
-
         try {
             response = BookLookup.topFree(limit);
             verifyResponseHasResults();
@@ -76,7 +72,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopFreeBooksInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = BookLookup.topFree(CountryCode.CA);
             verifyResponseHasResults();
@@ -86,7 +81,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopFreeBooksWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = BookLookup.topFree(CountryCode.CA, limit);
             verifyResponseHasResults();
@@ -97,7 +91,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopPaidBooks() {
         nullifyResponse();
-
         try {
             response = BookLookup.topPaid();
             verifyResponseHasResults();
@@ -107,7 +100,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopPaidBooksWithLimit() {
         nullifyResponse();
-
         try {
             response = BookLookup.topPaid(limit);
             verifyResponseHasResults();
@@ -118,7 +110,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopPaidBooksInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = BookLookup.topPaid(CountryCode.CA);
             verifyResponseHasResults();
@@ -128,7 +119,6 @@ public class BookLookupTests extends BaseLookupTest {
     @Test
     public void getTopPaidBooksWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = BookLookup.topPaid(CountryCode.CA, limit);
             verifyResponseHasResults();
