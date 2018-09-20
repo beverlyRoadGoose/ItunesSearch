@@ -12,7 +12,7 @@ This is a Java wrapper for the [iTunes Search API](https://affiliate.itunes.appl
 
 **Gradle**
 ```Gradle
-compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.5.0'
+compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.5.1-SNAPSHOT'
 ```
 
 **Maven**
