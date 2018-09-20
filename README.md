@@ -20,7 +20,7 @@ compile group: 'me.tobiadeyinka', name: 'iTunesSearch', version: '1.5.0'
 <dependency>
     <groupId>me.tobiadeyinka</groupId>
     <artifactId>iTunesSearch</artifactId>
-    <version>1.5.0</version>
+    <version>1.5.1-SNAPSHOT</version>
 </dependency>
 ```
       

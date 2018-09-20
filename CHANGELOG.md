@@ -1,3 +1,7 @@
+##### v1.5.1 (09.21.2018)
+
+- Internal cleanup
+
 ##### v1.5.0 (05.06.2018)
 
 - Movie lookup functionality
