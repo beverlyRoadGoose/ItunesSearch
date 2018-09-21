@@ -127,9 +127,12 @@ public class BookLookup extends Lookup {
     }
 
     private static JSONObject queryBookList(BookLookup.BookList list, CountryCode countryCode, int limit) {
-        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/books/" + list.urlKey +
-                "/all/" + limit + "/explicit.json";
-        return executeQuery(urlString);
+        return executeQuery(
+            String.format(
+                "https://rss.itunes.apple.com/api/v1/%s/books/%s/all/%s/explicit.json",
+                countryCode.getAlpha2(), list.urlKey, limit
+            )
+        );
     }
 
 }

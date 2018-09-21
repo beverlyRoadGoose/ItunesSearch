@@ -41,7 +41,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareWithDefaultParameters() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch().with(searchTerm);
             response = search.execute();
@@ -52,7 +51,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareUsingDeveloperAttribute() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch()
                     .with(searchTerm)
@@ -65,7 +63,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareInSpecificStore() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch()
                     .with(searchTerm)
@@ -78,7 +75,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareWithLimit() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new SoftwareSearch()
@@ -94,7 +90,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareWithApiVersion1() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch()
                     .with(searchTerm)
@@ -107,7 +102,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareWithJapaneseResponse() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch()
                     .with(searchTerm)
@@ -120,7 +114,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareWithIpadSoftwareReturnType() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch()
                     .with(searchTerm)
@@ -134,7 +127,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void searchForSoftwareWithoutExplicitContent() {
         nullifySearchAndResponse();
-
         try {
             search = new SoftwareSearch()
                     .with(searchTerm)
@@ -147,7 +139,6 @@ public class SoftwareSearchTests extends BaseSearchTest {
     @Test
     public void comprehensiveSoftwareSearch() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new SoftwareSearch()
