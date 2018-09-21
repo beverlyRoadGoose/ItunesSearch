@@ -266,9 +266,12 @@ public abstract class MusicLookup extends Lookup {
     }
 
     private static JSONObject querySongList(MusicList list, CountryCode countryCode, int limit) {
-        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/itunes-music/" +
-                list.urlKey + "/all/" + limit + "/explicit.json";
-        return executeQuery(urlString);
+        return executeQuery(
+            String.format(
+                "https://rss.itunes.apple.com/api/v1/%s/itunes-music/%s/all/%s/explicit.json",
+                countryCode.getAlpha2(), list.urlKey, limit
+            )
+        );
     }
 
 }

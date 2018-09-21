@@ -32,7 +32,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getSongById() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long trackId = 879273573;
             response = MusicLookup.getSongById(trackId);
@@ -45,7 +44,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test(expectedExceptions = NoMatchFoundException.class)
     public void getSongByNonExistingTrackId() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long songId = 1;
             response = MusicLookup.getSongById(songId);
@@ -55,7 +53,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopSongs() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topSongs();
             verifyResponseHasResults();
@@ -65,7 +62,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopSongsWithLimit() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topSongs(limit);
             verifyResponseHasResults();
@@ -76,7 +72,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopSongsInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topSongs(CountryCode.CA);
             verifyResponseHasResults();
@@ -86,7 +81,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopSongsWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topSongs(CountryCode.CA, limit);
             verifyResponseHasResults();
@@ -97,7 +91,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getHotTracks() {
         nullifyResponse();
-
         try {
             response = MusicLookup.hotTracks();
             verifyResponseHasResults();
@@ -107,7 +100,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getHotTracksWithLimit() {
         nullifyResponse();
-
         try {
             response = MusicLookup.hotTracks(limit);
             verifyResponseHasResults();
@@ -118,7 +110,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getHotTracksInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.hotTracks(CountryCode.CA);
             verifyResponseHasResults();
@@ -128,7 +119,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getHotTracksWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.hotTracks(CountryCode.CA, limit);
             verifyResponseHasResults();
@@ -139,7 +129,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getNewMusic() {
         nullifyResponse();
-
         try {
             response = MusicLookup.newMusic();
             verifyResponseHasResults();
@@ -149,7 +138,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getNewMusicWithLimit() {
         nullifyResponse();
-
         try {
             response = MusicLookup.newMusic(limit);
             verifyResponseHasResults();
@@ -160,7 +148,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getNewMusicInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.newMusic(CountryCode.CA);
             verifyResponseHasResults();
@@ -170,7 +157,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getNewMusicWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.newMusic(CountryCode.CA, limit);
             verifyResponseHasResults();
@@ -181,7 +167,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getRecentReleases() {
         nullifyResponse();
-
         try {
             response = MusicLookup.recentReleases();
             verifyResponseHasResults();
@@ -191,7 +176,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getRecentReleasesWithLimit() {
         nullifyResponse();
-
         try {
             response = MusicLookup.recentReleases(limit);
             verifyResponseHasResults();
@@ -202,7 +186,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getRecentReleasesInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.recentReleases(CountryCode.CA);
             verifyResponseHasResults();
@@ -212,7 +195,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getRecentReleasesWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.recentReleases(CountryCode.CA, limit);
             verifyResponseHasResults();
@@ -223,7 +205,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getAlbumById() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long albumId = 879273573;
             response = MusicLookup.getAlbumById(albumId);
@@ -236,7 +217,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test(expectedExceptions = NoMatchFoundException.class)
     public void getAlbumByNonExistingTrackId() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long albumID = 1;
             response = MusicLookup.getAlbumById(albumID);
@@ -246,7 +226,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void geTopAlbums() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topAlbums();
             verifyResponseHasResults();
@@ -256,7 +235,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopAlbumsWithLimit() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topAlbums(limit);
             verifyResponseHasResults();
@@ -267,7 +245,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopAlbumsInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topAlbums(CountryCode.CA);
             verifyResponseHasResults();
@@ -277,7 +254,6 @@ public class MusicLookupTests extends BaseLookupTest {
     @Test
     public void getTopAlbumsWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = MusicLookup.topAlbums(CountryCode.CA, limit);
             verifyResponseHasResults();

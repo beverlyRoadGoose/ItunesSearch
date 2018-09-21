@@ -42,7 +42,6 @@ public class EBookSearchTests extends BaseSearchTest {
     @Test
     public void searchForEBookWithDefaultParameters() {
         nullifySearchAndResponse();
-
         try {
             search = new EBookSearch().with(searchTerm);
             response = search.execute();
@@ -53,7 +52,6 @@ public class EBookSearchTests extends BaseSearchTest {
     @Test
     public void searchForEBookInSpecificStore() {
         nullifySearchAndResponse();
-
         try {
             search = new EBookSearch()
                     .with(searchTerm)
@@ -66,7 +64,6 @@ public class EBookSearchTests extends BaseSearchTest {
     @Test
     public void searchForEBookWithLimit() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new EBookSearch()
@@ -82,7 +79,6 @@ public class EBookSearchTests extends BaseSearchTest {
     @Test
     public void searchForEBookWithApiVersion1() {
         nullifySearchAndResponse();
-
         try {
             search = new EBookSearch()
                     .with(searchTerm)
@@ -95,7 +91,6 @@ public class EBookSearchTests extends BaseSearchTest {
     @Test
     public void searchForEBookWithJapaneseResponse() {
         nullifySearchAndResponse();
-
         try {
             search = new EBookSearch()
                     .with(searchTerm)
@@ -108,7 +103,6 @@ public class EBookSearchTests extends BaseSearchTest {
     @Test
     public void searchForEBookWithoutExplicitContent() {
         nullifySearchAndResponse();
-
         try {
             search = new EBookSearch()
                     .with(searchTerm)

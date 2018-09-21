@@ -41,7 +41,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void searchWithDefaultParameters() {
         nullifySearchAndResponse();
-
         try {
             search = new MediaSearch().with(searchTerm);
             response = search.execute();
@@ -52,7 +51,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void searchForPodcastWithMediaSearch() {
         nullifySearchAndResponse();
-
         try {
             searchTerm = "radiolab";
             search = new MediaSearch()
@@ -67,7 +65,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void searchInSpecificStore() {
         nullifySearchAndResponse();
-
         try {
             search = new MediaSearch()
                     .with(searchTerm)
@@ -80,7 +77,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void searchWithLimit() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new MediaSearch()
@@ -96,7 +92,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void searchWithApiVersion1() {
         nullifySearchAndResponse();
-
         try {
             search = new MediaSearch()
                     .with(searchTerm)
@@ -109,7 +104,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void searchWithoutExplicitContent() {
         nullifySearchAndResponse();
-
         try {
             search = new MediaSearch()
                     .with(searchTerm)
@@ -122,7 +116,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void specifyReturnLanguage() {
         nullifySearchAndResponse();
-
         try {
             search = new MediaSearch()
                     .with(searchTerm)
@@ -135,7 +128,6 @@ public class MediaSearchTests extends BaseSearchTest {
     @Test
     public void comprehensiveMovieSearch() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new MediaSearch()

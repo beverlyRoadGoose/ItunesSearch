@@ -45,7 +45,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test(expectedExceptions = NoMatchFoundException.class)
     public void getPodcastByNonExistingCollectionId() throws NoMatchFoundException {
         nullifyResponse();
-
         try {
             long podcastID = 1;
             response = PodcastLookup.getPodcastById(podcastID);
@@ -55,7 +54,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getTopPodcasts() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.topPodcasts();
             verifyResponseHasResults();
@@ -65,7 +63,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getTopPodcastsWithLimit() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.topPodcasts(limit);
             verifyResponseHasResults();
@@ -76,7 +73,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getTopPodcastsInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.topPodcasts(CountryCode.NG);
             verifyResponseHasResults();
@@ -86,7 +82,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getTopPodcastsWithLimitInSpecificCountry() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.topPodcasts(CountryCode.NG, limit);
             verifyResponseHasResults();
@@ -97,7 +92,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getComedyPodcasts() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.comedyPodcasts();
             verifyResponseHasResults();
@@ -107,7 +101,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getComedyPodcastsWithLimit() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.comedyPodcasts(limit);
             verifyResponseHasResults();
@@ -118,7 +111,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getNewsAndPoliticsPodcasts() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.newsAndPoliticsPodcasts();
             verifyResponseHasResults();
@@ -128,7 +120,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getNewsAndPoliticsPodcastsWithLimit() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.newsAndPoliticsPodcasts(limit);
             verifyResponseHasResults();
@@ -139,7 +130,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getSocietyAndCulturePodcasts() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.societyAndCulturePodcasts();
             verifyResponseHasResults();
@@ -149,7 +139,6 @@ public class PodcastLookupTests extends BaseLookupTest {
     @Test
     public void getSocietyAndCulturePodcastsWithLimit() {
         nullifyResponse();
-
         try {
             response = PodcastLookup.societyAndCulturePodcasts(limit);
             verifyResponseHasResults();

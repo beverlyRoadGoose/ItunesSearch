@@ -41,7 +41,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicWithDefaultParameters() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch().with(searchTerm);
             response = search.execute();
@@ -52,7 +51,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicUsingArtistAttribute() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -65,7 +63,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicInSpecificStore() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -78,7 +75,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicWithLimit() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new MusicSearch()
@@ -94,7 +90,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicWithApiVersion1() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -107,7 +102,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicWithJapaneseResponse() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -120,7 +114,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicWithArtistReturnType() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -134,7 +127,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void searchForMusicWithoutExplicitContent() {
         nullifySearchAndResponse();
-
         try {
             search = new MusicSearch()
                     .with(searchTerm)
@@ -147,7 +139,6 @@ public class MusicSearchTests extends BaseSearchTest {
     @Test
     public void comprehensiveMusicSearch() {
         nullifySearchAndResponse();
-
         try {
             int limit = 5;
             search = new MusicSearch()

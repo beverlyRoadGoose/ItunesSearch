@@ -91,9 +91,12 @@ public class MovieLookup extends Lookup {
     }
 
     private static JSONObject queryMovieList(MovieList list, CountryCode countryCode, int limit) {
-        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/movies/" +
-                list.urlKey + "/all/" + limit + "/explicit.json";
-        return executeQuery(urlString);
+        return executeQuery(
+            String.format(
+                "https://rss.itunes.apple.com/api/v1/%s/movies/%s/all/%s/explicit.json",
+                countryCode.getAlpha2(), list.urlKey, limit
+            )
+        );
     }
 
 }
