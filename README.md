@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/EtherealT/ItunesSearch.svg?branch=master&maxAge=1)](https://travis-ci.org/EtherealT/ItunesSearch)
-[![Coverage Status](https://coveralls.io/repos/github/EtherealT/ItunesSearch/badge.svg?branch=master&maxAge=1)](https://coveralls.io/github/EtherealT/ItunesSearch?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6139acc8bc4c44dd91d73fa2456ec52d)](https://www.codacy.com/app/EtherealT/ItunesSearch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=EtherealT/ItunesSearch&amp;utm_campaign=Badge_Grade)
-[![GitHub version](https://badge.fury.io/gh/etherealt%2Fitunessearch.svg)](https://github.com/EtherealT/ItunesSearch/releases)
+[![Build Status](https://travis-ci.org/beverlyRoadGoose/ItunesSearch.svg?branch=master&maxAge=1)](https://travis-ci.org/beverlyRoadGoose/ItunesSearch)
+[![Coverage Status](https://coveralls.io/repos/github/beverlyRoadGoose/ItunesSearch/badge.svg?branch=master&maxAge=1)](https://coveralls.io/github/beverlyRoadGoose/ItunesSearch?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6139acc8bc4c44dd91d73fa2456ec52d)](https://www.codacy.com/app/beverlyRoadGoose/ItunesSearch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=beverlyRoadGoose/ItunesSearch&amp;utm_campaign=Badge_Grade)
+[![GitHub version](https://badge.fury.io/gh/beverlyRoadGoose%2Fitunessearch.svg)](https://github.com/beverlyRoadGoose/ItunesSearch/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?maxAge=1)](https://opensource.org/licenses/Apache-2.0)
 
 ## About
@@ -50,13 +50,13 @@ new PodcastSearch()
     .execute();
 ```
 
-Searching other media types follow the same method. To search every media type in one call, use [MediaSearch](https://etherealt.github.io/ItunesSearch/docs/):
+Searching other media types follow the same method. To search every media type in one call, use [MediaSearch](https://beverlyRoadGoose.github.io/ItunesSearch/docs/):
 ```java
 new MediaSearch()
     .with("something")
     .execute();
 ```
-There are much more configurations available all of which are detailed in the [wiki](https://github.com/EtherealT/ItunesSearch/wiki).
+There are much more configurations available all of which are detailed in the [wiki](https://github.com/beverlyRoadGoose/ItunesSearch/wiki).
 
 To lookup up lists or items from the store, use the lookup API's. For example, to get the top songs in the store:
 ```java
@@ -68,7 +68,7 @@ To get the top _n_ songs:
 MusicLookup.topSongs(n);
 ```
 
-The javadoc is also available [here](https://etherealt.github.io/ItunesSearch/docs/).
+The javadoc is also available [here](https://beverlyRoadGoose.github.io/ItunesSearch/docs/).
 All searches and lookups return a [JSON object](https://stleary.github.io/JSON-java/).
 
 ## Disclaimer
