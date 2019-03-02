@@ -1,3 +1,7 @@
+##### v1.5.2 (03.02.2019)
+
+- Error fixes in unit tests & refactoring.
+
 ##### v1.5.1 (09.21.2018)
 
 - Internal cleanup
