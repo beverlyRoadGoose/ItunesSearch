@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.net.*;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -39,11 +40,19 @@ public abstract class NetworkUtils {
             /*
              * encode url before query
              */
-            URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), url.getRef());
-            URL encodedUrl = new URL(uri.toASCIIString());
-            return new JSONObject(query(encodedUrl));
+            URI uri = new URI(
+                url.getProtocol(),
+                url.getUserInfo(),
+                url.getHost(),
+                url.getPort(),
+                url.getPath(),
+                url.getQuery(),
+                url.getRef()
+            );
+
+            return new JSONObject(Objects.requireNonNull(query(new URL(uri.toASCIIString()))));
         } catch (IOException | URISyntaxException e) {
-            throw new NetworkCommunicationException("Error while executing query: " + e.getMessage());
+            throw new NetworkCommunicationException(String.format("Error while executing query: %s", e.getMessage()));
         }
     }
 

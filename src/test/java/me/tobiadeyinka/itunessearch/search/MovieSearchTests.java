@@ -40,7 +40,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieWithDefaultParameters() {
-        nullifySearchAndResponse();
         try {
             search = new MovieSearch().with(searchTerm);
             response = search.execute();
@@ -50,7 +49,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieUsingDirectorAttribute() {
-        nullifySearchAndResponse();
         try {
             String actor = "Steven";
             search = new MovieSearch()
@@ -63,7 +61,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieInSpecificStore() {
-        nullifySearchAndResponse();
         try {
             search = new MovieSearch()
                     .with(searchTerm)
@@ -75,7 +72,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieWithLimit() {
-        nullifySearchAndResponse();
         try {
             /*
              * use a common word to match a lot of movies
@@ -96,7 +92,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieWithApiVersion1() {
-        nullifySearchAndResponse();
         try {
             search = new MovieSearch()
                     .with(searchTerm)
@@ -108,7 +103,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieWithJapaneseResponse() {
-        nullifySearchAndResponse();
         try {
             search = new MovieSearch()
                     .with(searchTerm)
@@ -120,7 +114,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieWithArtistReturnType() {
-        nullifySearchAndResponse();
         try {
             search = new MovieSearch()
                     .with(searchTerm)
@@ -132,7 +125,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMovieWithoutExplicitContent() {
-        nullifySearchAndResponse();
         try {
             search = new MovieSearch()
                     .with(searchTerm)
@@ -144,7 +136,6 @@ public class MovieSearchTests extends BaseSearchTest {
 
     @Test
     public void comprehensiveMovieSearch() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
 

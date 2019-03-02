@@ -40,7 +40,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmWithDefaultParameters() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch().with(searchTerm);
             response = search.execute();
@@ -50,7 +49,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmUsingArtistAttribute() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch()
                     .with(searchTerm)
@@ -62,7 +60,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmInSpecificStore() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch()
                     .with(searchTerm)
@@ -74,7 +71,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmWithLimit() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new ShortFilmSearch()
@@ -89,19 +85,16 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmWithApiVersion1() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch()
                     .with(searchTerm)
                     .withApiVersion(ItunesApiVersion.ONE);
             response = search.execute();
-            verifyResponseHasResults();
         } finally { logUrlAndResponse(); }
     }
 
     @Test
     public void searchForShortFilmWithJapaneseResponse() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch()
                     .with(searchTerm)
@@ -113,7 +106,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmWithArtistReturnType() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch()
                     .with(searchTerm)
@@ -126,7 +118,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForShortFilmWithoutExplicitContent() {
-        nullifySearchAndResponse();
         try {
             search = new ShortFilmSearch()
                     .with(searchTerm)
@@ -138,7 +129,6 @@ public class ShortFilmSearchTests extends BaseSearchTest {
 
     @Test
     public void comprehensiveShortFilmSearch() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new ShortFilmSearch()

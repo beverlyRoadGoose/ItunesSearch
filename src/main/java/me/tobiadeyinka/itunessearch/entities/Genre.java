@@ -44,10 +44,11 @@ public enum Genre {
 
     @Override
     public String toString() {
-        switch (this) {
-            case PODCASTS: return "Podcasts";
-            default: return null;
+        if (this == Genre.PODCASTS) {
+            return "Podcasts";
         }
+
+        return null;
     }
 
 }

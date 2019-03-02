@@ -40,7 +40,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowWithDefaultParameters() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch().with(searchTerm);
             response = search.execute();
@@ -50,7 +49,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowUsingEpisodeAttribute() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch()
                     .with(searchTerm)
@@ -62,7 +60,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowInSpecificStore() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch()
                     .with(searchTerm)
@@ -74,7 +71,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowWithLimit() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new TvShowSearch()
@@ -89,7 +85,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowWithApiVersion1() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch()
                     .with(searchTerm)
@@ -101,7 +96,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowWithJapaneseResponse() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch()
                     .with(searchTerm)
@@ -113,7 +107,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowWithEpisodeReturnType() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch()
                     .with(searchTerm)
@@ -126,7 +119,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForTvShowWithoutExplicitContent() {
-        nullifySearchAndResponse();
         try {
             search = new TvShowSearch()
                     .with(searchTerm)
@@ -138,7 +130,6 @@ public class TvShowSearchTests extends BaseSearchTest {
 
     @Test
     public void comprehensiveTvShowSearch() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new TvShowSearch()

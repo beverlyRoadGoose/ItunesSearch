@@ -157,13 +157,20 @@ public abstract class PodcastLookup extends Lookup {
      * @return a JSONObject containing a list of the matching podcasts
      */
     private static JSONObject getPodcastGenre(PodcastGenre genre, int limit) {
-        String urlString = "https://itunes.apple.com/search?term=podcast&limit=" + limit + "&genreId=" + genre.id;
-        return executeQuery(urlString);
+        return executeQuery(
+            String.format(
+                "https://itunes.apple.com/search?term=podcast&limit=%s&genreId=%s", limit, genre.id
+            )
+        );
     }
 
     private static JSONObject queryTopPodcasts(CountryCode countryCode, int limit) {
-        String urlString = "https://rss.itunes.apple.com/api/v1/" + countryCode.getAlpha2() + "/podcasts/top-podcasts/all/" + limit + "/explicit.json";
-        return executeQuery(urlString);
+        return executeQuery(
+            String.format(
+                "https://rss.itunes.apple.com/api/v1/%s/podcasts/top-podcasts/all/%s/explicit.json",
+                countryCode.getAlpha2(), limit
+            )
+        );
     }
 
 }

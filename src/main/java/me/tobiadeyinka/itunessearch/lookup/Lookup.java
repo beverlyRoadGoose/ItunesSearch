@@ -48,13 +48,14 @@ abstract class Lookup {
      * @throws NoMatchFoundException if no matching item is found
      */
     protected static JSONObject getById(long id) throws NoMatchFoundException {
-        String urlString = BASE_LOOKUP_URL + "id=" + id;
+        String urlString = String.format("%sid=%s", BASE_LOOKUP_URL, id);
 
         JSONObject response = executeQuery(urlString);
         JSONArray responseJSONArray = response.getJSONArray("results");
 
-        if (responseJSONArray.length() == 0)
+        if (responseJSONArray.length() == 0) {
             throw new NoMatchFoundException("No item matches the given id");
+        }
 
         return response;
     }
