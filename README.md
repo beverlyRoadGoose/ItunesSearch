@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/beverlyRoadGoose/ItunesSearch.svg?branch=master&maxAge=1)](https://travis-ci.org/beverlyRoadGoose/ItunesSearch)
 [![Coverage Status](https://coveralls.io/repos/github/beverlyRoadGoose/ItunesSearch/badge.svg?branch=master&maxAge=1)](https://coveralls.io/github/beverlyRoadGoose/ItunesSearch?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6139acc8bc4c44dd91d73fa2456ec52d)](https://www.codacy.com/app/beverlyRoadGoose/ItunesSearch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=beverlyRoadGoose/ItunesSearch&amp;utm_campaign=Badge_Grade)
-[![GitHub version](https://badge.fury.io/gh/beverlyRoadGoose%2Fitunessearch.svg)](https://github.com/beverlyRoadGoose/ItunesSearch/releases)
+[![GitHub version](https://badge.fury.io/gh/beverlyRoadGoose%2FItunesSearch.svg)](https://github.com/beverlyRoadGoose/ItunesSearch/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?maxAge=1)](https://opensource.org/licenses/Apache-2.0)
 
 ## About
