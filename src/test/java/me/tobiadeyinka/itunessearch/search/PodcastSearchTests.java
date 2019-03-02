@@ -40,7 +40,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastWithDefaultParameters() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch().with(searchTerm);
             response = search.execute();
@@ -50,7 +49,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastUsingTitleAttribute() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch()
                     .with(searchTerm)
@@ -62,7 +60,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastInSpecificStore() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch()
                     .with(searchTerm)
@@ -74,7 +71,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastWithLimit() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new PodcastSearch()
@@ -89,7 +85,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastWithApiVersion1() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch()
                     .with(searchTerm)
@@ -101,7 +96,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastWithJapaneseResponse() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch()
                     .with(searchTerm)
@@ -113,7 +107,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastWithAuthorReturnType() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch()
                     .with(searchTerm)
@@ -126,7 +119,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForPodcastWithoutExplicitContent() {
-        nullifySearchAndResponse();
         try {
             search = new PodcastSearch()
                     .with(searchTerm)
@@ -138,7 +130,6 @@ public class PodcastSearchTests extends BaseSearchTest {
 
     @Test
     public void comprehensivePodcastSearch() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new PodcastSearch()

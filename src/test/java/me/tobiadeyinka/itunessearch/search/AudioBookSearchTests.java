@@ -43,7 +43,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookWithDefaultParameters() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch().with(searchTerm);
             response = search.execute();
@@ -53,7 +52,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookUsingAuthorAttribute() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch()
                     .with(searchTerm)
@@ -65,7 +63,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookInSpecificStore() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch()
                     .with(searchTerm)
@@ -77,7 +74,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookWithLimit() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new AudioBookSearch()
@@ -92,7 +88,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookWithApiVersion1() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch()
                     .with(searchTerm)
@@ -104,7 +99,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookWithJapaneseResponse() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch()
                     .with(searchTerm)
@@ -116,7 +110,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookWithAuthorReturnType() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch()
                     .with(searchTerm)
@@ -129,7 +122,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForAudioBookWithoutExplicitContent() {
-        nullifySearchAndResponse();
         try {
             search = new AudioBookSearch()
                     .with(searchTerm)
@@ -141,7 +133,6 @@ public class AudioBookSearchTests extends BaseSearchTest {
 
     @Test
     public void comprehensiveAudioBookSearch() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new AudioBookSearch()

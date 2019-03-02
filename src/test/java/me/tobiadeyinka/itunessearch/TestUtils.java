@@ -28,13 +28,10 @@ public abstract class TestUtils {
 
     public static void sleepForAMinute() {
         Logger logger = Logger.getLogger(TestUtils.class.getName());
-        logger.info("sleeping for 1 minute");
+        logger.info("sleeping for 1 minute to avoid access denial from itunes api");
 
-        try {
-            Thread.sleep(60000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(60000); }
+        catch (InterruptedException e) { e.printStackTrace(); }
     }
 
 }

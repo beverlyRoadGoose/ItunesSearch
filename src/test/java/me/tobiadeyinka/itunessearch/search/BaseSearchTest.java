@@ -23,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.logging.Logger;
 
@@ -37,15 +38,15 @@ public class BaseSearchTest {
 
     private Logger logger = Logger.getLogger(BaseSearchTest.class.getName());
 
-    protected static final String TEST_LOG_TAG = "test: ";
-    protected static final String URL_LOG_TAG = "search url: ";
-    protected static final String RESPONSE_LOG_TAG = "search response: ";
+    private static final String TEST_LOG_TAG = "test: ";
+    private static final String URL_LOG_TAG = "search url: ";
+    private static final String RESPONSE_LOG_TAG = "search response: ";
 
     protected Search search = null;
     protected JSONObject response = null;
 
     protected void verifyResponseHasResults() {
-        assertThat(response.has("results"));
+        assertThat(response.has("results")).isTrue();
     }
 
     protected void verifyResponseMatchesLimit(int limit) {
@@ -70,6 +71,7 @@ public class BaseSearchTest {
      * each tests to prevent the values from a previous test from
      * being used when the current test fails.
      */
+    @BeforeMethod
     protected void nullifySearchAndResponse() {
         search = null;
         response = null;

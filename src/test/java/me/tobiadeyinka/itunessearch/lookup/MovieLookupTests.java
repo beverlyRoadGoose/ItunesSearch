@@ -31,7 +31,6 @@ public class MovieLookupTests extends BaseLookupTest {
 
     @Test
     public void getMovieById() throws NoMatchFoundException {
-        nullifyResponse();
         try {
             long trackId = 1348407955;
             response = MovieLookup.getMovieById(trackId);
@@ -43,7 +42,6 @@ public class MovieLookupTests extends BaseLookupTest {
 
     @Test(expectedExceptions = NoMatchFoundException.class)
     public void getMovieByNonExistingTrackId() throws NoMatchFoundException {
-        nullifyResponse();
         try {
             long movieId = 1;
             response = MovieLookup.getMovieById(movieId);
@@ -52,7 +50,6 @@ public class MovieLookupTests extends BaseLookupTest {
 
     @Test
     public void getTopMovies() {
-        nullifyResponse();
         try {
             response = MovieLookup.topMovies();
             verifyResponseHasResults();
@@ -61,7 +58,6 @@ public class MovieLookupTests extends BaseLookupTest {
 
     @Test
     public void getTopMoviesWithLimit() {
-        nullifyResponse();
         try {
             response = MovieLookup.topMovies(limit);
             verifyResponseHasResults();
@@ -71,7 +67,6 @@ public class MovieLookupTests extends BaseLookupTest {
 
     @Test
     public void getTopMoviesInSpecificCountry() {
-        nullifyResponse();
         try {
             response = MovieLookup.topMovies(CountryCode.CA);
             verifyResponseHasResults();
@@ -80,7 +75,6 @@ public class MovieLookupTests extends BaseLookupTest {
 
     @Test
     public void getTopMoviesWithLimitInSpecificCountry() {
-        nullifyResponse();
         try {
             response = MovieLookup.topMovies(CountryCode.CA, limit);
             verifyResponseHasResults();

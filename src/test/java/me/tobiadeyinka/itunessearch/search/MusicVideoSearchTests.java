@@ -40,7 +40,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoWithDefaultParameters() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch().with(searchTerm);
             response = search.execute();
@@ -50,7 +49,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoUsingArtistAttribute() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch()
                     .with(searchTerm)
@@ -62,7 +60,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoInSpecificStore() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch()
                     .with(searchTerm)
@@ -74,7 +71,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoWithLimit() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new MusicVideoSearch()
@@ -89,7 +85,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoWithApiVersion1() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch()
                     .with(searchTerm)
@@ -101,7 +96,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoWithJapaneseResponse() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch()
                     .with(searchTerm)
@@ -113,7 +107,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoWithArtistReturnType() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch()
                     .with(searchTerm)
@@ -126,7 +119,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void searchForMusicVideoWithoutExplicitContent() {
-        nullifySearchAndResponse();
         try {
             search = new MusicVideoSearch()
                     .with(searchTerm)
@@ -138,7 +130,6 @@ public class MusicVideoSearchTests extends BaseSearchTest {
 
     @Test
     public void comprehensiveMusicVideoSearch() {
-        nullifySearchAndResponse();
         try {
             int limit = 5;
             search = new MusicVideoSearch()

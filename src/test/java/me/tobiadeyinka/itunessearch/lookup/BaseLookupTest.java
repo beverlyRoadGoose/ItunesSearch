@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.util.logging.Logger;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,11 +40,12 @@ public class BaseLookupTest {
     protected int limit = 5;
     protected JSONObject response = null;
 
-    protected static final String TEST_LOG_TAG = "test: ";
-    protected static final String RESPONSE_LOG_TAG = "response: ";
+    private static final String TEST_LOG_TAG = "test: ";
+    private static final String RESPONSE_LOG_TAG = "response: ";
 
     protected void verifyResponseHasResults() {
-        assertThat(response.has("results"));
+        assertThat(response.has("results") || (response.has("feed") && response.getJSONObject("feed").has("results")))
+            .isTrue();
     }
 
     protected void verifyResponseMatchesLimit(int limit) {
@@ -52,7 +54,9 @@ public class BaseLookupTest {
          * a feed object. In that case, set the feed object as the response
          * object.
          */
-        if (response.has("feed")) response = response.getJSONObject("feed");
+        if (response.has("feed")) {
+            response = response.getJSONObject("feed");
+        }
 
         JSONArray matchingPodcastsArray = response.getJSONArray("results");
         assertThat(matchingPodcastsArray.length())
@@ -74,6 +78,7 @@ public class BaseLookupTest {
      * each tests to prevent the values from a previous test from
      * being used when the current test fails.
      */
+    @BeforeMethod
     protected void nullifyResponse() {
         response = null;
     }
