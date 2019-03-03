@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.tobiadeyinka</groupId>
     <artifactId>iTunesSearch</artifactId>
-    <version>1.5.2</version>
+    <version>1.5.3</version>
     <packaging>jar</packaging>
     <name>iTunes Search</name>
     <description>A Java wrapper for the Itunes search API</description>
-    <url>https://github.com/EtherealT/ItunesSearch/</url>
+    <url>https://github.com/beverlyRoadGoose/ItunesSearch/</url>
 
     <developers>
         <developer>
