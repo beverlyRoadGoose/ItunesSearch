@@ -1,3 +1,7 @@
+##### v1.5.3 (03.3.2019)
+
+- Corrected repo url in pom file.
+
 ##### v1.5.2 (03.02.2019)
 
 - Error fixes in unit tests & refactoring.
