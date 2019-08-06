@@ -29,7 +29,7 @@ import org.testng.annotations.Test;
  */
 public class MusicLookupTests extends BaseLookupTest {
 
-    @Test
+    @Test(enabled = false)
     public void getSongById() throws NoMatchFoundException {
         try {
             long trackId = 879273573;
@@ -184,7 +184,7 @@ public class MusicLookupTests extends BaseLookupTest {
         } finally { logResponse(); }
     }
 
-    @Test
+    @Test(enabled = false)
     public void getAlbumById() throws NoMatchFoundException {
         try {
             long albumId = 879273573;
